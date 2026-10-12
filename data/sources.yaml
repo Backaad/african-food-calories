@@ -8,6 +8,11 @@
 #   approved           the whole source may be used under `license`.
 #   approved_per_item  the source mixes licenses; each image is kept only if its
 #                      own license is in `policy.allowed_licenses` (checked by script).
+#   approved_training_only
+#                      the images' copyright is not cleared (e.g. scraped from search
+#                      engines), but the project owner accepted the risk for training
+#                      only, under policy.training_only_conditions. Needs a
+#                      `risk_accepted` block.
 #   pending            not usable until the open questions are answered.
 #   excluded           not usable; see `status_reason`.
 #
@@ -24,7 +29,18 @@ policy:
   # Images copied from Google, Facebook, Instagram, YouTube or Bing are rejected
   # even when a dataset that contains them declares an open licence: the
   # dataset authors cannot relicense photos they do not own.
+  # Exception: sources with status approved_training_only, see below.
   never_from: [google, facebook, instagram, youtube, bing]
+  # Conditions attached to every approved_training_only source. Decided by the
+  # project owner on 2026-10-12 after reviewing the licence findings.
+  training_only_conditions:
+    - Images are used to train and evaluate models only. They are never
+      redistributed (not in this repository, not in CI artifacts, not in the
+      Hugging Face dataset), only the scripts that fetch them from their source.
+    - Model weights trained on them are released under CC BY-NC 4.0, not under
+      an open licence, and the model card names these sources and this risk.
+    - If a photographer or the dataset authors ask, their images are removed and
+      the model is retrained without them.
 
 sources:
   # ---------------------------------------------------------------- per-item
@@ -88,9 +104,11 @@ sources:
       sources" and the authors' own photos taken in restaurants ("Field").
       YouTube/Facebook frames were captured with a screenshot tool, "contingent
       upon the permissions of food page owners".
-    status: excluded
+    status: pending
     status_reason: >-
-      Most images come from Google Images, YouTube and Facebook. The dataset's
+      The project owner is contacting the authors (2026-10-12). If they do not
+      answer, the owner accepted to use it as approved_training_only, like
+      CamerFood10. Most images come from Google Images, YouTube and Facebook. The dataset's
       CC BY 4.0 label cannot cover photos the authors do not own, and the brief
       forbids images from these platforms. The per-image origin is not published,
       so the clean part cannot be separated.
@@ -132,22 +150,40 @@ sources:
     name: CamerFood10
     url: https://github.com/babanthierry94/mid-DeepLabv3plus
     kind: dataset
+    download:
+      type: gdrive_folder
+      url: https://drive.google.com/drive/folders/1MugfmVehtIjjyqtphs-4u0GksuHy3Vjz
     declared_license: '"CamerFood10 dataset can be used only for non-commercial research purpose." (README, Agreement section)'
     authors: [Thierry Roland Baban A Erep, Lotfi Chaari]
+    citation: >-
+      Baban A Erep, T. R. and Chaari, L. (2024). mid-DeepLabv3+: A Novel Approach
+      for Image Semantic Segmentation Applied to African Food Dietary
+      Assessments. Sensors 24(1), 209. Dataset: CamerFood10, a dataset for
+      Cameroonian food image segmentation (2023).
     paper:
       title: "mid-DeepLabv3+: A Novel Approach for Image Semantic Segmentation Applied to African Food Dietary Assessments"
       journal: Sensors 24(1) 209 (2024)
       doi: 10.3390/s24010209
       pmc: https://pmc.ncbi.nlm.nih.gov/articles/PMC10781344
-    provenance: Not stated in the README.
-    status: excluded
+    reported_counts_total: 1422  # paper: 1032 train + 209 validation (does not add up to 1422; check after download)
+    provenance: >-
+      The paper says a Python script scraped images of the 42 most consumed
+      Cameroonian foods from search engines (Google Images, Bing); CamerFood10 keeps
+      the 10 most frequent classes, annotated with polygon masks (several foods per
+      image).
+    status: approved_training_only
     status_reason: >-
-      Non-commercial research use only. That is not an open licence and is
-      incompatible with publishing a model and an app for everyone. Segmentation
-      (several foods per plate) is also out of scope for now.
+      Scraped images: the authors' non-commercial permission cannot cover photos
+      they do not own. Used anyway for training only, under
+      policy.training_only_conditions.
+    risk_accepted:
+      by: project owner
+      date: 2026-10-12
     review:
       date: 2026-10-12
-      verified_by: README of the GitHub repository, read directly.
+      verified_by: >-
+        README of the GitHub repository, read directly; provenance and counts from
+        web search snippets of the Sensors paper (PMC10781344).
 
   - id: kenyanfood13
     name: KenyanFood13

@@ -50,3 +50,17 @@ jobs:
         with:
           name: data-inventory
           path: data/inventory/
+
+  # Downloads training-only datasets and prints their structure. The files stay on
+  # the runner: never add an upload-artifact step here (see sources.yaml policy).
+  datasets:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r data/requirements.txt
+      - name: Describe CamerFood10
+        run: python data/fetch_datasets.py camerfood10 --describe

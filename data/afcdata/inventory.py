@@ -164,18 +164,37 @@ def render_markdown(rows: list[dict], sources_doc: dict, thresholds: dict, run_i
               " label, or none, before training.", ""]
     lines += [f"- `{a}` and `{b}`: {n} files" for a, b, n in shared_files(rows)] or ["- none"]
 
-    lines += [
-        "",
-        "## Datasets not used",
-        "",
+    lines += _datasets_table(
+        sources_doc,
+        {"approved_training_only"},
+        "Training-only datasets",
+        "Copyright not cleared; used for training only under `policy.training_only_conditions` in"
+        " `data/sources.yaml` (never redistributed, model under CC BY-NC 4.0). Not in the counts above yet:"
+        " per-dish counts need the dataset's own labels. Image counts are the ones reported by the authors.",
+    )
+    lines += _datasets_table(
+        sources_doc,
+        {"pending", "excluded"},
+        "Datasets not used",
         "From `data/sources.yaml`. Image counts are the ones reported by the authors; none are used.",
+    )
+    return "\n".join(lines) + "\n"
+
+
+def _datasets_table(sources_doc: dict, statuses: set[str], title: str, intro: str) -> list[str]:
+    selected = [s for s in sources_doc["sources"] if s["kind"] == "dataset" and s["status"] in statuses]
+    if not selected:
+        return []
+    lines = [
+        "",
+        f"## {title}",
+        "",
+        intro,
         "",
         "| Source | Declared licence | Status | Reason | Reported images |",
         "|---|---|---|---|---|",
     ]
-    for source in sources_doc["sources"]:
-        if source["kind"] != "dataset" or source["status"] in {"approved", "approved_per_item"}:
-            continue
+    for source in selected:
         reported = source.get("reported_counts")
         if reported:
             reported_text = ", ".join(f"{k} {v}" for k, v in reported.items())
@@ -186,4 +205,4 @@ def render_markdown(rows: list[dict], sources_doc: dict, thresholds: dict, run_i
             f"| [{source['name']}]({source['url']}) | {_cell(source.get('declared_license', '?'))}"
             f" | {source['status']} | {reason} | {reported_text} |"
         )
-    return "\n".join(lines) + "\n"
+    return lines

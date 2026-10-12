@@ -11,9 +11,9 @@ None of the image datasets listed in the brief can be used as they are:
 
 | Source | Decision | Why |
 |---|---|---|
-| African Foods Datasets (Mendeley) | excluded | Declared CC BY 4.0, but images come mostly from Google Images, YouTube and Facebook (paper and Mendeley description). |
+| African Foods Datasets (Mendeley) | pending | Declared CC BY 4.0, but images come mostly from Google Images, YouTube and Facebook (paper and Mendeley description). The owner is contacting the authors. |
 | Nigerian Food Dataset (Mendeley) | excluded | Declared CC BY 4.0, but scraped from Bing Images. |
-| CamerFood10 | excluded | "Non-commercial research purpose" only. |
+| CamerFood10 | **training only** (risk accepted) | "Non-commercial research purpose" only, and the paper says its images were scraped from Google Images and Bing. |
 | KenyanFood13 | excluded | Instagram scrape, no licence. |
 | Ethiopian dishes (Roboflow) | pending | Could not be found or opened. |
 | devkyle/ghanaian-food-dataset | excluded | No licence (as the brief already said). |
@@ -23,6 +23,13 @@ None of the image datasets listed in the brief can be used as they are:
 A dataset's licence only covers what its authors own. Photos copied from search
 engines or social networks stay the property of their photographers, whatever
 licence the dataset declares.
+
+**Decision (project owner, 2026-10-12):** accept that risk for training only.
+Sources marked `approved_training_only` in `data/sources.yaml` (CamerFood10 now;
+African Foods if its authors do not answer) are used to train and evaluate, are
+never redistributed, and any model trained on them is released under
+**CC BY-NC 4.0** with the sources named in the model card. Images are removed on
+request. The code stays under MIT.
 
 ## 2. Images per dish
 

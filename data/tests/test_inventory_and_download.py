@@ -50,8 +50,11 @@ def test_render_markdown_lists_dishes_missing_categories_and_excluded_datasets()
     assert "- `ndole`: Ndolè, Ndolè in Douala" in text
     assert "- `ndole`: Category:Ndole" in text
     assert "Totals: 1 model, 0 few-shot, 0 manual entry, 1 not counted (2 dishes)." in text
-    assert "African Foods Datasets" in text and "Nigerian Food Dataset" in text
-    assert "Wikimedia Commons" not in text.split("## Datasets not used")[1]
+    not_used = text.split("## Datasets not used")[1]
+    training_only = text.split("## Training-only datasets")[1].split("## Datasets not used")[0]
+    assert "African Foods Datasets" in not_used and "Nigerian Food Dataset" in not_used
+    assert "Wikimedia Commons" not in not_used
+    assert "| [CamerFood10](" in training_only and "| [CamerFood10](" not in not_used
 
 
 def record(identifier, url, mime="image/jpeg", source="openverse"):
