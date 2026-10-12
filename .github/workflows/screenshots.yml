@@ -1,0 +1,67 @@
+name: screenshots
+
+# Makes docs/screenshots/*.png from the real app screens and commits them to the
+# branch. The result screen shows a Wikimedia Commons photo (licence checked by
+# app/tool/screenshot_photo.py) and the real model's answer for it.
+on:
+  push:
+    branches-ignore: [main]
+    paths: ["app/screenshots/**", "app/tool/screenshot_photo.py", ".github/workflows/screenshots.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  screenshots:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install tensorflow-cpu pillow requests numpy
+      - name: Photo and the real model's answer
+        run: python app/tool/screenshot_photo.py /tmp/shots
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.47.7"
+          channel: stable
+          cache: true
+      - name: Screenshots
+        working-directory: app
+        run: |
+          flutter pub get
+          SCREENSHOT_INPUT=/tmp/shots flutter test screenshots --update-goldens
+      - name: Credits
+        run: |
+          python - <<'PY'
+          import json, re
+          p = json.load(open("/tmp/shots/prediction.json"))
+          ph = p["photo"]
+          author = re.sub(r"<[^>]+>", "", ph["author"]).strip()
+          probs = "\n".join(f"| {l} | {v:.3f} |" for l, v in zip(p["labels"], p["probabilities"]))
+          open("docs/screenshots/CREDITS.md", "w").write(f"""# Screenshots
+
+          Made by `.github/workflows/screenshots.yml` from the real app screens
+          (`app/screenshots/screenshots_test.dart`). The journal entries are examples.
+
+          `2-result-fr.png` shows the photo [{ph['file']}]({ph['page']}) by {author},
+          licence {ph['license']}; that screenshot is therefore under {ph['license']} too.
+          This photo is one of the Wikimedia Commons images used to build the model,
+          so the screen illustrates the app; it is not a measure of accuracy.
+          The answer shown is the real model's (`app/assets/model.tflite`, run with
+          TensorFlow Lite on the same input as the app):
+
+          | Label | Probability |
+          |---|---:|
+          {probs}
+          """.replace("\n          ", "\n"))
+          PY
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/screenshots
+          git diff --cached --quiet || git commit -m "Update app screenshots"
+          git push
