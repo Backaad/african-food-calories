@@ -1,56 +1,16 @@
-cassava
-gari
-plantain
-yam
-cocoyam|taro
-rice
-maize
-millet|sorghum
-teff
-wheat flour
-bread
-cowpea
-bean
-groundnut|peanut
-melon seed|egusi
-palm oil
-vegetable oil|groundnut oil|sunflower oil
-palm nut|palm fruit
-bitter leaf|vernonia
-eru|gnetum|okazi
-cassava leaves
-okra
-tomato
-onion
-pepper
-spinach|amaranth
-kale|cabbage|collard
-beef
-goat
-chicken
-fish
-crayfish|shrimp
-egg
-sugar
-milk
-potato
-banana
-jollof
-egusi
-soup
-stew|sauce
-porridge
-fufu|foufou|foutou
-banku|kenkey|akple
-akara|accra|kosai
-moin|moi moi|alele
-attiéké|attieke
-alloco|kelewele|plantain, ripe, fried
-waakye
-thieboudienne|tchiep|ceebu
-yassa
-mafé|maafe|groundnut stew|peanut sauce
-koki
-suya|kebab|grilled
-puff|doughnut|beignet|fritter
-pounded
+^Chicken, 
+^Chicken meat|chicken, meat|broiler|hen
+groundnut, (paste|butter|roasted|seeds?)|peanut butter|groundnut paste|kuli
+smoked|mackerel|tilapia|herring|sardine|bonga|catfish, smoked
+palm nut|palm kernel|oil palm|palm fruit|palm, fruit
+waterleaf|talinum|gnetum|afang|ukazi|okazi
+lamb|mutton|sheep
+^Butter|ghee|shea
+chickpea
+bean, common|kidney|beans
+chikwangue|cassava bread|cassava stick|bâton|attiéké|steamed
+^Salt|bouillon|seasoning|stock cube|cube
+yeast
+garlic|ginger
+Milk, cow, (fresh|whole)
+lime|lemon
