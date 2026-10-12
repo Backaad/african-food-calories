@@ -1,0 +1,127 @@
+{
+  "threshold": 0.65,
+  "images": 402,
+  "accuracy_final": 0.8408,
+  "accuracy_top1_no_refusal": 0.7687,
+  "accuracy_top3_no_refusal": 0.9701,
+  "dish_images": {
+    "count": 150,
+    "correct": 0.7733,
+    "refused": 0.2,
+    "wrong_dish": 0.0267
+  },
+  "other_images": {
+    "count": 252,
+    "correctly_refused": 0.881,
+    "wrongly_accepted": 0.119
+  },
+  "per_class": {
+    "alloco": {
+      "support": 45,
+      "recall": 0.8889,
+      "precision": 0.8511
+    },
+    "bobolo": {
+      "support": 21,
+      "recall": 0.8095,
+      "precision": 0.7727
+    },
+    "fufu": {
+      "support": 37,
+      "recall": 0.6757,
+      "precision": 0.8333
+    },
+    "puff_puff": {
+      "support": 26,
+      "recall": 0.8462,
+      "precision": 0.7097
+    },
+    "ugali": {
+      "support": 21,
+      "recall": 0.5714,
+      "precision": 0.6
+    },
+    "other": {
+      "support": 252,
+      "recall": 0.881,
+      "precision": 0.881
+    }
+  },
+  "confusion_matrix": {
+    "labels": [
+      "alloco",
+      "bobolo",
+      "fufu",
+      "puff_puff",
+      "ugali",
+      "other"
+    ],
+    "rows_true_cols_predicted": [
+      [
+        40,
+        0,
+        0,
+        0,
+        0,
+        5
+      ],
+      [
+        0,
+        17,
+        1,
+        0,
+        0,
+        3
+      ],
+      [
+        0,
+        0,
+        25,
+        0,
+        1,
+        11
+      ],
+      [
+        0,
+        0,
+        0,
+        22,
+        0,
+        4
+      ],
+      [
+        0,
+        1,
+        1,
+        0,
+        12,
+        7
+      ],
+      [
+        7,
+        4,
+        3,
+        9,
+        7,
+        222
+      ]
+    ]
+  },
+  "per_source": {
+    "camerfood10": {
+      "images": 158,
+      "accuracy_final": 0.9114
+    },
+    "wikimedia-commons": {
+      "images": 244,
+      "accuracy_final": 0.7951
+    }
+  },
+  "validation": 0.8519,
+  "tflite_parity": {
+    "images": 402,
+    "top1_agreement": 0.995,
+    "max_abs_probability_difference": 0.01547,
+    "mean_abs_probability_difference": 0.00085
+  }
+}

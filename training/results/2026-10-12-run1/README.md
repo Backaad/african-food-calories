@@ -2,8 +2,8 @@
 
 Outputs of `training/notebooks/train_classifier.ipynb` run on Kaggle (GPU) by
 the project owner, with `USE_CAMERFOOD10 = True` and `USE_TEACHER = False`.
-Shared in Backaad/african-food-calories#6. The `model.tflite` file is not here
-yet (GitHub issues do not accept that file type). Summary and interpretation:
+Shared in Backaad/african-food-calories#6. Its `model.tflite` was not kept:
+run 2 (`../2026-10-12-run2/`) replaces it. Summary and interpretation:
 `docs/model-card.md`.
 
 | File | Content |
