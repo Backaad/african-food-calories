@@ -124,3 +124,20 @@ def test_title_search_is_separate_capped_and_deduped(monkeypatch):
     result = commons.collect(client, {"id": "eru", "commons_categories": ["Eru"], "commons_search": ["eru"]}, depth=1)
     assert [r.identifier for r in result.records] == ["1"]
     assert [r.identifier for r in result.search_records] == ["11"]  # page 1 already found in the category; cap after 2 batches
+
+
+def test_collect_can_cap_categories_and_skip_title_search():
+    def files(params):
+        offset = int(params.get("gcmcontinue", 0))
+        return {"continue": {"gcmcontinue": str(offset + 1), "continue": "gcmcontinue||"},
+                "query": {"pages": [file_page(100 + offset, "cc0", "CC0")]}}
+
+    client = FakeClient([
+        (lambda u, p: p.get("prop") == "categoryinfo", {"query": {"pages": [{"title": "Category:Pizza", "categoryinfo": {"size": 9999}}]}}),
+        (lambda u, p: p.get("list") == "categorymembers", {"query": {"categorymembers": []}}),
+        (lambda u, p: p.get("generator") == "categorymembers", files),
+        (lambda u, p: p.get("generator") == "search", lambda p: (_ for _ in ()).throw(AssertionError("search not expected"))),
+    ])
+    dish = {"id": "other", "commons_categories": ["Pizza"], "commons_search": ["pizza"]}
+    result = commons.collect(client, dish, depth=0, max_per_category=120, with_search=False)
+    assert len(result.records) == 3  # 120 files -> 3 batches of 50

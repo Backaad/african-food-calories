@@ -1,0 +1,51 @@
+# Images for the classifier's "other" class ("dish not recognised").
+#
+# Foods that are NOT dishes of data/dishes.yaml, from Wikimedia Commons, with the
+# same per-file licence check as the dishes. The classifier learns to answer
+# "other" for them, so it can say it does not know instead of forcing a dish.
+#
+# Catalogue dishes that have too few images to be a class of their own are
+# also put in "other" by training/afctrain/prepare.py (see docs/model-card.md).
+#
+# Category names are best guesses; missing ones are reported and skipped.
+# Some look like catalogue dishes on purpose (doughnuts vs puff-puff, fries vs
+# alloco): the model has to learn the difference, or refuse.
+
+max_per_category: 80   # files read per category, to keep the class balanced
+depth: 0               # only files directly in each category (big ones have many sub-categories)
+
+categories:
+  - Pizza
+  - Hamburgers
+  - Sandwiches
+  - Hot dogs
+  - Sushi
+  - Ramen
+  - Spaghetti dishes
+  - Lasagna
+  - Paella
+  - Fried rice
+  - Biryani
+  - Curry
+  - Tacos
+  - Salads
+  - Fruit salads
+  - Omelettes
+  - Pancakes
+  - Waffles
+  - Bread
+  - Croissants
+  - Cakes
+  - Doughnuts
+  - French fries
+  - Fried chicken
+  - Roast chicken
+  - Steaks
+  - Grilled fish
+  - Couscous
+  - Tajine
+  - Hummus
+  - Falafel
+  - Dumplings
+  - Noodle soups
+  - Breakfast cereals

@@ -10,3 +10,7 @@ __pycache__/
 
 # WAFCT Excel file (fetched by nutrition/wafct.py; not redistributed)
 nutrition/cache/
+
+# Local training runs
+afc_work/
+african-food-calories/

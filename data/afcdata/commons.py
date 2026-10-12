@@ -141,9 +141,10 @@ def _files(client, params: dict, max_batches: int | None = None):
     yield from pages.values()
 
 
-def list_files(client, category: str):
-    """Yield the files of one category."""
-    return _files(client, _base_params(generator="categorymembers", gcmtitle=category, gcmtype="file", gcmlimit=50, **_IMAGEINFO))
+def list_files(client, category: str, max_files: int | None = None):
+    """Yield the files of one category (at most about `max_files`, in batches of 50)."""
+    params = _base_params(generator="categorymembers", gcmtitle=category, gcmtype="file", gcmlimit=50, **_IMAGEINFO)
+    return _files(client, params, max_batches=-(-max_files // 50) if max_files else None)
 
 
 def search_files(client, term: str):
@@ -152,19 +153,25 @@ def search_files(client, term: str):
     return _files(client, params, max_batches=SEARCH_MAX_BATCHES)
 
 
-def collect(client, dish: dict, depth: int = 1) -> CommonsResult:
+def collect(client, dish: dict, depth: int = 1, max_per_category: int | None = None,
+            with_search: bool = True) -> CommonsResult:
+    """Files of a dish's categories (and title searches unless `with_search` is False).
+
+    `max_per_category` caps what is read from each category, for very large
+    generic categories such as the "other foods" of the classifier.
+    """
     result = CommonsResult()
     existing, missing = existing_categories(client, dish.get("commons_categories", []))
     result.missing_categories = missing
     result.walked_categories = walk_categories(client, existing, depth, dish.get("commons_exclude", []))
     seen_ids: set[int] = set()
     for category in result.walked_categories:
-        for page in list_files(client, category):
+        for page in list_files(client, category, max_per_category):
             if page["pageid"] in seen_ids:
                 continue
             seen_ids.add(page["pageid"])
             _keep(result, result.records, page, dish["id"])
-    for term in dish.get("commons_search", []):
+    for term in dish.get("commons_search", []) if with_search else []:
         for page in search_files(client, term):
             if page["pageid"] in seen_ids:
                 continue

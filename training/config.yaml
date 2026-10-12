@@ -1,0 +1,45 @@
+# Training configuration. The notebook reads this file; change values here or
+# override them in the notebook's configuration cell.
+
+seed: 42
+image_size: 224            # the app resizes the whole photo to 224 x 224
+
+# Dataset (training/afctrain/prepare.py)
+min_images: 150            # a dish needs this many images to be a class (project brief)
+max_per_class: 600         # cap per dish, so big classes do not dominate
+split: {train: 0.70, val: 0.15, test: 0.15}
+camerfood10:
+  min_area: 0.10           # crop a dish only if it covers at least 10 % of the plate
+  pad: 0.10                # margin around the dish's mask, as a share of its box
+
+# Small model for the phone
+student:
+  arch: mobilenet_v3_large
+  batch_size: 32
+  dropout: 0.2
+  epochs_head: 12          # backbone frozen
+  lr_head: 0.001
+  epochs_finetune: 12      # top layers unfrozen
+  fine_tune_layers: 40
+  lr_finetune: 0.00001
+  patience: 3
+
+# Optional big "teacher" model (needs a GPU), used only if it does better
+teacher:
+  arch: efficientnet_v2_s
+  batch_size: 16
+  dropout: 0.3
+  epochs_head: 8
+  lr_head: 0.001
+  epochs_finetune: 10
+  fine_tune_layers: 80
+  lr_finetune: 0.00001
+  patience: 3
+
+distillation:
+  alpha: 0.3               # weight of the true labels vs the teacher's soft labels
+  temperature: 4.0
+  epochs: 12
+  lr: 0.00003
+  fine_tune_layers: 40
+  patience: 3

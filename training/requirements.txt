@@ -1,0 +1,9 @@
+# TensorFlow and Keras are preinstalled on Kaggle and Colab; install them
+# yourself elsewhere (pip install tensorflow).
+PyYAML>=6.0
+requests>=2.31
+gdown>=5.2
+Pillow>=10
+numpy>=1.24
+imagehash>=4.3
+matplotlib>=3.7

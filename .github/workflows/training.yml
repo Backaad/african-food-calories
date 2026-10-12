@@ -1,0 +1,45 @@
+name: training
+
+on:
+  pull_request:
+    paths: ["training/**", "data/**", ".github/workflows/training.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install tensorflow-cpu nbformat pytest -r training/requirements.txt -r data/requirements.txt
+      - run: python -m pytest -q -p no:warnings training/tests
+
+  # Real data, tiny settings: downloads a few images per dish and CamerFood10,
+  # trains for one epoch on CPU, evaluates and exports. Checks the pipeline
+  # before GPU time is spent; its accuracy means nothing. Nothing is uploaded:
+  # CamerFood10 images must never leave the runner.
+  smoke-real-data:
+    needs: test
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install tensorflow-cpu -r training/requirements.txt -r data/requirements.txt
+      - name: Prepare, train, evaluate, export
+        run: python training/run.py all --work /tmp/afc --teacher --config training/config_smoke.yaml
+      - name: Show results
+        if: always()
+        run: |
+          cat /tmp/afc/dataset/summary.json || true
+          cat /tmp/afc/outputs/metrics.json || true
+          cat /tmp/afc/outputs/model_info.json || true
+          ls -la /tmp/afc/outputs || true
+          unzip -l /tmp/afc/afc_model_outputs.zip || true
