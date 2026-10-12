@@ -1,0 +1,3 @@
+Salut ! Le descriptif complet du projet est dans BRIEF.md, à la racine du dépôt. Lis-le en entier, puis commence par l'étape 1 (l'inventaire des données) sur une branche, et ouvre une pull request quand c'est prêt.
+
+Une fois l'étape 1 terminée, déplace BRIEF.md dans docs/, pour garder la racine propre.
