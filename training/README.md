@@ -24,7 +24,11 @@ Trains the dish classifier, measures it, and exports it for the phone.
    dishes is dropped.
 2. **Classes.** A dish with at least `min_images` (150) images is a class.
    Dishes with fewer images are put in `other`: the model must answer "dish not
-   recognised" for them, and the user picks them from the list.
+   recognised" for them, and the user picks them from the list. Exception:
+   dishes that look like a class (`lookalikes_not_other`: banku, kenkey, amala,
+   pounded yam, which look like fufu and ugali) are left out entirely, because
+   learning them as `other` taught the model to refuse fufu and ugali (run 1).
+   The model may then name fufu or ugali for them; the user corrects it.
 3. **Split.** Train 70 %, validation 15 %, test 15 %, decided by a hash of the
    photo, so all crops of one CamerFood10 photo land in the same split.
    CamerFood10's own test images stay in the test set.

@@ -99,6 +99,16 @@ def assign_labels(items: list[Item], classes: list[str]) -> None:
         item.label = item.dish if item.dish in classes else OTHER
 
 
+def drop_lookalikes(items: list[Item], classes: list[str], lookalikes: list[str]) -> list[Item]:
+    """Leave out look-alike dishes that are not classes, instead of learning them as OTHER.
+
+    Learning banku or pounded yam as OTHER teaches the model to refuse plates that
+    look like fufu or ugali. Such dishes are neither a class nor OTHER: they are
+    not used for training, validation or test.
+    """
+    return [i for i in items if i.dish in classes or i.dish not in lookalikes]
+
+
 def cap_per_dish(items: list[Item], max_per_dish: int) -> list[Item]:
     """Keep at most `max_per_dish` images per dish, chosen deterministically."""
     by_dish: dict[str, list[Item]] = defaultdict(list)
@@ -231,6 +241,10 @@ def finalize(items: list[Item], out: Path, config: dict, report: dict) -> dict:
     items, dup_stats = drop_duplicates(readable, hashes)
     items = cap_per_dish(items, config["max_per_class"])
     classes = choose_classes(items, config["min_images"])
+    lookalikes = config.get("lookalikes_not_other", [])
+    before = Counter(i.dish for i in items)
+    items = drop_lookalikes(items, classes, lookalikes)
+    left_out = {d: n for d, n in sorted(before.items()) if d in lookalikes and d not in classes}
     assign_labels(items, classes)
 
     rows = []
@@ -257,6 +271,7 @@ def finalize(items: list[Item], out: Path, config: dict, report: dict) -> dict:
         "per_class": {label: dict(c) for label, c in sorted(counts.items())},
         "per_source": dict(Counter(r["source"] for r in rows)),
         "dishes_learnt_as_other": sorted(d for d in dish_counts if d not in classes and d != OTHER),
+        "dishes_left_out": left_out,
         "dish_counts": dict(sorted(dish_counts.items())),
         "duplicates": dup_stats,
         **report,
