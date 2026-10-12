@@ -1,0 +1,247 @@
+# Dish catalogue used by the data inventory.
+#
+# Each dish lists where to look for openly licensed images:
+#   commons_categories  Wikimedia Commons categories (without the "Category:" prefix).
+#                       Several candidates may be listed; missing ones are reported
+#                       by the inventory and simply skipped.
+#   commons_exclude     Sub-categories to skip when walking the categories above.
+#   openverse_queries   Openverse search strings. Each query costs one API call in
+#                       the inventory; the dish count is the largest single result.
+#
+# The same list (with nutrition data) will become nutrition/dishes.json in step 2.
+# Names, spellings and country tags need a review by someone who knows the dishes.
+
+thresholds:
+  model: 150     # usable photos needed to train the dish into the classifier (brief)
+  few_shot: 20   # below this, even a nearest-neighbour approach is not worth testing
+
+dishes:
+  # ---------------------------------------------------------------- Cameroon
+  - id: ndole
+    names: {en: Ndolé, fr: Ndolé}
+    countries: [CM]
+    commons_categories: [Ndolé, Ndole]
+    openverse_queries: [ndole]
+  - id: eru
+    names: {en: Eru, fr: Eru}
+    countries: [CM, NG]
+    commons_categories: [Eru (food), Eru soup]
+    openverse_queries: [eru soup]
+  - id: ekwang
+    names: {en: Ekwang, fr: Ekwang}
+    countries: [CM]
+    commons_categories: [Ekwang, Ekpang nkukwo]
+    openverse_queries: [ekwang]
+  - id: koki
+    names: {en: Koki, fr: Koki}
+    countries: [CM]
+    commons_categories: [Koki (food), Koki beans]
+    openverse_queries: [koki beans]
+  - id: achu
+    names: {en: Achu with yellow soup, fr: Achu sauce jaune}
+    countries: [CM]
+    commons_categories: [Achu (food), Achu soup]
+    openverse_queries: [achu soup]
+  - id: okok
+    names: {en: Okok, fr: Okok}
+    countries: [CM]
+    commons_categories: [Okok (food)]
+    openverse_queries: [okok]
+  - id: poulet_dg
+    names: {en: Poulet DG, fr: Poulet DG}
+    countries: [CM]
+    commons_categories: [Poulet DG]
+    openverse_queries: [poulet DG]
+  - id: mbongo_tchobi
+    names: {en: Mbongo tchobi, fr: Mbongo tchobi}
+    countries: [CM]
+    commons_categories: [Mbongo tchobi, Mbongo]
+    openverse_queries: [mbongo tchobi]
+  - id: sanga
+    names: {en: Sanga, fr: Sanga}
+    countries: [CM]
+    commons_categories: [Sanga (food)]
+    openverse_queries: [sanga maize cassava leaves]
+  - id: bobolo
+    names: {en: Bobolo (cassava stick), fr: Bobolo (bâton de manioc)}
+    countries: [CM, GA, CG]
+    commons_categories: [Bobolo, Chikwangue, Kwanga]
+    openverse_queries: [bobolo, chikwangue]
+  - id: miondo
+    names: {en: Miondo, fr: Miondo}
+    countries: [CM]
+    commons_categories: [Miondo]
+    openverse_queries: [miondo]
+  - id: puff_puff
+    names: {en: Puff-puff, fr: Beignets (puff-puff)}
+    countries: [CM, NG, GH]
+    commons_categories: [Puff-puff, Puff puff]
+    openverse_queries: [puff puff]
+
+  # ---------------------------------------------------------------- Ghana
+  - id: jollof_rice
+    names: {en: Jollof rice, fr: Riz jollof}
+    countries: [GH, NG, SN, CM]
+    commons_categories: [Jollof rice]
+    openverse_queries: [jollof rice]
+  - id: waakye
+    names: {en: Waakye, fr: Waakye}
+    countries: [GH]
+    commons_categories: [Waakye]
+    openverse_queries: [waakye]
+  - id: palm_nut_soup
+    names: {en: Palm nut soup, fr: Sauce graine}
+    countries: [GH, CI, NG, CM]
+    commons_categories: [Palm nut soup, Banga soup, Sauce graine]
+    openverse_queries: [palm nut soup, banga soup]
+  - id: banku
+    names: {en: Banku, fr: Banku}
+    countries: [GH]
+    commons_categories: [Banku]
+    openverse_queries: [banku]
+  - id: kenkey
+    names: {en: Kenkey, fr: Kenkey}
+    countries: [GH]
+    commons_categories: [Kenkey]
+    openverse_queries: [kenkey]
+  - id: fufu
+    names: {en: Fufu, fr: Foufou}
+    countries: [GH, NG, CM, CI]
+    commons_categories: [Fufu]
+    openverse_queries: [fufu]
+  - id: red_red
+    names: {en: Red red, fr: Red red}
+    countries: [GH]
+    commons_categories: [Red red (food)]
+    openverse_queries: [red red beans plantain]
+  - id: kelewele
+    names: {en: Kelewele, fr: Kelewele}
+    countries: [GH]
+    commons_categories: [Kelewele]
+    openverse_queries: [kelewele]
+
+  # ---------------------------------------------------------------- Nigeria
+  - id: egusi_soup
+    names: {en: Egusi soup, fr: Sauce egusi}
+    countries: [NG, CM, GH]
+    commons_categories: [Egusi soup, Egusi]
+    openverse_queries: [egusi]
+  - id: moi_moi
+    names: {en: Moi moi, fr: Moi moi}
+    countries: [NG]
+    commons_categories: [Moin moin, Moi moi]
+    openverse_queries: [moi moi, moin moin]
+  - id: pounded_yam
+    names: {en: Pounded yam, fr: Igname pilée}
+    countries: [NG, GH]
+    commons_categories: [Pounded yam]
+    openverse_queries: [pounded yam]
+  - id: amala
+    names: {en: Amala, fr: Amala}
+    countries: [NG]
+    commons_categories: [Amala (food), Amala]
+    openverse_queries: [amala]
+  - id: suya
+    names: {en: Suya, fr: Soya (brochettes)}
+    countries: [NG, CM, NE]
+    commons_categories: [Suya]
+    openverse_queries: [suya]
+  - id: akara
+    names: {en: Akara, fr: Accra de haricots}
+    countries: [NG, GH, SN]
+    commons_categories: [Akara]
+    openverse_queries: [akara]
+  - id: pepper_soup
+    names: {en: Pepper soup, fr: Pepper soup}
+    countries: [NG, CM, GH]
+    commons_categories: [Pepper soup]
+    openverse_queries: [pepper soup]
+
+  # ---------------------------------------------------------------- Côte d'Ivoire, Senegal
+  - id: attieke
+    names: {en: Attiéké, fr: Attiéké}
+    countries: [CI]
+    commons_categories: [Attiéké, Attieke]
+    openverse_queries: [attieke]
+  - id: alloco
+    names: {en: Alloco (fried plantain), fr: Alloco}
+    countries: [CI, CM]
+    commons_categories: [Alloco]
+    openverse_queries: [alloco]
+  - id: thieboudienne
+    names: {en: Thieboudienne, fr: Thiéboudienne}
+    countries: [SN]
+    commons_categories: [Thieboudienne, Ceebu jën]
+    openverse_queries: [thieboudienne, ceebu jen]
+  - id: yassa
+    names: {en: Yassa, fr: Yassa}
+    countries: [SN]
+    commons_categories: [Yassa (food), Chicken yassa]
+    openverse_queries: [yassa]
+  - id: mafe
+    names: {en: Mafé (peanut stew), fr: Mafé}
+    countries: [SN, ML, GN]
+    commons_categories: [Mafé, Maafe, Groundnut stew]
+    openverse_queries: [mafe, maafe]
+
+  # ---------------------------------------------------------------- East Africa
+  - id: ugali
+    names: {en: Ugali, fr: Ougali}
+    countries: [KE, TZ, UG]
+    commons_categories: [Ugali]
+    openverse_queries: [ugali]
+  - id: sukuma_wiki
+    names: {en: Sukuma wiki, fr: Sukuma wiki}
+    countries: [KE, TZ]
+    commons_categories: [Sukuma wiki]
+    openverse_queries: [sukuma wiki]
+  - id: githeri
+    names: {en: Githeri, fr: Githeri}
+    countries: [KE]
+    commons_categories: [Githeri]
+    openverse_queries: [githeri]
+  - id: nyama_choma
+    names: {en: Nyama choma, fr: Nyama choma}
+    countries: [KE, TZ]
+    commons_categories: [Nyama choma]
+    openverse_queries: [nyama choma]
+  - id: pilau
+    names: {en: Pilau, fr: Pilau}
+    countries: [KE, TZ]
+    commons_categories: [Pilau (East Africa), Pilau]
+    openverse_queries: [pilau]
+  - id: chapati
+    names: {en: Chapati (East African), fr: Chapati}
+    countries: [KE, TZ, UG]
+    commons_categories: [Chapati in Kenya, Chapati in Tanzania, Chapati in Uganda]
+    openverse_queries: [chapati kenya]
+  - id: matoke
+    names: {en: Matoke, fr: Matoke}
+    countries: [UG]
+    commons_categories: [Matoke, Matooke]
+    openverse_queries: [matoke, matooke]
+  - id: injera
+    names: {en: Injera, fr: Injera}
+    countries: [ET, ER]
+    commons_categories: [Injera]
+    openverse_queries: [injera]
+  - id: doro_wat
+    names: {en: Doro wat, fr: Doro wat}
+    countries: [ET]
+    commons_categories: [Doro wat, Doro wot]
+    openverse_queries: [doro wat]
+  - id: tibs
+    names: {en: Tibs, fr: Tibs}
+    countries: [ET]
+    commons_categories: [Tibs]
+    openverse_queries: [tibs]
+  - id: shiro
+    names: {en: Shiro, fr: Shiro}
+    countries: [ET, ER]
+    commons_categories: [Shiro (food)]
+    openverse_queries: [shiro wat]
+  - id: kitfo
+    names: {en: Kitfo, fr: Kitfo}
+    countries: [ET]
+    commons_categories: [Kitfo]
+    openverse_queries: [kitfo]
