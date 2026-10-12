@@ -1,0 +1,37 @@
+cassava
+gari
+plantain
+yam
+cocoyam|taro
+rice
+maize
+millet|sorghum
+teff
+wheat flour
+bread
+cowpea
+bean
+groundnut|peanut
+melon seed|egusi
+palm oil
+vegetable oil|groundnut oil|sunflower oil
+palm nut|palm fruit
+bitter leaf|vernonia
+eru|gnetum|okazi
+cassava leaves
+okra
+tomato
+onion
+pepper
+spinach|amaranth
+kale|cabbage|collard
+beef
+goat
+chicken
+fish
+crayfish|shrimp
+egg
+sugar
+milk
+potato
+banana

@@ -1,0 +1,23 @@
+name: nutrition
+
+on:
+  pull_request:
+    paths: ["nutrition/**", ".github/workflows/nutrition.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  # Downloads the WAFCT 2019 Excel file and prints the foods used by the recipes.
+  # The file itself is never uploaded (FAO licence, see nutrition/README.md).
+  wafct:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r nutrition/requirements.txt
+      - run: python nutrition/wafct.py describe
+      - run: python nutrition/wafct.py search --file nutrition/search_terms.txt --limit 25
