@@ -32,7 +32,10 @@ cook these dishes.
 
 Ingredient values come from the **FAO/INFOODS Food Composition Table for
 Western Africa (2019)** (WAFCT 2019): Vincent A., Grande F., Compaoré E. et al.,
-FAO, Rome, 2020. The Excel datasheets are downloaded from FAO by
+FAO, Rome, 2020 (full citation and terms of use in
+[`nutrition/README.md`](../nutrition/README.md): free for non-commercial use with
+acknowledgement of FAO; FAO does not endorse this project). The Excel
+datasheets are downloaded from FAO by
 `nutrition/wafct.py`; only the rows of the foods the recipes use are kept, in
 [`nutrition/wafct_extract.csv`](../nutrition/wafct_extract.csv), with their
 WAFCT code. CI checks that this file matches the WAFCT exactly.

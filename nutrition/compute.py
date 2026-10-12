@@ -37,10 +37,17 @@ DISCLAIMER = {
     "en": "Estimate to be validated by a nutritionist. Not medical advice.",
     "fr": "Estimation à faire valider par un nutritionniste. Ce n'est pas un conseil médical.",
 }
-SOURCE = (
-    "FAO/INFOODS Food Composition Table for Western Africa (2019), WAFCT 2019. "
-    "Vincent A., Grande F., Compaoré E. et al. FAO, Rome, 2020."
+SOURCE = (  # required citation of WAFCT 2019 (datasheet '01 Introduction')
+    "Vincent, A., Grande, F., Compaoré, E., Amponsah Annor, G., Addy, P.A., Aburime, L.C., Ahmed, "
+    "D., Bih Loh, A.M., Dahdouh Cabia, S., Deflache, N., Dembélé, F.M., Dieudonné, B., Edwige, O.B., "
+    "Ene-Obong, H.N., Fanou Fogny, N., Ferreira, M., Omaghomi Jemide, J., Kouebou, P.C., Muller, C., "
+    "Nájera Espinosa, S., Ouattara, F., Rittenschober, D., Schönfeldt, H., Stadlmayr, B., van "
+    "Deventer, M., Razikou Yiagnigni, A. & Charrondière, U.R. 2020. FAO/INFOODS Food Composition "
+    "Table for Western Africa (2019) User Guide & Condensed Food Composition Table / Table de "
+    "composition des aliments FAO/INFOODS pour l’Afrique de l’Ouest (2019) Guide d’utilisation & "
+    "table de composition des aliments condensée. Rome, FAO."
 )
+SOURCE_TERMS = "© FAO, 2020. Used for a non-commercial product with acknowledgement of FAO as source and copyright holder; FAO does not endorse this project."
 
 
 def load_foods(path: Path = EXTRACT) -> dict[str, dict]:
@@ -163,6 +170,7 @@ def build(recipes: dict, foods: dict[str, dict], dishes_doc: dict) -> dict:
     return {
         "disclaimer": DISCLAIMER,
         "source": SOURCE,
+        "source_terms": SOURCE_TERMS,
         "method": "docs/nutrition-method.md",
         "units": {"per_100g": "per 100 g of dish as eaten", "energy": "kcal", "others": "g"},
         "dishes": out,

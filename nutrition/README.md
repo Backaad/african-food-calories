@@ -23,10 +23,20 @@ python -m pytest -q nutrition/tests
 
 ## Source and licence
 
-Values come from the FAO/INFOODS Food Composition Table for Western Africa
-(2019), FAO, Rome, 2020 (Vincent A., Grande F., Compaoré E. et al.). Only the
-rows used by the recipes are stored here, with their WAFCT codes, so anyone can
-check them against the original. The full table is not redistributed. The
-licence of the WAFCT datasheets has not been confirmed yet: FAO publications
-are usually CC BY-NC-SA 3.0 IGO, which would require attribution,
-non-commercial use and sharing derived data under the same terms.
+Values come from WAFCT 2019. Required citation:
+
+> Vincent, A., Grande, F., Compaoré, E., Amponsah Annor, G., Addy, P.A., Aburime, L.C., Ahmed, D., Bih Loh, A.M., Dahdouh Cabia, S., Deflache, N., Dembélé, F.M., Dieudonné, B., Edwige, O.B., Ene-Obong, H.N., Fanou Fogny, N., Ferreira, M., Omaghomi Jemide, J., Kouebou, P.C., Muller, C., Nájera Espinosa, S., Ouattara, F., Rittenschober, D., Schönfeldt, H., Stadlmayr, B., van Deventer, M., Razikou Yiagnigni, A. & Charrondière, U.R. 2020. FAO/INFOODS Food Composition Table for Western Africa (2019) User Guide & Condensed Food Composition Table / Table de composition des aliments FAO/INFOODS pour l’Afrique de l’Ouest (2019) Guide d’utilisation & table de composition des aliments condensée. Rome, FAO.
+
+Terms of use, from the introduction sheet of the WAFCT Excel datasheets
+(© FAO, 2020): the material "may be copied, downloaded and printed for private
+study, research and teaching purposes, or for use in non-commercial products
+or services, provided that appropriate acknowledgement of FAO as the source and
+copyright holder is given and that FAO's endorsement of users' views, products
+or services is not implied in any way." Translation, adaptation, resale and
+commercial use need FAO's permission (www.fao.org/contact-us/licence-request).
+
+So: this project may use these values because it is non-commercial and credits
+FAO. FAO does not endorse it. Only the rows used by the recipes are stored here,
+with their WAFCT codes, so anyone can check them; the full table is not
+redistributed. Whether computing dish values from the table counts as an
+"adaptation" is not settled: ask FAO before any commercial use.
