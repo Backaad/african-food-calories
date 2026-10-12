@@ -45,8 +45,8 @@ def test_render_markdown_lists_dishes_missing_categories_and_excluded_datasets()
         summarize_dish({**DISH, "id": "eru", "names": {"en": "Eru", "fr": "Eru"}}, None, {"error": "rate-limited"}, {}, THRESHOLDS),
     ]
     text = render_markdown(rows, sources, THRESHOLDS, {"date": "2026-10-12", "commons_depth": 1})
-    assert "| Ndolé (`ndole`) | CM | 160 | 4 | 3 | ≥240 | model (needs review) |" in text
-    assert "| Eru (`eru`) | CM | not run |  |  | rate-limited | not counted | not counted |" in text
+    assert "| Ndolé (`ndole`) | CM | 160 |  | 4 | 3 | ≥240 | model (needs review) |" in text
+    assert "| Eru (`eru`) | CM | not run |  |  |  | rate-limited | not counted | not counted |" in text
     assert "- `ndole`: Ndolè, Ndolè in Douala" in text
     assert "- `ndole`: Category:Ndole" in text
     assert "Totals: 1 model, 0 few-shot, 0 manual entry, 1 not counted (2 dishes)." in text
@@ -80,3 +80,11 @@ def test_shared_files_between_dishes():
         summarize_dish({**DISH, "id": "koki"}, {"allowed": 1, "identifiers": ["9"]}, None, {}, THRESHOLDS),
     ]
     assert shared_files(rows) == [("eru", "fufu", 2)]
+
+
+def test_training_only_dataset_counts_are_marked():
+    sources = load_yaml(SOURCES_PATH)
+    row = summarize_dish({**DISH, "id": "koki"}, {"allowed": 10, "rejected": {}}, {"hits": 0}, {"camerfood10": 100}, THRESHOLDS)
+    assert row["reliable"] == 110 and row["status"] == "few_shot"
+    text = render_markdown([row], sources, THRESHOLDS, {"date": "2026-10-12", "commons_depth": 1})
+    assert "| Ndolé (`koki`) | CM | 10 | 100† |" in text

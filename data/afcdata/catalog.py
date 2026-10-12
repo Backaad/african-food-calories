@@ -91,6 +91,9 @@ def validate_cross(sources_doc: dict, dishes_doc: dict) -> list[str]:
         for dish_id in ((source.get("segmentation") or {}).get("class_map") or {}).values():
             if dish_id is not None and dish_id not in dish_ids:
                 errors.append(f"{source['id']}: class_map dish {dish_id!r} not in dishes.yaml")
+        for dish_id in source.get("dish_counts") or {}:
+            if dish_id not in dish_ids:
+                errors.append(f"{source['id']}: dish_counts dish {dish_id!r} not in dishes.yaml")
         for dish_id in source.get("reported_counts") or {}:
             if dish_id not in dish_ids:
                 errors.append(f"{source['id']}: reported_counts dish {dish_id!r} not in dishes.yaml")

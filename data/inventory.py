@@ -19,7 +19,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from afcdata import commons, openverse  # noqa: E402
-from afcdata.catalog import DATA_DIR, load_and_validate, require_usable  # noqa: E402
+from afcdata.catalog import DATA_DIR, USABLE, load_and_validate, require_usable  # noqa: E402
 from afcdata.http import Client, RateLimited  # noqa: E402
 from afcdata.inventory import render_markdown, summarize_dish  # noqa: E402
 
@@ -116,11 +116,11 @@ def main(argv=None):
                     except Exception as exc:
                         print(f"  openverse error: {exc}", file=sys.stderr)
                         openverse_counts = {"error": "error"}
-            # No dataset is approved yet; approved datasets with reported counts would be added here.
+            # Usable datasets whose per-dish counts were measured (see `dish_counts` in sources.yaml).
             datasets = {
-                s["id"]: s["reported_counts"][dish["id"]]
+                s["id"]: s["dish_counts"][dish["id"]]
                 for s in sources_doc["sources"]
-                if s["status"] == "approved" and dish["id"] in (s.get("reported_counts") or {})
+                if s["status"] in USABLE and dish["id"] in (s.get("dish_counts") or {})
             }
             rows.append(summarize_dish(dish, commons_counts, openverse_counts, datasets, thresholds))
     finally:

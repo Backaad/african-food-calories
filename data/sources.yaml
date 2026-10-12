@@ -185,6 +185,9 @@ sources:
       doi: 10.3390/s24010209
       pmc: https://pmc.ncbi.nlm.nih.gov/articles/PMC10781344
     reported_counts_total: 1241  # Description.txt: 1032 train + 209 test (the paper says 1422)
+    # Measured with `fetch_datasets.py camerfood10 --stats` in CI on 2026-10-12:
+    # images (train + test) where the dish covers the largest area of the mask.
+    dish_counts: {achu: 104, alloco: 235, bobolo: 196, fufu: 81, koki: 100, puff_puff: 133}
     provenance: >-
       Description.txt in the dataset: "collecting images from search engines (such
       as Google Image and Bing) and social media. Some images were also provided by
