@@ -1,0 +1,64 @@
+name: app
+
+on:
+  pull_request:
+    paths: ["app/**", "nutrition/dishes.json", "training/results/**", ".github/workflows/app.yml"]
+  push:
+    branches: [main]
+    paths: ["app/**", "nutrition/dishes.json", "training/results/**", ".github/workflows/app.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  FLUTTER_VERSION: "3.47.7"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - uses: actions/checkout@v4
+      - name: Model and nutrition data in the app match their sources
+        run: python3 tool/sync_assets.py --check
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+          cache: true
+      - run: flutter pub get
+      - name: Translations are up to date
+        run: flutter gen-l10n && git diff --exit-code lib/l10n
+      - run: dart format --output=none --set-exit-if-changed lib/main.dart lib/src test
+      - run: flutter analyze
+      - run: flutter test
+
+  # An installable APK for testing on a phone (Actions run page, "Artifacts").
+  apk:
+    needs: test
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+          cache: true
+      - run: flutter build apk --release
+      - run: ls -la build/app/outputs/flutter-apk/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: african-food-calories-apk
+          path: app/build/app/outputs/flutter-apk/app-release.apk
+          retention-days: 30

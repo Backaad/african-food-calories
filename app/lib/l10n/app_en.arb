@@ -1,0 +1,105 @@
+{
+  "@@locale": "en",
+  "appTitle": "African Food Calories",
+  "today": "Today",
+  "journalEmpty": "Nothing logged today. Take a photo of your dish or choose it from the list.",
+  "totalToday": "Total today",
+  "takePhoto": "Take a photo",
+  "choosePhoto": "Choose a photo",
+  "chooseFromList": "Choose from the list",
+  "addDish": "Add a dish",
+  "recognising": "Recognising the dish…",
+  "resultTitle": "Your dish",
+  "notRecognised": "Dish not recognised",
+  "notRecognisedHelp": "For now the app recognises {recognised} dishes on photos. Choose yours from the list of {count} dishes.",
+  "@notRecognisedHelp": {
+    "placeholders": {
+      "recognised": {
+        "type": "int"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "mostLikely": "Most likely",
+  "otherSuggestions": "Or perhaps",
+  "unsureSuggestions": "Unsure guesses",
+  "notInSuggestions": "Not this dish? Choose it from the list.",
+  "photoError": "This photo could not be read.",
+  "modelUnavailable": "Photo recognition is not available on this phone. You can still choose the dish from the list.",
+  "searchDishes": "Search a dish",
+  "noDishFound": "No dish found.",
+  "recognisedOnPhotos": "Recognised on photos",
+  "kcalPer100g": "{kcal} kcal per 100 g",
+  "@kcalPer100g": {
+    "placeholders": {
+      "kcal": {
+        "type": "String"
+      }
+    }
+  },
+  "portion": "Portion",
+  "portionSmall": "Small",
+  "portionMedium": "Medium",
+  "portionLarge": "Large",
+  "grams": "{grams} g",
+  "@grams": {
+    "placeholders": {
+      "grams": {
+        "type": "int"
+      }
+    }
+  },
+  "kcal": "{value} kcal",
+  "@kcal": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "range": "between {low} and {high}",
+  "@range": {
+    "placeholders": {
+      "low": {
+        "type": "String"
+      },
+      "high": {
+        "type": "String"
+      }
+    }
+  },
+  "energy": "Energy",
+  "protein": "Protein",
+  "carbohydrate": "Carbohydrate",
+  "fat": "Fat",
+  "fibre": "Fibre",
+  "nutrientsForPortion": "For this portion",
+  "rangeExplanation": "Values are a range because recipes vary, above all the amount of oil.",
+  "recipeNotValidated": "Typical recipe, not yet checked by a nutritionist.",
+  "addToJournal": "Add to today's journal",
+  "addedToJournal": "Added to the journal",
+  "removedFromJournal": "Removed from the journal",
+  "undo": "Undo",
+  "delete": "Delete",
+  "settings": "Settings",
+  "language": "Language",
+  "languageSystem": "Phone language",
+  "theme": "Theme",
+  "themeSystem": "Like the phone",
+  "themeLight": "Light",
+  "themeDark": "Dark",
+  "about": "About",
+  "aboutOffline": "Everything runs on your phone, without an internet connection. Photos and the journal never leave it.",
+  "aboutModel": "Recognition model: licence {license}, for non-commercial use.",
+  "@aboutModel": {
+    "placeholders": {
+      "license": {
+        "type": "String"
+      }
+    }
+  },
+  "aboutNutrition": "Nutrition values are calculated from typical recipes and this table:",
+  "aboutCode": "Open-source code (MIT licence): github.com/Backaad/african-food-calories"
+}
