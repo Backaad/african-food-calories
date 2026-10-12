@@ -40,7 +40,7 @@ MODEL_HEADER = {
 DATA_HEADER = {
     "license": "other",
     "license_name": "per-source",
-    "license_link": "LICENSES.md",
+    "license_link": "https://huggingface.co/datasets/{user}/african-food-calories-data/blob/main/LICENSES.md",
     "language": ["en", "fr"],
     "pretty_name": "African Food Calories: data sources and nutrition",
     "tags": ["food", "africa", "nutrition", "data-provenance"],
