@@ -233,8 +233,8 @@ recipes:
   - id: amala
     portions: {small: 200, medium: 300, large: 450}
     ingredients:
-      - {code: "02_036", g: [25, 32]}     # yam flour
-      - {code: water, g: 71.5}
+      - {code: "02_036", g: [25, 38]}     # yam flour; the flour-to-water ratio varies a lot
+      - {code: water, g: 68.5}
 
   - id: suya
     portions: {small: 80, medium: 150, large: 250}

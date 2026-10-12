@@ -1,0 +1,4285 @@
+{
+  "disclaimer": {
+    "en": "Estimate to be validated by a nutritionist. Not medical advice.",
+    "fr": "Estimation à faire valider par un nutritionniste. Ce n'est pas un conseil médical."
+  },
+  "source": "FAO/INFOODS Food Composition Table for Western Africa (2019), WAFCT 2019. Vincent A., Grande F., Compaoré E. et al. FAO, Rome, 2020.",
+  "method": "docs/nutrition-method.md",
+  "units": {
+    "per_100g": "per 100 g of dish as eaten",
+    "energy": "kcal",
+    "others": "g"
+  },
+  "dishes": [
+    {
+      "id": "ndole",
+      "names": {
+        "en": "Ndolé",
+        "fr": "Ndolé"
+      },
+      "countries": [
+        "CM"
+      ],
+      "per_100g": {
+        "energy_kcal": {
+          "low": 190,
+          "typical": 215,
+          "high": 238
+        },
+        "protein_g": {
+          "low": 8.7,
+          "typical": 9.0,
+          "high": 9.3
+        },
+        "fat_g": {
+          "low": 14.5,
+          "typical": 17.5,
+          "high": 20.3
+        },
+        "carbohydrate_g": {
+          "low": 3.8,
+          "typical": 4.0,
+          "high": 4.1
+        },
+        "fibre_g": {
+          "low": 2.6,
+          "typical": 2.7,
+          "high": 2.8
+        }
+      },
+      "portions": [
+        {
+          "size": "small",
+          "grams": 150,
+          "energy_kcal": {
+            "low": 285,
+            "typical": 322,
+            "high": 357
+          }
+        },
+        {
+          "size": "medium",
+          "grams": 250,
+          "energy_kcal": {
+            "low": 475,
+            "typical": 538,
+            "high": 595
+          }
+        },
+        {
+          "size": "large",
+          "grams": 350,
+          "energy_kcal": {
+            "low": 665,
+            "typical": 752,
+            "high": 833
+          }
+        }
+      ],
+      "recipe": [
+        {
+          "code": "04_126",
+          "name": "Vernonia, leaves, bitter, fresh, boiled* (as part of a recipe)",
+          "g": 30
+        },
+        {
+          "code": "06_026",
+          "name": "Groundnut paste, from groundnuts only",
+          "g": 12
+        },
+        {
+          "code": "07_086",
+          "name": "Beef meat, moderately fat, ca. 20% fat, stewed* (as part of a recipe)",
+          "g": 10
+        },
+        {
+          "code": "09_057",
+          "name": "Shrimp (crayfish), whole, dried",
+          "g": 3
+        },
+        {
+          "code": "04_018",
+          "name": "Onion, fresh, raw",
+          "g": 4
+        },
+        {
+          "code": "11_010",
+          "name": "Vegetable oil, unfortified",
+          "g": [
+            5,
+            12
+          ]
+        },
+        {
+          "code": "water",
+          "name": "water",
+          "g": 32.5
+        }
+      ],
+      "recipe_status": "draft",
+      "validated_by_nutritionist": false,
+      "notes": "Soup only, without plantain, miondo or rice."
+    },
+    {
+      "id": "eru",
+      "names": {
+        "en": "Eru",
+        "fr": "Eru"
+      },
+      "countries": [
+        "CM",
+        "NG"
+      ],
+      "per_100g": {
+        "energy_kcal": {
+          "low": 162,
+          "typical": 188,
+          "high": 212
+        },
+        "protein_g": {
+          "low": 8.7,
+          "typical": 9.0,
+          "high": 9.4
+        },
+        "fat_g": {
+          "low": 11.4,
+          "typical": 14.5,
+          "high": 17.3
+        },
+        "carbohydrate_g": {
+          "low": 3.7,
+          "typical": 3.8,
+          "high": 4.0
+        },
+        "fibre_g": {
+          "low": 3.0,
+          "typical": 3.1,
+          "high": 3.2
+        }
+      },
+      "portions": [
+        {
+          "size": "small",
+          "grams": 150,
+          "energy_kcal": {
+            "low": 243,
+            "typical": 282,
+            "high": 318
+          }
+        },
+        {
+          "size": "medium",
+          "grams": 250,
+          "energy_kcal": {
+            "low": 405,
+            "typical": 470,
+            "high": 530
+          }
+        },
+        {
+          "size": "large",
+          "grams": 350,
+          "energy_kcal": {
+            "low": 567,
+            "typical": 658,
+            "high": 742
+          }
+        }
+      ],
+      "recipe": [
+        {
+          "code": "04_092",
+          "name": "Cassava, leaves, fresh, boiled* (as part of a recipe)",
+          "g": 25,
+          "note": "eru (Gnetum africanum) leaves are not in WAFCT 2019; cassava leaves used instead"
+        },
+        {
+          "code": "04_120",
+          "name": "Waterleaf, leaves, fresh, boiled* (as part of a recipe)",
+          "g": 25
+        },
+        {
+          "code": "11_004",
+          "name": "Palm oil, red",
+          "g": [
+            8,
+            15
+          ]
+        },
+        {
+          "code": "07_086",
+          "name": "Beef meat, moderately fat, ca. 20% fat, stewed* (as part of a recipe)",
+          "g": 8
+        },
+        {
+          "code": "09_053",
+          "name": "Fish, whole, dried",
+          "g": 4
+        },
+        {
+          "code": "09_057",
+          "name": "Shrimp (crayfish), whole, dried",
+          "g": 3
+        },
+        {
+          "code": "water",
+          "name": "water",
+          "g": 23.5
+        }
+      ],
+      "recipe_status": "draft",
+      "validated_by_nutritionist": false,
+      "notes": "Soup only, without water fufu or garri."
+    },
+    {
+      "id": "ekwang",
+      "names": {
+        "en": "Ekwang",
+        "fr": "Ekwang"
+      },
+      "countries": [
+        "CM"
+      ],
+      "per_100g": {
+        "energy_kcal": {
+          "low": 164,
+          "typical": 190,
+          "high": 214
+        },
+        "protein_g": {
+          "low": 6.0,
+          "typical": 6.3,
+          "high": 6.5
+        },
+        "fat_g": {
+          "low": 9.0,
+          "typical": 12.2,
+          "high": 15.1
+        },
+        "carbohydrate_g": {
+          "low": 12.5,
+          "typical": 13.0,
+          "high": 13.5
+        },
+        "fibre_g": {
+          "low": 1.5,
+          "typical": 1.6,
+          "high": 1.7
+        }
+      },
+      "portions": [
+        {
+          "size": "small",
+          "grams": 150,
+          "energy_kcal": {
+            "low": 246,
+            "typical": 285,
+            "high": 321
+          }
+        },
+        {
+          "size": "medium",
+          "grams": 250,
+          "energy_kcal": {
+            "low": 410,
+            "typical": 475,
+            "high": 535
+          }
+        },
+        {
+          "size": "large",
+          "grams": 350,
+          "energy_kcal": {
+            "low": 574,
+            "typical": 665,
+            "high": 749
+          }
+        }
+      ],
+      "recipe": [
+        {
+          "code": "02_054",
+          "name": "Cocoyam, tuber, white, boiled* (as part of a recipe)",
+          "g": 40
+        },
+        {
+          "code": "04_097",
+          "name": "Cocoyam, leaves, fresh, boiled* (as part of a recipe)",
+          "g": 15
+        },
+        {
+          "code": "11_004",
+          "name": "Palm oil, red",
+          "g": [
+            8,
+            15
+          ]
+        },
+        {
+          "code": "09_053",
+          "name": "Fish, whole, dried",
+          "g": 4
+        },
+        {
+          "code": "09_057",
+          "name": "Shrimp (crayfish), whole, dried",
+          "g": 3
+        },
+        {
+          "code": "04_018",
+          "name": "Onion, fresh, raw",
+          "g": 3
+        },
+        {
+          "code": "water",
+          "name": "water",
+          "g": 23.5
+        }
+      ],
+      "recipe_status": "draft",
+      "validated_by_nutritionist": false
+    },
+    {
+      "id": "koki",
+      "names": {
+        "en": "Koki",
+        "fr": "Koki"
+      },
+      "countries": [
+        "CM"
+      ],
+      "per_100g": {
+        "energy_kcal": {
+          "low": 172,
+          "typical": 197,
+          "high": 221
+        },
+        "protein_g": {
+          "low": 6.2,
+          "typical": 6.5,
+          "high": 6.7
+        },
+        "fat_g": {
+          "low": 8.7,
+          "typical": 11.9,
+          "high": 14.8
+        },
+        "carbohydrate_g": {
+          "low": 13.8,
+          "typical": 14.3,
+          "high": 14.8
+        },
+        "fibre_g": {
+          "low": 3.6,
+          "typical": 3.7,
+          "high": 3.8
+        }
+      },
+      "portions": [
+        {
+          "size": "small",
+          "grams": 100,
+          "energy_kcal": {
+            "low": 172,
+            "typical": 197,
+            "high": 221
+          }
+        },
+        {
+          "size": "medium",
+          "grams": 150,
+          "energy_kcal": {
+            "low": 258,
+            "typical": 296,
+            "high": 332
+          }
+        },
+        {
+          "size": "large",
+          "grams": 250,
+          "energy_kcal": {
+            "low": 430,
+            "typical": 492,
+            "high": 552
+          }
+        }
+      ],
+      "recipe": [
+        {
+          "code": "03_101",
+          "name": "Cowpea, dehulled, not soaked, boiled* (without salt), drained",
+          "g": 75,
+          "note": "cowpea paste approximated by dehulled cowpea, boiled"
+        },
+        {
+          "code": "11_004",
+          "name": "Palm oil, red",
+          "g": [
+            8,
+            15
+          ]
+        },
+        {
+          "code": "04_046",
+          "name": "Pepper, chilli, fresh, raw",
+          "g": 1
+        },
+        {
+          "code": "water",
+          "name": "water",
+          "g": 12.5
+        }
+      ],
+      "recipe_status": "draft",
+      "validated_by_nutritionist": false
+    },
+    {
+      "id": "achu",
+      "names": {
+        "en": "Achu with yellow soup",
+        "fr": "Achu sauce jaune"
+      },
+      "countries": [
+        "CM"
+      ],
+      "per_100g": {
+        "energy_kcal": {
+          "low": 172,
+          "typical": 194,
+          "high": 214
+        },
+        "protein_g": {
+          "low": 3.0,
+          "typical": 3.1,
+          "high": 3.2
+        },
+        "fat_g": {
+          "low": 10.3,
+          "typical": 13.0,
+          "high": 15.5
+        },
+        "carbohydrate_g": {
+          "low": 14.5,
+          "typical": 14.9,
+          "high": 15.4
+        },
+        "fibre_g": {
+          "low": 2.4,
+          "typical": 2.5,
+          "high": 2.5
+        }
+      },
+      "portions": [
+        {
+          "size": "small",
+          "grams": 300,
+          "energy_kcal": {
+            "low": 516,
+            "typical": 582,
+            "high": 642
+          }
+        },
+        {
+          "size": "medium",
+          "grams": 450,
+          "energy_kcal": {
+            "low": 774,
+            "typical": 873,
+            "high": 963
+          }
+        },
+        {
+          "size": "large",
+          "grams": 600,
+          "energy_kcal": {
+            "low": 1032,
+            "typical": 1164,
+            "high": 1284
+          }
+        }
+      ],
+      "recipe": [
+        {
+          "code": "02_074",
+          "name": "Taro, tuber, white, boiled* (as part of a recipe)",
+          "g": 60
+        },
+        {
+          "code": "11_004",
+          "name": "Palm oil, red",
+          "g": [
+            8,
+            14
+          ]
+        },
+        {
+          "code": "07_086",
+          "name": "Beef meat, moderately fat, ca. 20% fat, stewed* (as part of a recipe)",
+          "g": 6
+        },
+        {
+          "code": "water",
+          "name": "water",
+          "g": 23
+        }
+      ],
+      "recipe_status": "draft",
+      "validated_by_nutritionist": false,
+      "notes": "Pounded taro with yellow soup, as served on the plate."
+    },
+    {
+      "id": "okok",
+      "names": {
+        "en": "Okok",
+        "fr": "Okok"
+      },
+      "countries": [
+        "CM"
+      ],
+      "per_100g": {
+        "energy_kcal": {
+          "low": 123,
+          "typical": 137,
+          "high": 151
+        },
+        "protein_g": {
+          "low": 5.8,
+          "typical": 6.4,
+          "high": 6.9
+        },
+        "fat_g": {
+          "low": 6.6,
+          "typical": 7.9,
+          "high": 9.1
+        },
+        "carbohydrate_g": {
+          "low": 8.0,
+          "typical": 8.0,
+          "high": 8.1
+        },
+        "fibre_g": {
+          "low": 4.1,
+          "typical": 4.2,
+          "high": 4.3
+        }
+      },
+      "portions": [
+        {
+          "size": "small",
+          "grams": 150,
+          "energy_kcal": {
+            "low": 184,
+            "typical": 206,
+            "high": 226
+          }
+        },
+        {
+          "size": "medium",
+          "grams": 250,
+          "energy_kcal": {
+            "low": 308,
+            "typical": 342,
+            "high": 378
+          }
+        },
+        {
+          "size": "large",
+          "grams": 350,
+          "energy_kcal": {
+            "low": 430,
+            "typical": 480,
+            "high": 528
+          }
+        }
+      ],
+      "recipe": [
+        {
+          "code": "04_092",
+          "name": "Cassava, leaves, fresh, boiled* (as part of a recipe)",
+          "g": 35,
+          "note": "okok (Gnetum africanum) leaves are not in WAFCT 2019; cassava leaves used instead"
+        },
+        {
+          "code": "06_026",
+          "name": "Groundnut paste, from groundnuts only",
+          "g": [
+            12,
+            18
+          ]
+        },
+        {
+          "code": "13_002",
+          "name": "Sugar, white",
+          "g": 3
+        },
+        {
+          "code": "water",
+          "name": "water",
+          "g": 47
+        }
+      ],
+      "recipe_status": "draft",
+      "validated_by_nutritionist": false,
+      "notes": "Sweet okok (groundnut and sugar). Salty okok with palm nut is also common."
+    },
+    {
+      "id": "poulet_dg",
+      "names": {
+        "en": "Poulet DG",
+        "fr": "Poulet DG"
+      },
+      "countries": [
+        "CM"
+      ],
+      "per_100g": {
+        "energy_kcal": {
+          "low": 260,
+          "typical": 273,
+          "high": 285
+        },
+        "protein_g": {
+          "low": 7.9,
+          "typical": 8.0,
+          "high": 8.2
+        },
+        "fat_g": {
+          "low": 17.3,
+          "typical": 19.0,
+          "high": 20.6
+        },
+        "carbohydrate_g": {
+          "low": 16.4,
+          "typical": 16.7,
+          "high": 17.1
+        },
+        "fibre_g": {
+          "low": 1.5,
+          "typical": 1.5,
+          "high": 1.5
+        }
+      },
+      "portions": [
+        {
+          "size": "small",
+          "grams": 250,
+          "energy_kcal": {
+            "low": 650,
+            "typical": 682,
+            "high": 712
+          }
+        },
+        {
+          "size": "medium",
+          "grams": 350,
+          "energy_kcal": {
+            "low": 910,
+            "typical": 956,
+            "high": 998
+          }
+        },
+        {
+          "size": "large",
+          "grams": 500,
+          "energy_kcal": {
+            "low": 1300,
+            "typical": 1365,
+            "high": 1425
+          }
+        }
+      ],
+      "recipe": [
+        {
+          "code": "07_103",
+          "name": "Chicken, dark meat with skin, stewed* (as part of a recipe)",
+          "g": 30
+        },
+        {
+          "code": "02_084",
+          "name": "Plantain, deep fried in unfortified vegetable oil*",
+          "g": 30
+        },
+        {
+          "code": "04_018",
+          "name": "Onion, fresh, raw",
+          "g": 8
+        },
+        {
+          "code": "04_049",
+          "name": "Pepper, sweet, green, fresh, raw",
+          "g": 5
+        },
+        {
+          "code": "04_124",
+          "name": "Tomato, red, ripe, boiled* (as part of a recipe)",
+          "g": 8
+        },
+        {
+          "code": "11_010",
+          "name": "Vegetable oil, unfortified",
+          "g": [
+            4,
+            8
+          ]
+        },
+        {
+          "code": "water",
+          "name": "water",
+          "g": 13
+        }
+      ],
+      "recipe_status": "draft",
+      "validated_by_nutritionist": false
+    },
+    {
+      "id": "mbongo_tchobi",
+      "names": {
+        "en": "Mbongo tchobi",
+        "fr": "Mbongo tchobi"
+      },
+      "countries": [
+        "CM"
+      ],
+      "per_100g": {
+        "energy_kcal": {
+          "low": 121,
+          "typical": 144,
+          "high": 166
+        },
+        "protein_g": {
+          "low": 9.6,
+          "typical": 9.9,
+          "high": 10.2
+        },
+        "fat_g": {
+          "low": 8.6,
+          "typical": 11.3,
+          "high": 13.9
+        },
+        "carbohydrate_g": {
+          "low": 0.6,
+          "typical": 0.6,
+          "high": 0.6
+        },
+        "fibre_g": {
+          "low": 0.2,
+          "typical": 0.2,
+          "high": 0.2
+        }
+      },
+      "portions": [
+        {
+          "size": "small",
+          "grams": 150,
+          "energy_kcal": {
+            "low": 182,
+            "typical": 216,
+            "high": 249
+          }
+        },
+        {
+          "size": "medium",
+          "grams": 250,
+          "energy_kcal": {
+            "low": 302,
+            "typical": 360,
+            "high": 415
+          }
+        },
+        {
+          "size": "large",
+          "grams": 350,
+          "energy_kcal": {
+            "low": 424,
+            "typical": 504,
+            "high": 581
+          }
+        }
+      ],
+      "recipe": [
+        {
+          "code": "09_069",
+          "name": "Mackerel, fillet, boiled* (as part of a recipe)",
+          "g": 35
+        },
+        {
+          "code": "11_010",
+          "name": "Vegetable oil, unfortified",
+          "g": [
+            6,
+            12
+          ]
+        },
+        {
+          "code": "04_018",
+          "name": "Onion, fresh, raw",
+          "g": 5
+        },
+        {
+          "code": "04_124",
+          "name": "Tomato, red, ripe, boiled* (as part of a recipe)",
+          "g": 5
+        },
+        {
+          "code": "water",
+          "name": "water",
+          "g": 46
+        }
+      ],
+      "recipe_status": "draft",
+      "validated_by_nutritionist": false,
+      "notes": "Sauce with fish, without plantain or cassava. The mbongo spice itself is not in WAFCT 2019 and is left out."
+    },
+    {
+      "id": "sanga",
+      "names": {
+        "en": "Sanga",
+        "fr": "Sanga"
+      },
+      "countries": [
+        "CM"
+      ],
+      "per_100g": {
+        "energy_kcal": {
+          "low": 143,
+          "typical": 159,
+          "high": 173
+        },
+        "protein_g": {
+          "low": 3.6,
+          "typical": 3.7,
+          "high": 3.7
+        },
+        "fat_g": {
+          "low": 6.4,
+          "typical": 8.2,
+          "high": 9.9
+        },
+        "carbohydrate_g": {
+          "low": 15.2,
+          "typical": 15.3,
+          "high": 15.4
+        },
+        "fibre_g": {
+          "low": 4.2,
+          "typical": 4.3,
+          "high": 4.3
+        }
+      },
+      "portions": [
+        {
+          "size": "small",
+          "grams": 200,
+          "energy_kcal": {
+            "low": 286,
+            "typical": 318,
+            "high": 346
+          }
+        },
+        {
+          "size": "medium",
+          "grams": 300,
+          "energy_kcal": {
+            "low": 429,
+            "typical": 477,
+            "high": 519
+          }
+        },
+        {
+          "size": "large",
+          "grams": 450,
+          "energy_kcal": {
+            "low": 644,
+            "typical": 716,
+            "high": 778
+          }
+        }
+      ],
+      "recipe": [
+        {
+          "code": "01_104",
+          "name": "Maize, white, whole kernel, boiled* (as part of a recipe)",
+          "g": 45
+        },
+        {
+          "code": "04_092",
+          "name": "Cassava, leaves, fresh, boiled* (as part of a recipe)",
+          "g": 25
+        },
+        {
+          "code": "05_040",
+          "name": "Oil palm, fruit, raw",
+          "g": [
+            10,
+            18
+          ],
+          "note": "palm nut juice approximated by oil palm fruit"
+        },
+        {
+          "code": "13_002",
+          "name": "Sugar, white",
+          "g": 2
+        },
+        {
+          "code": "water",
+          "name": "water",
+          "g": 14
+        }
+      ],
+      "recipe_status": "draft",
+      "validated_by_nutritionist": false
+    },
+    {
+      "id": "bobolo",
+      "names": {
+        "en": "Bobolo (cassava stick)",
+        "fr": "Bobolo (bâton de manioc)"
+      },
+      "countries": [
+        "CM",
+        "GA",
+        "CG"
+      ],
+      "per_100g": {
+        "energy_kcal": {
+          "low": 165,
+          "typical": 165,
+          "high": 165
+        },
+        "protein_g": {
+          "low": 1.0,
+          "typical": 1.0,
+          "high": 1.0
+        },
+        "fat_g": {
+          "low": 0.4,
+          "typical": 0.4,
+          "high": 0.4
+        },
+        "carbohydrate_g": {
+          "low": 38.7,
+          "typical": 38.7,
+          "high": 38.7
+        },
+        "fibre_g": {
+          "low": 1.7,
+          "typical": 1.7,
+          "high": 1.7
+        }
+      },
+      "portions": [
+        {
+          "size": "small",
+          "grams": 100,
+          "energy_kcal": {
+            "low": 165,
+            "typical": 165,
+            "high": 165
+          }
+        },
+        {
+          "size": "medium",
+          "grams": 200,
+          "energy_kcal": {
+            "low": 330,
+            "typical": 330,
+            "high": 330
+          }
+        },
+        {
+          "size": "large",
+          "grams": 300,
+          "energy_kcal": {
+            "low": 495,
+            "typical": 495,
+            "high": 495
+          }
+        }
+      ],
+      "recipe": [
+        {
+          "code": "02_041",
+          "name": "Cassava, fermented paste from white cassava flour (wet fufu)",
+          "g": 100,
+          "note": "bobolo (steamed fermented cassava stick) is not in WAFCT 2019; wet fermented cassava paste used instead"
+        }
+      ],
+      "recipe_status": "draft",
+      "validated_by_nutritionist": false
+    },
+    {
+      "id": "miondo",
+      "names": {
+        "en": "Miondo",
+        "fr": "Miondo"
+      },
+      "countries": [
+        "CM"
+      ],
+      "per_100g": {
+        "energy_kcal": {
+          "low": 165,
+          "typical": 165,
+          "high": 165
+        },
+        "protein_g": {
+          "low": 1.0,
+          "typical": 1.0,
+          "high": 1.0
+        },
+        "fat_g": {
+          "low": 0.4,
+          "typical": 0.4,
+          "high": 0.4
+        },
+        "carbohydrate_g": {
+          "low": 38.7,
+          "typical": 38.7,
+          "high": 38.7
+        },
+        "fibre_g": {
+          "low": 1.7,
+          "typical": 1.7,
+          "high": 1.7
+        }
+      },
+      "portions": [
+        {
+          "size": "small",
+          "grams": 100,
+          "energy_kcal": {
+            "low": 165,
+            "typical": 165,
+            "high": 165
+          }
+        },
+        {
+          "size": "medium",
+          "grams": 150,
+          "energy_kcal": {
+            "low": 248,
+            "typical": 248,
+            "high": 248
+          }
+        },
+        {
+          "size": "large",
+          "grams": 250,
+          "energy_kcal": {
+            "low": 412,
+            "typical": 412,
+            "high": 412
+          }
+        }
+      ],
+      "recipe": [
+        {
+          "code": "02_041",
+          "name": "Cassava, fermented paste from white cassava flour (wet fufu)",
+          "g": 100,
+          "note": "miondo (thin steamed fermented cassava stick) is not in WAFCT 2019; wet fermented cassava paste used instead"
+        }
+      ],
+      "recipe_status": "draft",
+      "validated_by_nutritionist": false
+    },
+    {
+      "id": "puff_puff",
+      "names": {
+        "en": "Puff-puff",
+        "fr": "Beignets (puff-puff)"
+      },
+      "countries": [
+        "CM",
+        "NG",
+        "GH"
+      ],
+      "per_100g": {
+        "energy_kcal": {
+          "low": 348,
+          "typical": 376,
+          "high": 401
+        },
+        "protein_g": {
+          "low": 5.4,
+          "typical": 5.6,
+          "high": 5.9
+        },
+        "fat_g": {
+          "low": 13.8,
+          "typical": 18.1,
+          "high": 22.1
+        },
+        "carbohydrate_g": {
+          "low": 44.5,
+          "typical": 46.8,
+          "high": 49.3
+        },
+        "fibre_g": {
+          "low": 1.6,
+          "typical": 1.6,
+          "high": 1.7
+        }
+      },
+      "portions": [
+        {
+          "size": "small",
+          "grams": 60,
+          "energy_kcal": {
+            "low": 209,
+            "typical": 226,
+            "high": 241
+          }
+        },
+        {
+          "size": "medium",
+          "grams": 100,
+          "energy_kcal": {
+            "low": 348,
+            "typical": 376,
+            "high": 401
+          }
+        },
+        {
+          "size": "large",
+          "grams": 150,
+          "energy_kcal": {
+            "low": 522,
+            "typical": 564,
+            "high": 602
+          }
+        }
+      ],
+      "recipe": [
+        {
+          "code": "01_043",
+          "name": "Wheat flour, white, unfortified",
+          "g": 50
+        },
+        {
+          "code": "13_002",
+          "name": "Sugar, white",
+          "g": 10
+        },
+        {
+          "code": "13_017",
+          "name": "Yeast, dried",
+          "g": 1
+        },
+        {
+          "code": "water",
+          "name": "water",
+          "g": 21
+        },
+        {
+          "code": "11_010",
+          "name": "Vegetable oil, unfortified",
+          "g": [
+            12,
+            22
+          ]
+        }
+      ],
+      "recipe_status": "draft",
+      "validated_by_nutritionist": false,
+      "notes": "Fried dough. Ingredient amounts are for the fried product (part of the water evaporates)."
+    },
+    {
+      "id": "jollof_rice",
+      "names": {
+        "en": "Jollof rice",
+        "fr": "Riz jollof"
+      },
+      "countries": [
+        "GH",
+        "NG",
+        "SN",
+        "CM"
+      ],
+      "per_100g": {
+        "energy_kcal": {
+          "low": 135,
+          "typical": 154,
+          "high": 173
+        },
+        "protein_g": {
+          "low": 1.9,
+          "typical": 1.9,
+          "high": 2.0
+        },
+        "fat_g": {
+          "low": 5.3,
+          "typical": 7.7,
+          "high": 10.0
+        },
+        "carbohydrate_g": {
+          "low": 18.4,
+          "typical": 18.8,
+          "high": 19.3
+        },
+        "fibre_g": {
+          "low": 1.1,
+          "typical": 1.2,
+          "high": 1.2
+        }
+      },
+      "portions": [
+        {
+          "size": "small",
+          "grams": 250,
+          "energy_kcal": {
+            "low": 338,
+            "typical": 385,
+            "high": 432
+          }
+        },
+        {
+          "size": "medium",
+          "grams": 350,
+          "energy_kcal": {
+            "low": 472,
+            "typical": 539,
+            "high": 606
+          }
+        },
+        {
+          "size": "large",
+          "grams": 500,
+          "energy_kcal": {
+            "low": 675,
+            "typical": 770,
+            "high": 865
+          }
+        }
+      ],
+      "recipe": [
+        {
+          "code": "01_135",
+          "name": "Rice, white, boiled* (as part of a recipe)",
+          "g": 70
+        },
+        {
+          "code": "04_124",
+          "name": "Tomato, red, ripe, boiled* (as part of a recipe)",
+          "g": 8
+        },
+        {
+          "code": "04_066",
+          "name": "Tomato, paste, concentrated, without salt",
+          "g": 2
+        },
+        {
+          "code": "04_018",
+          "name": "Onion, fresh, raw",
+          "g": 3
+        },
+        {
+          "code": "04_046",
+          "name": "Pepper, chilli, fresh, raw",
+          "g": 1
+        },
+        {
+          "code": "11_010",
+          "name": "Vegetable oil, unfortified",
+          "g": [
+            5,
+            10
+          ]
+        },
+        {
+          "code": "13_008",
+          "name": "Cube, beef, dry",
+          "g": 0.5
+        },
+        {
+          "code": "water",
+          "name": "water",
+          "g": 8
+        }
+      ],
+      "recipe_status": "draft",
+      "validated_by_nutritionist": false,
+      "notes": "Rice only, without the chicken or fish served with it."
+    },
+    {
+      "id": "waakye",
+      "names": {
+        "en": "Waakye",
+        "fr": "Waakye"
+      },
+      "countries": [
+        "GH"
+      ],
+      "per_100g": {
+        "energy_kcal": {
+          "low": 107,
+          "typical": 119,
+          "high": 131
+        },
+        "protein_g": {
+          "low": 3.9,
+          "typical": 3.9,
+          "high": 4.0
+        },
+        "fat_g": {
+          "low": 0.3,
+          "typical": 1.8,
+          "high": 3.2
+        },
+        "carbohydrate_g": {
+          "low": 20.5,
+          "typical": 20.8,
+          "high": 21.1
+        },
+        "fibre_g": {
+          "low": 2.1,
+          "typical": 2.1,
+          "high": 2.2
+        }
+      },
+      "portions": [
+        {
+          "size": "small",
+          "grams": 250,
+          "energy_kcal": {
+            "low": 268,
+            "typical": 298,
+            "high": 328
+          }
+        },
+        {
+          "size": "medium",
+          "grams": 350,
+          "energy_kcal": {
+            "low": 374,
+            "typical": 416,
+            "high": 458
+          }
+        },
+        {
+          "size": "large",
+          "grams": 500,
+          "energy_kcal": {
+            "low": 535,
+            "typical": 595,
+            "high": 655
+          }
+        }
+      ],
+      "recipe": [
+        {
+          "code": "01_135",
+          "name": "Rice, white, boiled* (as part of a recipe)",
+          "g": 60
+        },
+        {
+          "code": "03_007",
+          "name": "Cowpea, not soaked, boiled* (without salt), drained",
+          "g": 30
+        },
+        {
+          "code": "11_010",
+          "name": "Vegetable oil, unfortified",
+          "g": [
+            0,
+            3
+          ]
+        },
+        {
+          "code": "water",
+          "name": "water",
+          "g": 8.5
+        }
+      ],
+      "recipe_status": "draft",
+      "validated_by_nutritionist": false,
+      "notes": "Rice and beans only, without shito, gari, spaghetti or eggs."
+    },
+    {
+      "id": "palm_nut_soup",
+      "names": {
+        "en": "Palm nut soup",
+        "fr": "Sauce graine"
+      },
+      "countries": [
+        "GH",
+        "CI",
+        "NG",
+        "CM"
+      ],
+      "per_100g": {
+        "energy_kcal": {
+          "low": 146,
+          "typical": 165,
+          "high": 183
+        },
+        "protein_g": {
+          "low": 5.3,
+          "typical": 5.5,
+          "high": 5.7
+        },
+        "fat_g": {
+          "low": 12.1,
+          "typical": 14.1,
+          "high": 15.9
+        },
+        "carbohydrate_g": {
+          "low": 3.1,
+          "typical": 3.6,
+          "high": 4.0
+        },
+        "fibre_g": {
+          "low": 0.9,
+          "typical": 1.0,
+          "high": 1.2
+        }
+      },
+      "portions": [
+        {
+          "size": "small",
+          "grams": 150,
+          "energy_kcal": {
+            "low": 219,
+            "typical": 248,
+            "high": 274
+          }
+        },
+        {
+          "size": "medium",
+          "grams": 250,
+          "energy_kcal": {
+            "low": 365,
+            "typical": 412,
+            "high": 458
+          }
+        },
+        {
+          "size": "large",
+          "grams": 350,
+          "energy_kcal": {
+            "low": 511,
+            "typical": 578,
+            "high": 640
+          }
+        }
+      ],
+      "recipe": [
+        {
+          "code": "05_040",
+          "name": "Oil palm, fruit, raw",
+          "g": [
+            18,
+            28
+          ],
+          "note": "palm nut cream approximated by oil palm fruit"
+        },
+        {
+          "code": "07_112",
+          "name": "Goat meat, moderately fat, ca. 10% fat, stewed* (as part of a recipe)",
+          "g": 10
+        },
+        {
+          "code": "09_053",
+          "name": "Fish, whole, dried",
+          "g": 3
+        },
+        {
+          "code": "04_124",
+          "name": "Tomato, red, ripe, boiled* (as part of a recipe)",
+          "g": 6
+        },
+        {
+          "code": "04_018",
+          "name": "Onion, fresh, raw",
+          "g": 4
+        },
+        {
+          "code": "04_046",
+          "name": "Pepper, chilli, fresh, raw",
+          "g": 1
+        },
+        {
+          "code": "water",
+          "name": "water",
+          "g": 53
+        }
+      ],
+      "recipe_status": "draft",
+      "validated_by_nutritionist": false,
+      "notes": "Soup only, without fufu, banku or rice."
+    },
+    {
+      "id": "banku",
+      "names": {
+        "en": "Banku",
+        "fr": "Banku"
+      },
+      "countries": [
+        "GH"
+      ],
+      "per_100g": {
+        "energy_kcal": {
+          "low": 139,
+          "typical": 139,
+          "high": 139
+        },
+        "protein_g": {
+          "low": 3.7,
+          "typical": 3.7,
+          "high": 3.7
+        },
+        "fat_g": {
+          "low": 2.1,
+          "typical": 2.1,
+          "high": 2.1
+        },
+        "carbohydrate_g": {
+          "low": 25.2,
+          "typical": 25.2,
+          "high": 25.2
+        },
+        "fibre_g": {
+          "low": 2.6,
+          "typical": 2.6,
+          "high": 2.6
+        }
+      },
+      "portions": [
+        {
+          "size": "small",
+          "grams": 200,
+          "energy_kcal": {
+            "low": 278,
+            "typical": 278,
+            "high": 278
+          }
+        },
+        {
+          "size": "medium",
+          "grams": 300,
+          "energy_kcal": {
+            "low": 417,
+            "typical": 417,
+            "high": 417
+          }
+        },
+        {
+          "size": "large",
+          "grams": 450,
+          "energy_kcal": {
+            "low": 626,
+            "typical": 626,
+            "high": 626
+          }
+        }
+      ],
+      "recipe": [
+        {
+          "code": "01_099",
+          "name": "Maize dough, fermented (kenkey), from whole white maize with salt added, cooked",
+          "g": 100,
+          "note": "banku is not in WAFCT 2019; kenkey (cooked fermented maize dough) used instead"
+        }
+      ],
+      "recipe_status": "draft",
+      "validated_by_nutritionist": false
+    },
+    {
+      "id": "kenkey",
+      "names": {
+        "en": "Kenkey",
+        "fr": "Kenkey"
+      },
+      "countries": [
+        "GH"
+      ],
+      "per_100g": {
+        "energy_kcal": {
+          "low": 139,
+          "typical": 139,
+          "high": 139
+        },
+        "protein_g": {
+          "low": 3.7,
+          "typical": 3.7,
+          "high": 3.7
+        },
+        "fat_g": {
+          "low": 2.1,
+          "typical": 2.1,
+          "high": 2.1
+        },
+        "carbohydrate_g": {
+          "low": 25.2,
+          "typical": 25.2,
+          "high": 25.2
+        },
+        "fibre_g": {
+          "low": 2.6,
+          "typical": 2.6,
+          "high": 2.6
+        }
+      },
+      "portions": [
+        {
+          "size": "small",
+          "grams": 150,
+          "energy_kcal": {
+            "low": 208,
+            "typical": 208,
+            "high": 208
+          }
+        },
+        {
+          "size": "medium",
+          "grams": 250,
+          "energy_kcal": {
+            "low": 348,
+            "typical": 348,
+            "high": 348
+          }
+        },
+        {
+          "size": "large",
+          "grams": 350,
+          "energy_kcal": {
+            "low": 486,
+            "typical": 486,
+            "high": 486
+          }
+        }
+      ],
+      "recipe": [
+        {
+          "code": "01_099",
+          "name": "Maize dough, fermented (kenkey), from whole white maize with salt added, cooked",
+          "g": 100
+        }
+      ],
+      "recipe_status": "draft",
+      "validated_by_nutritionist": false
+    },
+    {
+      "id": "fufu",
+      "names": {
+        "en": "Fufu",
+        "fr": "Foufou"
+      },
+      "countries": [
+        "GH",
+        "NG",
+        "CM",
+        "CI"
+      ],
+      "per_100g": {
+        "energy_kcal": {
+          "low": 165,
+          "typical": 165,
+          "high": 165
+        },
+        "protein_g": {
+          "low": 1.0,
+          "typical": 1.0,
+          "high": 1.0
+        },
+        "fat_g": {
+          "low": 0.4,
+          "typical": 0.4,
+          "high": 0.4
+        },
+        "carbohydrate_g": {
+          "low": 38.7,
+          "typical": 38.7,
+          "high": 38.7
+        },
+        "fibre_g": {
+          "low": 1.7,
+          "typical": 1.7,
+          "high": 1.7
+        }
+      },
+      "portions": [
+        {
+          "size": "small",
+          "grams": 200,
+          "energy_kcal": {
+            "low": 330,
+            "typical": 330,
+            "high": 330
+          }
+        },
+        {
+          "size": "medium",
+          "grams": 300,
+          "energy_kcal": {
+            "low": 495,
+            "typical": 495,
+            "high": 495
+          }
+        },
+        {
+          "size": "large",
+          "grams": 450,
+          "energy_kcal": {
+            "low": 742,
+            "typical": 742,
+            "high": 742
+          }
+        }
+      ],
+      "recipe": [
+        {
+          "code": "02_041",
+          "name": "Cassava, fermented paste from white cassava flour (wet fufu)",
+          "g": 100
+        }
+      ],
+      "recipe_status": "draft",
+      "validated_by_nutritionist": false,
+      "notes": "Cassava fufu. Fufu from yam or plantain has different values."
+    },
+    {
+      "id": "red_red",
+      "names": {
+        "en": "Red red",
+        "fr": "Red red"
+      },
+      "countries": [
+        "GH"
+      ],
+      "per_100g": {
+        "energy_kcal": {
+          "low": 128,
+          "typical": 151,
+          "high": 173
+        },
+        "protein_g": {
+          "low": 4.7,
+          "typical": 4.8,
+          "high": 5.0
+        },
+        "fat_g": {
+          "low": 6.5,
+          "typical": 9.3,
+          "high": 11.9
+        },
+        "carbohydrate_g": {
+          "low": 10.4,
+          "typical": 10.7,
+          "high": 11.0
+        },
+        "fibre_g": {
+          "low": 2.7,
+          "typical": 2.8,
+          "high": 2.9
+        }
+      },
+      "portions": [
+        {
+          "size": "small",
+          "grams": 150,
+          "energy_kcal": {
+            "low": 192,
+            "typical": 226,
+            "high": 260
+          }
+        },
+        {
+          "size": "medium",
+          "grams": 250,
+          "energy_kcal": {
+            "low": 320,
+            "typical": 378,
+            "high": 432
+          }
+        },
+        {
+          "size": "large",
+          "grams": 350,
+          "energy_kcal": {
+            "low": 448,
+            "typical": 528,
+            "high": 606
+          }
+        }
+      ],
+      "recipe": [
+        {
+          "code": "03_007",
+          "name": "Cowpea, not soaked, boiled* (without salt), drained",
+          "g": 55
+        },
+        {
+          "code": "11_004",
+          "name": "Palm oil, red",
+          "g": [
+            6,
+            12
+          ]
+        },
+        {
+          "code": "04_018",
+          "name": "Onion, fresh, raw",
+          "g": 5
+        },
+        {
+          "code": "04_124",
+          "name": "Tomato, red, ripe, boiled* (as part of a recipe)",
+          "g": 6
+        },
+        {
+          "code": "water",
+          "name": "water",
+          "g": 25
+        }
+      ],
+      "recipe_status": "draft",
+      "validated_by_nutritionist": false,
+      "notes": "Bean stew only, without the fried plantain."
+    },
+    {
+      "id": "kelewele",
+      "names": {
+        "en": "Kelewele",
+        "fr": "Kelewele"
+      },
+      "countries": [
+        "GH"
+      ],
+      "per_100g": {
+        "energy_kcal": {
+          "low": 365,
+          "typical": 376,
+          "high": 386
+        },
+        "protein_g": {
+          "low": 2.0,
+          "typical": 2.1,
+          "high": 2.1
+        },
+        "fat_g": {
+          "low": 16.4,
+          "typical": 18.1,
+          "high": 19.7
+        },
+        "carbohydrate_g": {
+          "low": 48.4,
+          "typical": 49.4,
+          "high": 50.4
+        },
+        "fibre_g": {
+          "low": 3.6,
+          "typical": 3.7,
+          "high": 3.7
+        }
+      },
+      "portions": [
+        {
+          "size": "small",
+          "grams": 100,
+          "energy_kcal": {
+            "low": 365,
+            "typical": 376,
+            "high": 386
+          }
+        },
+        {
+          "size": "medium",
+          "grams": 150,
+          "energy_kcal": {
+            "low": 548,
+            "typical": 564,
+            "high": 579
+          }
+        },
+        {
+          "size": "large",
+          "grams": 250,
+          "energy_kcal": {
+            "low": 912,
+            "typical": 940,
+            "high": 965
+          }
+        }
+      ],
+      "recipe": [
+        {
+          "code": "02_084",
+          "name": "Plantain, deep fried in unfortified vegetable oil*",
+          "g": 95
+        },
+        {
+          "code": "04_082",
+          "name": "Ginger, root, raw",
+          "g": 2
+        },
+        {
+          "code": "04_046",
+          "name": "Pepper, chilli, fresh, raw",
+          "g": 1
+        },
+        {
+          "code": "11_010",
+          "name": "Vegetable oil, unfortified",
+          "g": [
+            0,
+            4
+          ],
+          "note": "extra oil absorbed, beyond the WAFCT fried plantain"
+        }
+      ],
+      "recipe_status": "draft",
+      "validated_by_nutritionist": false
+    },
+    {
+      "id": "egusi_soup",
+      "names": {
+        "en": "Egusi soup",
+        "fr": "Sauce egusi"
+      },
+      "countries": [
+        "NG",
+        "CM",
+        "GH"
+      ],
+      "per_100g": {
+        "energy_kcal": {
+          "low": 182,
+          "typical": 203,
+          "high": 223
+        },
+        "protein_g": {
+          "low": 9.5,
+          "typical": 9.8,
+          "high": 10.1
+        },
+        "fat_g": {
+          "low": 14.3,
+          "typical": 16.9,
+          "high": 19.3
+        },
+        "carbohydrate_g": {
+          "low": 2.3,
+          "typical": 2.3,
+          "high": 2.4
+        },
+        "fibre_g": {
+          "low": 1.3,
+          "typical": 1.4,
+          "high": 1.4
+        }
+      },
+      "portions": [
+        {
+          "size": "small",
+          "grams": 150,
+          "energy_kcal": {
+            "low": 273,
+            "typical": 304,
+            "high": 334
+          }
+        },
+        {
+          "size": "medium",
+          "grams": 250,
+          "energy_kcal": {
+            "low": 455,
+            "typical": 508,
+            "high": 558
+          }
+        },
+        {
+          "size": "large",
+          "grams": 350,
+          "energy_kcal": {
+            "low": 637,
+            "typical": 710,
+            "high": 780
+          }
+        }
+      ],
+      "recipe": [
+        {
+          "code": "06_013",
+          "name": "Melon seed, kernel only, dried, raw",
+          "g": 12
+        },
+        {
+          "code": "11_004",
+          "name": "Palm oil, red",
+          "g": [
+            6,
+            12
+          ]
+        },
+        {
+          "code": "04_086",
+          "name": "Amaranth, leaves, fresh, boiled* (as part of a recipe)",
+          "g": 15
+        },
+        {
+          "code": "07_086",
+          "name": "Beef meat, moderately fat, ca. 20% fat, stewed* (as part of a recipe)",
+          "g": 8
+        },
+        {
+          "code": "09_053",
+          "name": "Fish, whole, dried",
+          "g": 3
+        },
+        {
+          "code": "09_057",
+          "name": "Shrimp (crayfish), whole, dried",
+          "g": 3
+        },
+        {
+          "code": "04_018",
+          "name": "Onion, fresh, raw",
+          "g": 3
+        },
+        {
+          "code": "water",
+          "name": "water",
+          "g": 47
+        }
+      ],
+      "recipe_status": "draft",
+      "validated_by_nutritionist": false,
+      "notes": "Soup only, without pounded yam, fufu or eba."
+    },
+    {
+      "id": "moi_moi",
+      "names": {
+        "en": "Moi moi",
+        "fr": "Moi moi"
+      },
+      "countries": [
+        "NG"
+      ],
+      "per_100g": {
+        "energy_kcal": {
+          "low": 153,
+          "typical": 171,
+          "high": 189
+        },
+        "protein_g": {
+          "low": 7.8,
+          "typical": 8.0,
+          "high": 8.2
+        },
+        "fat_g": {
+          "low": 6.1,
+          "typical": 8.5,
+          "high": 10.7
+        },
+        "carbohydrate_g": {
+          "low": 13.6,
+          "typical": 13.9,
+          "high": 14.3
+        },
+        "fibre_g": {
+          "low": 3.5,
+          "typical": 3.6,
+          "high": 3.7
+        }
+      },
+      "portions": [
+        {
+          "size": "small",
+          "grams": 100,
+          "energy_kcal": {
+            "low": 153,
+            "typical": 171,
+            "high": 189
+          }
+        },
+        {
+          "size": "medium",
+          "grams": 150,
+          "energy_kcal": {
+            "low": 230,
+            "typical": 256,
+            "high": 284
+          }
+        },
+        {
+          "size": "large",
+          "grams": 250,
+          "energy_kcal": {
+            "low": 382,
+            "typical": 428,
+            "high": 472
+          }
+        }
+      ],
+      "recipe": [
+        {
+          "code": "03_101",
+          "name": "Cowpea, dehulled, not soaked, boiled* (without salt), drained",
+          "g": 70
+        },
+        {
+          "code": "11_010",
+          "name": "Vegetable oil, unfortified",
+          "g": [
+            5,
+            10
+          ]
+        },
+        {
+          "code": "04_018",
+          "name": "Onion, fresh, raw",
+          "g": 4
+        },
+        {
+          "code": "04_046",
+          "name": "Pepper, chilli, fresh, raw",
+          "g": 2
+        },
+        {
+          "code": "08_002",
+          "name": "Egg, chicken, boiled* (without salt)",
+          "g": 5
+        },
+        {
+          "code": "09_057",
+          "name": "Shrimp (crayfish), whole, dried",
+          "g": 2
+        },
+        {
+          "code": "water",
+          "name": "water",
+          "g": 9.5
+        }
+      ],
+      "recipe_status": "draft",
+      "validated_by_nutritionist": false
+    },
+    {
+      "id": "pounded_yam",
+      "names": {
+        "en": "Pounded yam",
+        "fr": "Igname pilée"
+      },
+      "countries": [
+        "NG",
+        "GH"
+      ],
+      "per_100g": {
+        "energy_kcal": {
+          "low": 125,
+          "typical": 125,
+          "high": 125
+        },
+        "protein_g": {
+          "low": 2.3,
+          "typical": 2.3,
+          "high": 2.3
+        },
+        "fat_g": {
+          "low": 0.4,
+          "typical": 0.4,
+          "high": 0.4
+        },
+        "carbohydrate_g": {
+          "low": 25.5,
+          "typical": 25.5,
+          "high": 25.5
+        },
+        "fibre_g": {
+          "low": 5.6,
+          "typical": 5.6,
+          "high": 5.6
+        }
+      },
+      "portions": [
+        {
+          "size": "small",
+          "grams": 200,
+          "energy_kcal": {
+            "low": 250,
+            "typical": 250,
+            "high": 250
+          }
+        },
+        {
+          "size": "medium",
+          "grams": 300,
+          "energy_kcal": {
+            "low": 375,
+            "typical": 375,
+            "high": 375
+          }
+        },
+        {
+          "size": "large",
+          "grams": 450,
+          "energy_kcal": {
+            "low": 562,
+            "typical": 562,
+            "high": 562
+          }
+        }
+      ],
+      "recipe": [
+        {
+          "code": "02_077",
+          "name": "Yam, tuber, pale, boiled* (as part of a recipe)",
+          "g": 95
+        },
+        {
+          "code": "water",
+          "name": "water",
+          "g": 5
+        }
+      ],
+      "recipe_status": "draft",
+      "validated_by_nutritionist": false
+    },
+    {
+      "id": "amala",
+      "names": {
+        "en": "Amala",
+        "fr": "Amala"
+      },
+      "countries": [
+        "NG"
+      ],
+      "per_100g": {
+        "energy_kcal": {
+          "low": 87,
+          "typical": 103,
+          "high": 117
+        },
+        "protein_g": {
+          "low": 1.8,
+          "typical": 2.1,
+          "high": 2.4
+        },
+        "fat_g": {
+          "low": 0.2,
+          "typical": 0.2,
+          "high": 0.2
+        },
+        "carbohydrate_g": {
+          "low": 17.7,
+          "typical": 20.9,
+          "high": 23.7
+        },
+        "fibre_g": {
+          "low": 3.9,
+          "typical": 4.5,
+          "high": 5.1
+        }
+      },
+      "portions": [
+        {
+          "size": "small",
+          "grams": 200,
+          "energy_kcal": {
+            "low": 174,
+            "typical": 206,
+            "high": 234
+          }
+        },
+        {
+          "size": "medium",
+          "grams": 300,
+          "energy_kcal": {
+            "low": 261,
+            "typical": 309,
+            "high": 351
+          }
+        },
+        {
+          "size": "large",
+          "grams": 450,
+          "energy_kcal": {
+            "low": 392,
+            "typical": 464,
+            "high": 526
+          }
+        }
+      ],
+      "recipe": [
+        {
+          "code": "02_036",
+          "name": "Yam, tuber, flour, from white yam tuber",
+          "g": [
+            25,
+            38
+          ]
+        },
+        {
+          "code": "water",
+          "name": "water",
+          "g": 68.5
+        }
+      ],
+      "recipe_status": "draft",
+      "validated_by_nutritionist": false
+    },
+    {
+      "id": "suya",
+      "names": {
+        "en": "Suya",
+        "fr": "Soya (brochettes)"
+      },
+      "countries": [
+        "NG",
+        "CM",
+        "NE"
+      ],
+      "per_100g": {
+        "energy_kcal": {
+          "low": 218,
+          "typical": 234,
+          "high": 249
+        },
+        "protein_g": {
+          "low": 28.0,
+          "typical": 28.5,
+          "high": 29.0
+        },
+        "fat_g": {
+          "low": 10.5,
+          "typical": 12.4,
+          "high": 14.2
+        },
+        "carbohydrate_g": {
+          "low": 1.2,
+          "typical": 1.4,
+          "high": 1.5
+        },
+        "fibre_g": {
+          "low": 1.1,
+          "typical": 1.2,
+          "high": 1.3
+        }
+      },
+      "portions": [
+        {
+          "size": "small",
+          "grams": 80,
+          "energy_kcal": {
+            "low": 174,
+            "typical": 187,
+            "high": 199
+          }
+        },
+        {
+          "size": "medium",
+          "grams": 150,
+          "energy_kcal": {
+            "low": 327,
+            "typical": 351,
+            "high": 374
+          }
+        },
+        {
+          "size": "large",
+          "grams": 250,
+          "energy_kcal": {
+            "low": 545,
+            "typical": 585,
+            "high": 622
+          }
+        }
+      ],
+      "recipe": [
+        {
+          "code": "07_011",
+          "name": "Beef meat, lean, ca. 5% fat, grilled* (without salt or fat)",
+          "g": 85
+        },
+        {
+          "code": "06_026",
+          "name": "Groundnut paste, from groundnuts only",
+          "g": [
+            5,
+            8
+          ],
+          "note": "suya spice (kuli kuli) approximated by groundnut paste"
+        },
+        {
+          "code": "11_010",
+          "name": "Vegetable oil, unfortified",
+          "g": [
+            2,
+            5
+          ]
+        },
+        {
+          "code": "13_006",
+          "name": "Chilli pepper, dried",
+          "g": 2
+        },
+        {
+          "code": "04_018",
+          "name": "Onion, fresh, raw",
+          "g": 3
+        }
+      ],
+      "recipe_status": "draft",
+      "validated_by_nutritionist": false
+    },
+    {
+      "id": "akara",
+      "names": {
+        "en": "Akara",
+        "fr": "Accra de haricots"
+      },
+      "countries": [
+        "NG",
+        "GH",
+        "SN"
+      ],
+      "per_100g": {
+        "energy_kcal": {
+          "low": 240,
+          "typical": 273,
+          "high": 303
+        },
+        "protein_g": {
+          "low": 6.0,
+          "typical": 6.3,
+          "high": 6.6
+        },
+        "fat_g": {
+          "low": 16.2,
+          "typical": 20.4,
+          "high": 24.2
+        },
+        "carbohydrate_g": {
+          "low": 13.5,
+          "typical": 14.2,
+          "high": 14.9
+        },
+        "fibre_g": {
+          "low": 3.5,
+          "typical": 3.7,
+          "high": 3.9
+        }
+      },
+      "portions": [
+        {
+          "size": "small",
+          "grams": 50,
+          "energy_kcal": {
+            "low": 120,
+            "typical": 136,
+            "high": 152
+          }
+        },
+        {
+          "size": "medium",
+          "grams": 100,
+          "energy_kcal": {
+            "low": 240,
+            "typical": 273,
+            "high": 303
+          }
+        },
+        {
+          "size": "large",
+          "grams": 150,
+          "energy_kcal": {
+            "low": 360,
+            "typical": 410,
+            "high": 454
+          }
+        }
+      ],
+      "recipe": [
+        {
+          "code": "03_101",
+          "name": "Cowpea, dehulled, not soaked, boiled* (without salt), drained",
+          "g": 72,
+          "note": "soaked ground cowpea approximated by dehulled cowpea, boiled"
+        },
+        {
+          "code": "04_018",
+          "name": "Onion, fresh, raw",
+          "g": 5
+        },
+        {
+          "code": "04_046",
+          "name": "Pepper, chilli, fresh, raw",
+          "g": 2
+        },
+        {
+          "code": "11_010",
+          "name": "Vegetable oil, unfortified",
+          "g": [
+            15,
+            25
+          ]
+        },
+        {
+          "code": "13_015",
+          "name": "Salt",
+          "g": 1
+        }
+      ],
+      "recipe_status": "draft",
+      "validated_by_nutritionist": false
+    },
+    {
+      "id": "pepper_soup",
+      "names": {
+        "en": "Pepper soup",
+        "fr": "Pepper soup"
+      },
+      "countries": [
+        "NG",
+        "CM",
+        "GH"
+      ],
+      "per_100g": {
+        "energy_kcal": {
+          "low": 72,
+          "typical": 80,
+          "high": 89
+        },
+        "protein_g": {
+          "low": 7.7,
+          "typical": 7.8,
+          "high": 7.9
+        },
+        "fat_g": {
+          "low": 4.4,
+          "typical": 5.4,
+          "high": 6.3
+        },
+        "carbohydrate_g": {
+          "low": 0.2,
+          "typical": 0.2,
+          "high": 0.2
+        },
+        "fibre_g": {
+          "low": 0.1,
+          "typical": 0.1,
+          "high": 0.1
+        }
+      },
+      "portions": [
+        {
+          "size": "small",
+          "grams": 200,
+          "energy_kcal": {
+            "low": 144,
+            "typical": 160,
+            "high": 178
+          }
+        },
+        {
+          "size": "medium",
+          "grams": 300,
+          "energy_kcal": {
+            "low": 216,
+            "typical": 240,
+            "high": 267
+          }
+        },
+        {
+          "size": "large",
+          "grams": 450,
+          "energy_kcal": {
+            "low": 324,
+            "typical": 360,
+            "high": 400
+          }
+        }
+      ],
+      "recipe": [
+        {
+          "code": "07_112",
+          "name": "Goat meat, moderately fat, ca. 10% fat, stewed* (as part of a recipe)",
+          "g": 25
+        },
+        {
+          "code": "04_018",
+          "name": "Onion, fresh, raw",
+          "g": 2
+        },
+        {
+          "code": "04_046",
+          "name": "Pepper, chilli, fresh, raw",
+          "g": 1
+        },
+        {
+          "code": "11_010",
+          "name": "Vegetable oil, unfortified",
+          "g": [
+            0,
+            2
+          ]
+        },
+        {
+          "code": "water",
+          "name": "water",
+          "g": 71
+        }
+      ],
+      "recipe_status": "draft",
+      "validated_by_nutritionist": false
+    },
+    {
+      "id": "attieke",
+      "names": {
+        "en": "Attiéké",
+        "fr": "Attiéké"
+      },
+      "countries": [
+        "CI"
+      ],
+      "per_100g": {
+        "energy_kcal": {
+          "low": 165,
+          "typical": 180,
+          "high": 194
+        },
+        "protein_g": {
+          "low": 1.0,
+          "typical": 1.0,
+          "high": 1.0
+        },
+        "fat_g": {
+          "low": 0.4,
+          "typical": 2.4,
+          "high": 4.4
+        },
+        "carbohydrate_g": {
+          "low": 37.2,
+          "typical": 37.9,
+          "high": 38.7
+        },
+        "fibre_g": {
+          "low": 1.6,
+          "typical": 1.7,
+          "high": 1.7
+        }
+      },
+      "portions": [
+        {
+          "size": "small",
+          "grams": 150,
+          "energy_kcal": {
+            "low": 248,
+            "typical": 270,
+            "high": 291
+          }
+        },
+        {
+          "size": "medium",
+          "grams": 250,
+          "energy_kcal": {
+            "low": 412,
+            "typical": 450,
+            "high": 485
+          }
+        },
+        {
+          "size": "large",
+          "grams": 350,
+          "energy_kcal": {
+            "low": 578,
+            "typical": 630,
+            "high": 679
+          }
+        }
+      ],
+      "recipe": [
+        {
+          "code": "02_041",
+          "name": "Cassava, fermented paste from white cassava flour (wet fufu)",
+          "g": 96,
+          "note": "attiéké (steamed fermented cassava granules) is not in WAFCT 2019; wet fermented cassava paste used instead"
+        },
+        {
+          "code": "11_010",
+          "name": "Vegetable oil, unfortified",
+          "g": [
+            0,
+            4
+          ]
+        }
+      ],
+      "recipe_status": "draft",
+      "validated_by_nutritionist": false
+    },
+    {
+      "id": "alloco",
+      "names": {
+        "en": "Alloco (fried plantain)",
+        "fr": "Alloco"
+      },
+      "countries": [
+        "CI",
+        "CM"
+      ],
+      "per_100g": {
+        "energy_kcal": {
+          "low": 375,
+          "typical": 386,
+          "high": 396
+        },
+        "protein_g": {
+          "low": 2.0,
+          "typical": 2.1,
+          "high": 2.1
+        },
+        "fat_g": {
+          "low": 16.9,
+          "typical": 18.6,
+          "high": 20.2
+        },
+        "carbohydrate_g": {
+          "low": 49.7,
+          "typical": 50.7,
+          "high": 51.7
+        },
+        "fibre_g": {
+          "low": 3.6,
+          "typical": 3.6,
+          "high": 3.7
+        }
+      },
+      "portions": [
+        {
+          "size": "small",
+          "grams": 100,
+          "energy_kcal": {
+            "low": 375,
+            "typical": 386,
+            "high": 396
+          }
+        },
+        {
+          "size": "medium",
+          "grams": 150,
+          "energy_kcal": {
+            "low": 562,
+            "typical": 579,
+            "high": 594
+          }
+        },
+        {
+          "size": "large",
+          "grams": 250,
+          "energy_kcal": {
+            "low": 938,
+            "typical": 965,
+            "high": 990
+          }
+        }
+      ],
+      "recipe": [
+        {
+          "code": "02_084",
+          "name": "Plantain, deep fried in unfortified vegetable oil*",
+          "g": 98
+        },
+        {
+          "code": "11_010",
+          "name": "Vegetable oil, unfortified",
+          "g": [
+            0,
+            4
+          ],
+          "note": "extra oil absorbed, beyond the WAFCT fried plantain"
+        }
+      ],
+      "recipe_status": "draft",
+      "validated_by_nutritionist": false
+    },
+    {
+      "id": "thieboudienne",
+      "names": {
+        "en": "Thieboudienne",
+        "fr": "Thiéboudienne"
+      },
+      "countries": [
+        "SN"
+      ],
+      "per_100g": {
+        "energy_kcal": {
+          "low": 146,
+          "typical": 169,
+          "high": 190
+        },
+        "protein_g": {
+          "low": 4.2,
+          "typical": 4.3,
+          "high": 4.5
+        },
+        "fat_g": {
+          "low": 6.7,
+          "typical": 9.5,
+          "high": 12.1
+        },
+        "carbohydrate_g": {
+          "low": 15.5,
+          "typical": 16.0,
+          "high": 16.5
+        },
+        "fibre_g": {
+          "low": 1.2,
+          "typical": 1.2,
+          "high": 1.3
+        }
+      },
+      "portions": [
+        {
+          "size": "small",
+          "grams": 250,
+          "energy_kcal": {
+            "low": 365,
+            "typical": 422,
+            "high": 475
+          }
+        },
+        {
+          "size": "medium",
+          "grams": 350,
+          "energy_kcal": {
+            "low": 511,
+            "typical": 592,
+            "high": 665
+          }
+        },
+        {
+          "size": "large",
+          "grams": 500,
+          "energy_kcal": {
+            "low": 730,
+            "typical": 845,
+            "high": 950
+          }
+        }
+      ],
+      "recipe": [
+        {
+          "code": "01_135",
+          "name": "Rice, white, boiled* (as part of a recipe)",
+          "g": 55
+        },
+        {
+          "code": "09_046",
+          "name": "White grouper, fillet, steamed* (without salt)",
+          "g": 12
+        },
+        {
+          "code": "04_090",
+          "name": "Cabbage, white, boiled* (as part of a recipe)",
+          "g": 5
+        },
+        {
+          "code": "04_102",
+          "name": "Eggplant, fruit, boiled* (as part of a recipe)",
+          "g": 4
+        },
+        {
+          "code": "02_051",
+          "name": "Cassava, tuber, white flesh, boiled* (as part of a recipe)",
+          "g": 4
+        },
+        {
+          "code": "04_066",
+          "name": "Tomato, paste, concentrated, without salt",
+          "g": 2
+        },
+        {
+          "code": "04_018",
+          "name": "Onion, fresh, raw",
+          "g": 3
+        },
+        {
+          "code": "11_010",
+          "name": "Vegetable oil, unfortified",
+          "g": [
+            6,
+            12
+          ]
+        },
+        {
+          "code": "water",
+          "name": "water",
+          "g": 6
+        }
+      ],
+      "recipe_status": "draft",
+      "validated_by_nutritionist": false
+    },
+    {
+      "id": "yassa",
+      "names": {
+        "en": "Yassa",
+        "fr": "Yassa"
+      },
+      "countries": [
+        "SN"
+      ],
+      "per_100g": {
+        "energy_kcal": {
+          "low": 198,
+          "typical": 219,
+          "high": 238
+        },
+        "protein_g": {
+          "low": 8.7,
+          "typical": 9.0,
+          "high": 9.2
+        },
+        "fat_g": {
+          "low": 15.7,
+          "typical": 18.2,
+          "high": 20.6
+        },
+        "carbohydrate_g": {
+          "low": 4.0,
+          "typical": 4.2,
+          "high": 4.3
+        },
+        "fibre_g": {
+          "low": 1.0,
+          "typical": 1.0,
+          "high": 1.0
+        }
+      },
+      "portions": [
+        {
+          "size": "small",
+          "grams": 150,
+          "energy_kcal": {
+            "low": 297,
+            "typical": 328,
+            "high": 357
+          }
+        },
+        {
+          "size": "medium",
+          "grams": 250,
+          "energy_kcal": {
+            "low": 495,
+            "typical": 548,
+            "high": 595
+          }
+        },
+        {
+          "size": "large",
+          "grams": 350,
+          "energy_kcal": {
+            "low": 693,
+            "typical": 766,
+            "high": 833
+          }
+        }
+      ],
+      "recipe": [
+        {
+          "code": "07_103",
+          "name": "Chicken, dark meat with skin, stewed* (as part of a recipe)",
+          "g": 35
+        },
+        {
+          "code": "04_112",
+          "name": "Onion, fresh, boiled* (as part of a recipe)",
+          "g": 45
+        },
+        {
+          "code": "12_010",
+          "name": "Juice, lemon, fresh, unsweetened",
+          "g": 3
+        },
+        {
+          "code": "11_010",
+          "name": "Vegetable oil, unfortified",
+          "g": [
+            6,
+            12
+          ]
+        },
+        {
+          "code": "water",
+          "name": "water",
+          "g": 8
+        }
+      ],
+      "recipe_status": "draft",
+      "validated_by_nutritionist": false,
+      "notes": "Chicken and onion sauce, without rice."
+    },
+    {
+      "id": "mafe",
+      "names": {
+        "en": "Mafé (peanut stew)",
+        "fr": "Mafé"
+      },
+      "countries": [
+        "SN",
+        "ML",
+        "GN"
+      ],
+      "per_100g": {
+        "energy_kcal": {
+          "low": 148,
+          "typical": 172,
+          "high": 194
+        },
+        "protein_g": {
+          "low": 7.0,
+          "typical": 7.2,
+          "high": 7.4
+        },
+        "fat_g": {
+          "low": 11.3,
+          "typical": 13.9,
+          "high": 16.2
+        },
+        "carbohydrate_g": {
+          "low": 3.8,
+          "typical": 3.9,
+          "high": 3.9
+        },
+        "fibre_g": {
+          "low": 1.4,
+          "typical": 1.5,
+          "high": 1.6
+        }
+      },
+      "portions": [
+        {
+          "size": "small",
+          "grams": 150,
+          "energy_kcal": {
+            "low": 222,
+            "typical": 258,
+            "high": 291
+          }
+        },
+        {
+          "size": "medium",
+          "grams": 250,
+          "energy_kcal": {
+            "low": 370,
+            "typical": 430,
+            "high": 485
+          }
+        },
+        {
+          "size": "large",
+          "grams": 350,
+          "energy_kcal": {
+            "low": 518,
+            "typical": 602,
+            "high": 679
+          }
+        }
+      ],
+      "recipe": [
+        {
+          "code": "07_086",
+          "name": "Beef meat, moderately fat, ca. 20% fat, stewed* (as part of a recipe)",
+          "g": 15
+        },
+        {
+          "code": "06_026",
+          "name": "Groundnut paste, from groundnuts only",
+          "g": [
+            10,
+            14
+          ]
+        },
+        {
+          "code": "04_066",
+          "name": "Tomato, paste, concentrated, without salt",
+          "g": 3
+        },
+        {
+          "code": "04_018",
+          "name": "Onion, fresh, raw",
+          "g": 3
+        },
+        {
+          "code": "02_068",
+          "name": "Potato, boiled* (as part of a recipe)",
+          "g": 10
+        },
+        {
+          "code": "04_090",
+          "name": "Cabbage, white, boiled* (as part of a recipe)",
+          "g": 5
+        },
+        {
+          "code": "11_010",
+          "name": "Vegetable oil, unfortified",
+          "g": [
+            2,
+            6
+          ]
+        },
+        {
+          "code": "water",
+          "name": "water",
+          "g": 48
+        }
+      ],
+      "recipe_status": "draft",
+      "validated_by_nutritionist": false,
+      "notes": "Peanut stew without rice."
+    },
+    {
+      "id": "ugali",
+      "names": {
+        "en": "Ugali",
+        "fr": "Ougali"
+      },
+      "countries": [
+        "KE",
+        "TZ",
+        "UG"
+      ],
+      "per_100g": {
+        "energy_kcal": {
+          "low": 110,
+          "typical": 120,
+          "high": 129
+        },
+        "protein_g": {
+          "low": 2.7,
+          "typical": 3.0,
+          "high": 3.2
+        },
+        "fat_g": {
+          "low": 1.0,
+          "typical": 1.1,
+          "high": 1.2
+        },
+        "carbohydrate_g": {
+          "low": 21.4,
+          "typical": 23.3,
+          "high": 25.1
+        },
+        "fibre_g": {
+          "low": 2.2,
+          "typical": 2.4,
+          "high": 2.6
+        }
+      },
+      "portions": [
+        {
+          "size": "small",
+          "grams": 200,
+          "energy_kcal": {
+            "low": 220,
+            "typical": 240,
+            "high": 258
+          }
+        },
+        {
+          "size": "medium",
+          "grams": 300,
+          "energy_kcal": {
+            "low": 330,
+            "typical": 360,
+            "high": 387
+          }
+        },
+        {
+          "size": "large",
+          "grams": 450,
+          "energy_kcal": {
+            "low": 495,
+            "typical": 540,
+            "high": 580
+          }
+        }
+      ],
+      "recipe": [
+        {
+          "code": "01_080",
+          "name": "Maize, white, meal, sifted, unfortified",
+          "g": [
+            30,
+            38
+          ]
+        },
+        {
+          "code": "water",
+          "name": "water",
+          "g": 66
+        }
+      ],
+      "recipe_status": "draft",
+      "validated_by_nutritionist": false
+    },
+    {
+      "id": "sukuma_wiki",
+      "names": {
+        "en": "Sukuma wiki",
+        "fr": "Sukuma wiki"
+      },
+      "countries": [
+        "KE",
+        "TZ"
+      ],
+      "per_100g": {
+        "energy_kcal": {
+          "low": 74,
+          "typical": 91,
+          "high": 107
+        },
+        "protein_g": {
+          "low": 3.4,
+          "typical": 3.5,
+          "high": 3.6
+        },
+        "fat_g": {
+          "low": 4.5,
+          "typical": 6.4,
+          "high": 8.2
+        },
+        "carbohydrate_g": {
+          "low": 3.3,
+          "typical": 3.3,
+          "high": 3.4
+        },
+        "fibre_g": {
+          "low": 3.3,
+          "typical": 3.4,
+          "high": 3.4
+        }
+      },
+      "portions": [
+        {
+          "size": "small",
+          "grams": 100,
+          "energy_kcal": {
+            "low": 74,
+            "typical": 91,
+            "high": 107
+          }
+        },
+        {
+          "size": "medium",
+          "grams": 150,
+          "energy_kcal": {
+            "low": 111,
+            "typical": 136,
+            "high": 160
+          }
+        },
+        {
+          "size": "large",
+          "grams": 250,
+          "energy_kcal": {
+            "low": 185,
+            "typical": 228,
+            "high": 268
+          }
+        }
+      ],
+      "recipe": [
+        {
+          "code": "04_086",
+          "name": "Amaranth, leaves, fresh, boiled* (as part of a recipe)",
+          "g": 75,
+          "note": "kale (collard greens) is not in WAFCT 2019; amaranth leaves used instead"
+        },
+        {
+          "code": "04_018",
+          "name": "Onion, fresh, raw",
+          "g": 8
+        },
+        {
+          "code": "04_124",
+          "name": "Tomato, red, ripe, boiled* (as part of a recipe)",
+          "g": 8
+        },
+        {
+          "code": "11_010",
+          "name": "Vegetable oil, unfortified",
+          "g": [
+            4,
+            8
+          ]
+        },
+        {
+          "code": "water",
+          "name": "water",
+          "g": 3
+        }
+      ],
+      "recipe_status": "draft",
+      "validated_by_nutritionist": false
+    },
+    {
+      "id": "githeri",
+      "names": {
+        "en": "Githeri",
+        "fr": "Githeri"
+      },
+      "countries": [
+        "KE"
+      ],
+      "per_100g": {
+        "energy_kcal": {
+          "low": 122,
+          "typical": 133,
+          "high": 145
+        },
+        "protein_g": {
+          "low": 4.7,
+          "typical": 4.8,
+          "high": 4.8
+        },
+        "fat_g": {
+          "low": 3.0,
+          "typical": 4.4,
+          "high": 5.8
+        },
+        "carbohydrate_g": {
+          "low": 16.0,
+          "typical": 16.3,
+          "high": 16.5
+        },
+        "fibre_g": {
+          "low": 4.6,
+          "typical": 4.6,
+          "high": 4.7
+        }
+      },
+      "portions": [
+        {
+          "size": "small",
+          "grams": 200,
+          "energy_kcal": {
+            "low": 244,
+            "typical": 266,
+            "high": 290
+          }
+        },
+        {
+          "size": "medium",
+          "grams": 300,
+          "energy_kcal": {
+            "low": 366,
+            "typical": 399,
+            "high": 435
+          }
+        },
+        {
+          "size": "large",
+          "grams": 450,
+          "energy_kcal": {
+            "low": 549,
+            "typical": 598,
+            "high": 652
+          }
+        }
+      ],
+      "recipe": [
+        {
+          "code": "01_104",
+          "name": "Maize, white, whole kernel, boiled* (as part of a recipe)",
+          "g": 45
+        },
+        {
+          "code": "03_023",
+          "name": "Bean, white, not soaked, boiled* (without salt), drained",
+          "g": 40
+        },
+        {
+          "code": "04_018",
+          "name": "Onion, fresh, raw",
+          "g": 3
+        },
+        {
+          "code": "04_124",
+          "name": "Tomato, red, ripe, boiled* (as part of a recipe)",
+          "g": 4
+        },
+        {
+          "code": "11_010",
+          "name": "Vegetable oil, unfortified",
+          "g": [
+            2,
+            5
+          ]
+        },
+        {
+          "code": "water",
+          "name": "water",
+          "g": 4.5
+        }
+      ],
+      "recipe_status": "draft",
+      "validated_by_nutritionist": false
+    },
+    {
+      "id": "nyama_choma",
+      "names": {
+        "en": "Nyama choma",
+        "fr": "Nyama choma"
+      },
+      "countries": [
+        "KE",
+        "TZ"
+      ],
+      "per_100g": {
+        "energy_kcal": {
+          "low": 204,
+          "typical": 204,
+          "high": 204
+        },
+        "protein_g": {
+          "low": 25.6,
+          "typical": 25.6,
+          "high": 25.6
+        },
+        "fat_g": {
+          "low": 11.3,
+          "typical": 11.3,
+          "high": 11.3
+        },
+        "carbohydrate_g": {
+          "low": 0.0,
+          "typical": 0.0,
+          "high": 0.0
+        },
+        "fibre_g": {
+          "low": 0.0,
+          "typical": 0.0,
+          "high": 0.0
+        }
+      },
+      "portions": [
+        {
+          "size": "small",
+          "grams": 150,
+          "energy_kcal": {
+            "low": 306,
+            "typical": 306,
+            "high": 306
+          }
+        },
+        {
+          "size": "medium",
+          "grams": 250,
+          "energy_kcal": {
+            "low": 510,
+            "typical": 510,
+            "high": 510
+          }
+        },
+        {
+          "size": "large",
+          "grams": 400,
+          "energy_kcal": {
+            "low": 816,
+            "typical": 816,
+            "high": 816
+          }
+        }
+      ],
+      "recipe": [
+        {
+          "code": "07_048",
+          "name": "Goat meat, moderately fat, ca. 10% fat, grilled* (without salt or fat)",
+          "g": 100
+        }
+      ],
+      "recipe_status": "draft",
+      "validated_by_nutritionist": false
+    },
+    {
+      "id": "pilau",
+      "names": {
+        "en": "Pilau",
+        "fr": "Pilau"
+      },
+      "countries": [
+        "KE",
+        "TZ"
+      ],
+      "per_100g": {
+        "energy_kcal": {
+          "low": 155,
+          "typical": 170,
+          "high": 184
+        },
+        "protein_g": {
+          "low": 4.2,
+          "typical": 4.3,
+          "high": 4.4
+        },
+        "fat_g": {
+          "low": 6.9,
+          "typical": 8.7,
+          "high": 10.5
+        },
+        "carbohydrate_g": {
+          "low": 17.8,
+          "typical": 18.1,
+          "high": 18.5
+        },
+        "fibre_g": {
+          "low": 0.9,
+          "typical": 0.9,
+          "high": 0.9
+        }
+      },
+      "portions": [
+        {
+          "size": "small",
+          "grams": 250,
+          "energy_kcal": {
+            "low": 388,
+            "typical": 425,
+            "high": 460
+          }
+        },
+        {
+          "size": "medium",
+          "grams": 350,
+          "energy_kcal": {
+            "low": 542,
+            "typical": 595,
+            "high": 644
+          }
+        },
+        {
+          "size": "large",
+          "grams": 500,
+          "energy_kcal": {
+            "low": 775,
+            "typical": 850,
+            "high": 920
+          }
+        }
+      ],
+      "recipe": [
+        {
+          "code": "01_135",
+          "name": "Rice, white, boiled* (as part of a recipe)",
+          "g": 70
+        },
+        {
+          "code": "07_086",
+          "name": "Beef meat, moderately fat, ca. 20% fat, stewed* (as part of a recipe)",
+          "g": 10
+        },
+        {
+          "code": "04_018",
+          "name": "Onion, fresh, raw",
+          "g": 4
+        },
+        {
+          "code": "11_010",
+          "name": "Vegetable oil, unfortified",
+          "g": [
+            4,
+            8
+          ]
+        },
+        {
+          "code": "water",
+          "name": "water",
+          "g": 10
+        }
+      ],
+      "recipe_status": "draft",
+      "validated_by_nutritionist": false
+    },
+    {
+      "id": "chapati",
+      "names": {
+        "en": "Chapati (East African)",
+        "fr": "Chapati"
+      },
+      "countries": [
+        "KE",
+        "TZ",
+        "UG"
+      ],
+      "per_100g": {
+        "energy_kcal": {
+          "low": 279,
+          "typical": 298,
+          "high": 316
+        },
+        "protein_g": {
+          "low": 5.6,
+          "typical": 5.7,
+          "high": 5.9
+        },
+        "fat_g": {
+          "low": 9.3,
+          "typical": 12.1,
+          "high": 14.6
+        },
+        "carbohydrate_g": {
+          "low": 39.7,
+          "typical": 40.9,
+          "high": 42.2
+        },
+        "fibre_g": {
+          "low": 1.5,
+          "typical": 1.5,
+          "high": 1.6
+        }
+      },
+      "portions": [
+        {
+          "size": "small",
+          "grams": 60,
+          "energy_kcal": {
+            "low": 167,
+            "typical": 179,
+            "high": 190
+          }
+        },
+        {
+          "size": "medium",
+          "grams": 100,
+          "energy_kcal": {
+            "low": 279,
+            "typical": 298,
+            "high": 316
+          }
+        },
+        {
+          "size": "large",
+          "grams": 180,
+          "energy_kcal": {
+            "low": 502,
+            "typical": 536,
+            "high": 569
+          }
+        }
+      ],
+      "recipe": [
+        {
+          "code": "01_043",
+          "name": "Wheat flour, white, unfortified",
+          "g": 55
+        },
+        {
+          "code": "water",
+          "name": "water",
+          "g": 32
+        },
+        {
+          "code": "11_010",
+          "name": "Vegetable oil, unfortified",
+          "g": [
+            8,
+            14
+          ]
+        },
+        {
+          "code": "13_002",
+          "name": "Sugar, white",
+          "g": 1
+        },
+        {
+          "code": "13_015",
+          "name": "Salt",
+          "g": 0.5
+        }
+      ],
+      "recipe_status": "draft",
+      "validated_by_nutritionist": false,
+      "notes": "One chapati weighs about 60 to 80 g."
+    },
+    {
+      "id": "matoke",
+      "names": {
+        "en": "Matoke",
+        "fr": "Matoke"
+      },
+      "countries": [
+        "UG"
+      ],
+      "per_100g": {
+        "energy_kcal": {
+          "low": 115,
+          "typical": 131,
+          "high": 146
+        },
+        "protein_g": {
+          "low": 0.9,
+          "typical": 0.9,
+          "high": 0.9
+        },
+        "fat_g": {
+          "low": 2.5,
+          "typical": 4.4,
+          "high": 6.3
+        },
+        "carbohydrate_g": {
+          "low": 20.1,
+          "typical": 20.5,
+          "high": 20.9
+        },
+        "fibre_g": {
+          "low": 3.0,
+          "typical": 3.1,
+          "high": 3.1
+        }
+      },
+      "portions": [
+        {
+          "size": "small",
+          "grams": 200,
+          "energy_kcal": {
+            "low": 230,
+            "typical": 262,
+            "high": 292
+          }
+        },
+        {
+          "size": "medium",
+          "grams": 300,
+          "energy_kcal": {
+            "low": 345,
+            "typical": 393,
+            "high": 438
+          }
+        },
+        {
+          "size": "large",
+          "grams": 450,
+          "energy_kcal": {
+            "low": 518,
+            "typical": 590,
+            "high": 657
+          }
+        }
+      ],
+      "recipe": [
+        {
+          "code": "05_048",
+          "name": "Banana, sweet, flesh, unripe (green), raw",
+          "g": 80,
+          "note": "green banana, raw values used for the boiled banana"
+        },
+        {
+          "code": "04_018",
+          "name": "Onion, fresh, raw",
+          "g": 4
+        },
+        {
+          "code": "04_124",
+          "name": "Tomato, red, ripe, boiled* (as part of a recipe)",
+          "g": 6
+        },
+        {
+          "code": "11_010",
+          "name": "Vegetable oil, unfortified",
+          "g": [
+            2,
+            6
+          ]
+        },
+        {
+          "code": "water",
+          "name": "water",
+          "g": 6
+        }
+      ],
+      "recipe_status": "draft",
+      "validated_by_nutritionist": false
+    },
+    {
+      "id": "injera",
+      "names": {
+        "en": "Injera",
+        "fr": "Injera"
+      },
+      "countries": [
+        "ET",
+        "ER"
+      ],
+      "per_100g": {
+        "energy_kcal": {
+          "low": 127,
+          "typical": 135,
+          "high": 142
+        },
+        "protein_g": {
+          "low": 4.8,
+          "typical": 5.1,
+          "high": 5.4
+        },
+        "fat_g": {
+          "low": 0.9,
+          "typical": 0.9,
+          "high": 1.0
+        },
+        "carbohydrate_g": {
+          "low": 23.6,
+          "typical": 25.1,
+          "high": 26.4
+        },
+        "fibre_g": {
+          "low": 2.9,
+          "typical": 3.1,
+          "high": 3.2
+        }
+      },
+      "portions": [
+        {
+          "size": "small",
+          "grams": 100,
+          "energy_kcal": {
+            "low": 127,
+            "typical": 135,
+            "high": 142
+          }
+        },
+        {
+          "size": "medium",
+          "grams": 200,
+          "energy_kcal": {
+            "low": 254,
+            "typical": 270,
+            "high": 284
+          }
+        },
+        {
+          "size": "large",
+          "grams": 300,
+          "energy_kcal": {
+            "low": 381,
+            "typical": 405,
+            "high": 426
+          }
+        }
+      ],
+      "recipe": [
+        {
+          "code": "01_184",
+          "name": "Teff, whole grains, raw",
+          "g": [
+            35,
+            42
+          ],
+          "note": "teff batter: raw teff grain values for the flour"
+        },
+        {
+          "code": "water",
+          "name": "water",
+          "g": 61.5
+        }
+      ],
+      "recipe_status": "draft",
+      "validated_by_nutritionist": false,
+      "notes": "One injera weighs about 120 to 150 g."
+    },
+    {
+      "id": "doro_wat",
+      "names": {
+        "en": "Doro wat",
+        "fr": "Doro wat"
+      },
+      "countries": [
+        "ET"
+      ],
+      "per_100g": {
+        "energy_kcal": {
+          "low": 198,
+          "typical": 219,
+          "high": 238
+        },
+        "protein_g": {
+          "low": 9.1,
+          "typical": 9.4,
+          "high": 9.7
+        },
+        "fat_g": {
+          "low": 15.8,
+          "typical": 18.3,
+          "high": 20.7
+        },
+        "carbohydrate_g": {
+          "low": 3.2,
+          "typical": 3.3,
+          "high": 3.4
+        },
+        "fibre_g": {
+          "low": 1.5,
+          "typical": 1.6,
+          "high": 1.6
+        }
+      },
+      "portions": [
+        {
+          "size": "small",
+          "grams": 150,
+          "energy_kcal": {
+            "low": 297,
+            "typical": 328,
+            "high": 357
+          }
+        },
+        {
+          "size": "medium",
+          "grams": 250,
+          "energy_kcal": {
+            "low": 495,
+            "typical": 548,
+            "high": 595
+          }
+        },
+        {
+          "size": "large",
+          "grams": 350,
+          "energy_kcal": {
+            "low": 693,
+            "typical": 766,
+            "high": 833
+          }
+        }
+      ],
+      "recipe": [
+        {
+          "code": "07_103",
+          "name": "Chicken, dark meat with skin, stewed* (as part of a recipe)",
+          "g": 30
+        },
+        {
+          "code": "08_002",
+          "name": "Egg, chicken, boiled* (without salt)",
+          "g": 10
+        },
+        {
+          "code": "04_112",
+          "name": "Onion, fresh, boiled* (as part of a recipe)",
+          "g": 30
+        },
+        {
+          "code": "11_015",
+          "name": "Oil, from cow’s milk butter (ghee)",
+          "g": [
+            6,
+            12
+          ]
+        },
+        {
+          "code": "13_006",
+          "name": "Chilli pepper, dried",
+          "g": 3
+        },
+        {
+          "code": "water",
+          "name": "water",
+          "g": 18
+        }
+      ],
+      "recipe_status": "draft",
+      "validated_by_nutritionist": false,
+      "notes": "Stew only, without injera."
+    },
+    {
+      "id": "tibs",
+      "names": {
+        "en": "Tibs",
+        "fr": "Tibs"
+      },
+      "countries": [
+        "ET"
+      ],
+      "per_100g": {
+        "energy_kcal": {
+          "low": 167,
+          "typical": 185,
+          "high": 202
+        },
+        "protein_g": {
+          "low": 18.6,
+          "typical": 19.1,
+          "high": 19.6
+        },
+        "fat_g": {
+          "low": 9.0,
+          "typical": 11.3,
+          "high": 13.5
+        },
+        "carbohydrate_g": {
+          "low": 1.5,
+          "typical": 1.5,
+          "high": 1.5
+        },
+        "fibre_g": {
+          "low": 0.5,
+          "typical": 0.5,
+          "high": 0.5
+        }
+      },
+      "portions": [
+        {
+          "size": "small",
+          "grams": 150,
+          "energy_kcal": {
+            "low": 250,
+            "typical": 278,
+            "high": 303
+          }
+        },
+        {
+          "size": "medium",
+          "grams": 250,
+          "energy_kcal": {
+            "low": 418,
+            "typical": 462,
+            "high": 505
+          }
+        },
+        {
+          "size": "large",
+          "grams": 350,
+          "energy_kcal": {
+            "low": 584,
+            "typical": 648,
+            "high": 707
+          }
+        }
+      ],
+      "recipe": [
+        {
+          "code": "07_011",
+          "name": "Beef meat, lean, ca. 5% fat, grilled* (without salt or fat)",
+          "g": 60
+        },
+        {
+          "code": "04_018",
+          "name": "Onion, fresh, raw",
+          "g": 15
+        },
+        {
+          "code": "04_124",
+          "name": "Tomato, red, ripe, boiled* (as part of a recipe)",
+          "g": 5
+        },
+        {
+          "code": "04_046",
+          "name": "Pepper, chilli, fresh, raw",
+          "g": 3
+        },
+        {
+          "code": "11_010",
+          "name": "Vegetable oil, unfortified",
+          "g": [
+            5,
+            10
+          ]
+        },
+        {
+          "code": "water",
+          "name": "water",
+          "g": 9.5
+        }
+      ],
+      "recipe_status": "draft",
+      "validated_by_nutritionist": false
+    },
+    {
+      "id": "shiro",
+      "names": {
+        "en": "Shiro",
+        "fr": "Shiro"
+      },
+      "countries": [
+        "ET",
+        "ER"
+      ],
+      "per_100g": {
+        "energy_kcal": {
+          "low": 95,
+          "typical": 120,
+          "high": 143
+        },
+        "protein_g": {
+          "low": 3.1,
+          "typical": 3.5,
+          "high": 3.8
+        },
+        "fat_g": {
+          "low": 5.4,
+          "typical": 7.7,
+          "high": 9.8
+        },
+        "carbohydrate_g": {
+          "low": 7.4,
+          "typical": 8.1,
+          "high": 8.7
+        },
+        "fibre_g": {
+          "low": 1.9,
+          "typical": 2.1,
+          "high": 2.3
+        }
+      },
+      "portions": [
+        {
+          "size": "small",
+          "grams": 150,
+          "energy_kcal": {
+            "low": 142,
+            "typical": 180,
+            "high": 214
+          }
+        },
+        {
+          "size": "medium",
+          "grams": 250,
+          "energy_kcal": {
+            "low": 238,
+            "typical": 300,
+            "high": 358
+          }
+        },
+        {
+          "size": "large",
+          "grams": 350,
+          "energy_kcal": {
+            "low": 332,
+            "typical": 420,
+            "high": 500
+          }
+        }
+      ],
+      "recipe": [
+        {
+          "code": "03_045",
+          "name": "Cowpea, dehulled, raw",
+          "g": [
+            12,
+            16
+          ],
+          "note": "chickpea flour is not in WAFCT 2019; dehulled cowpea, raw, used instead"
+        },
+        {
+          "code": "04_018",
+          "name": "Onion, fresh, raw",
+          "g": 8
+        },
+        {
+          "code": "04_124",
+          "name": "Tomato, red, ripe, boiled* (as part of a recipe)",
+          "g": 5
+        },
+        {
+          "code": "04_015",
+          "name": "Garlic, flesh, raw",
+          "g": 1
+        },
+        {
+          "code": "11_010",
+          "name": "Vegetable oil, unfortified",
+          "g": [
+            5,
+            10
+          ]
+        },
+        {
+          "code": "water",
+          "name": "water",
+          "g": 64.5
+        }
+      ],
+      "recipe_status": "draft",
+      "validated_by_nutritionist": false,
+      "notes": "Stew only, without injera."
+    },
+    {
+      "id": "kitfo",
+      "names": {
+        "en": "Kitfo",
+        "fr": "Kitfo"
+      },
+      "countries": [
+        "ET"
+      ],
+      "per_100g": {
+        "energy_kcal": {
+          "low": 215,
+          "typical": 232,
+          "high": 248
+        },
+        "protein_g": {
+          "low": 19.1,
+          "typical": 19.5,
+          "high": 20.0
+        },
+        "fat_g": {
+          "low": 14.6,
+          "typical": 16.7,
+          "high": 18.7
+        },
+        "carbohydrate_g": {
+          "low": 0.5,
+          "typical": 0.5,
+          "high": 0.5
+        },
+        "fibre_g": {
+          "low": 0.8,
+          "typical": 0.8,
+          "high": 0.8
+        }
+      },
+      "portions": [
+        {
+          "size": "small",
+          "grams": 100,
+          "energy_kcal": {
+            "low": 215,
+            "typical": 232,
+            "high": 248
+          }
+        },
+        {
+          "size": "medium",
+          "grams": 150,
+          "energy_kcal": {
+            "low": 322,
+            "typical": 348,
+            "high": 372
+          }
+        },
+        {
+          "size": "large",
+          "grams": 250,
+          "energy_kcal": {
+            "low": 538,
+            "typical": 580,
+            "high": 620
+          }
+        }
+      ],
+      "recipe": [
+        {
+          "code": "07_009",
+          "name": "Beef meat, lean, ca. 5% fat, raw",
+          "g": 85
+        },
+        {
+          "code": "11_015",
+          "name": "Oil, from cow’s milk butter (ghee)",
+          "g": [
+            10,
+            15
+          ]
+        },
+        {
+          "code": "13_006",
+          "name": "Chilli pepper, dried",
+          "g": 2.5
+        }
+      ],
+      "recipe_status": "draft",
+      "validated_by_nutritionist": false
+    }
+  ]
+}

@@ -149,6 +149,19 @@ def describe(path: Path = XLSX) -> str:
     return "\n".join(lines)
 
 
+def intro(path: Path = XLSX) -> str:
+    """Full text of the introduction sheet (authors, citation, terms of use)."""
+    import openpyxl
+
+    wb = openpyxl.load_workbook(path, read_only=True, data_only=True)
+    sheet = next(name for name in wb.sheetnames if "intro" in name.lower())
+    return "\n".join(
+        " | ".join(_norm(c) for c in row if c not in (None, ""))
+        for row in wb[sheet].iter_rows(values_only=True)
+        if any(c not in (None, "") for c in row)
+    )
+
+
 def search(terms: list[str], path: Path = XLSX, limit: int = 15) -> str:
     sheet, records = load_table(path)
     lines = [f"sheet: {sheet}, {len(records)} foods"]
@@ -215,6 +228,7 @@ def main(argv=None):
     sub = parser.add_subparsers(dest="command", required=True)
     sub.add_parser("fetch")
     sub.add_parser("describe")
+    sub.add_parser("intro")
     e = sub.add_parser("extract")
     e.add_argument("--check", action="store_true")
     s = sub.add_parser("search")
@@ -227,6 +241,8 @@ def main(argv=None):
         print(fetch())
     elif args.command == "describe":
         print(describe(fetch()))
+    elif args.command == "intro":
+        print(intro(fetch()))
     elif args.command == "extract":
         text = rows_to_csv(extract_rows(recipe_codes(), fetch()))
         if args.check:

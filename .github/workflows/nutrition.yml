@@ -32,5 +32,6 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install -r nutrition/requirements.txt
+      - run: python nutrition/wafct.py intro
       - name: wafct_extract.csv matches WAFCT 2019 (prints a fresh extract otherwise)
         run: python nutrition/wafct.py extract --check
