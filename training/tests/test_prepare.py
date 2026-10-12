@@ -5,7 +5,8 @@ from collections import Counter
 from PIL import Image
 
 from afctrain import OTHER
-from afctrain.prepare import Item, assign_labels, cap_per_dish, choose_classes, drop_duplicates, finalize, split_for
+from afctrain.prepare import (Item, assign_labels, cap_per_dish, choose_classes, drop_duplicates, drop_lookalikes,
+                              finalize, split_for)
 
 FRACTIONS = {"train": 0.7, "val": 0.15, "test": 0.15}
 
@@ -37,6 +38,16 @@ def test_small_dishes_are_learnt_as_other():
     assert classes == ["fufu", OTHER]
     assign_labels(items, classes)
     assert {i.dish: i.label for i in items} == {"fufu": "fufu", "eru": OTHER, OTHER: OTHER}
+
+
+def test_lookalikes_are_left_out_not_learnt_as_other():
+    items = [Item(str(i), "fufu", "s", str(i)) for i in range(5)] + [Item(f"b{i}", "banku", "s", f"b{i}") for i in range(2)]
+    items += [Item("x", "eru", "s", "x"), Item("y", OTHER, "s", "y")]
+    classes = choose_classes(items, min_images=3)
+    kept = drop_lookalikes(items, classes, ["banku"])
+    assert Counter(i.dish for i in kept) == {"fufu": 5, "eru": 1, OTHER: 1}
+    # a look-alike with enough images stays a class
+    assert len(drop_lookalikes(items, ["banku", "fufu", OTHER], ["banku"])) == len(items)
 
 
 def test_cap_per_dish():

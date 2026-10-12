@@ -85,6 +85,12 @@ of dish images), above all ugali and fufu. Most of their errors are refusals
 pounded yam) are learnt as `other`. 3 of 431 test images change their top
 answer between the Keras and the TFLite model.
 
+Change for the next run: these four look-alikes are no longer learnt as
+`other`; they are left out of training and test (`lookalikes_not_other` in
+`training/config.yaml`). Expected effect, to be measured: fewer refusals of
+fufu and ugali, at the cost of naming fufu or ugali for a banku or pounded-yam
+photo, which the user then corrects.
+
 Known limits of this evaluation:
 
 - Test images come from the same sources as training images (Commons photos,
