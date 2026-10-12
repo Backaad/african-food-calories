@@ -1,0 +1,36 @@
+name: release
+
+# When a release is published on GitHub (Releases -> Draft a new release),
+# builds the Android app from that tag and attaches app-release.apk to it.
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.47.7"
+          channel: stable
+          cache: true
+      - run: python3 tool/sync_assets.py --check
+      - run: flutter test
+      - run: flutter build apk --release
+      - name: Attach the APK to the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release upload "${{ github.event.release.tag_name }}" build/app/outputs/flutter-apk/app-release.apk --clobber

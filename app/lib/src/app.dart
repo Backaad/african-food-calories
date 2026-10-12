@@ -16,6 +16,7 @@ class AfcApp extends StatelessWidget {
     return ListenableBuilder(
       listenable: settings,
       builder: (context, _) => MaterialApp(
+        debugShowCheckedModeBanner: false,
         onGenerateTitle: (context) => AppLocalizations.of(context).appTitle,
         theme: ThemeData(colorSchemeSeed: _seed, brightness: Brightness.light),
         darkTheme: ThemeData(colorSchemeSeed: _seed, brightness: Brightness.dark),
