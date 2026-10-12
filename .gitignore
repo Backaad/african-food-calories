@@ -1,0 +1,9 @@
+# Downloaded images never go into git: scripts fetch them from their source.
+data/raw/
+data/inventory/*.jsonl
+*.part
+
+__pycache__/
+.pytest_cache/
+.venv/
+.env

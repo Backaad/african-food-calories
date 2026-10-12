@@ -1,0 +1,209 @@
+# Image sources for african-food-calories.
+#
+# Every source we considered is listed here, including the ones we do NOT use,
+# with the reason. Scripts in this folder refuse to download from a source whose
+# status is not `approved` or `approved_per_item`.
+#
+# status values:
+#   approved           the whole source may be used under `license`.
+#   approved_per_item  the source mixes licenses; each image is kept only if its
+#                      own license is in `policy.allowed_licenses` (checked by script).
+#   pending            not usable until the open questions are answered.
+#   excluded           not usable; see `status_reason`.
+#
+# `review.verified_by` says how each fact was checked. "web search snippet" means
+# the page itself could not be opened from the build environment and the fact
+# comes from a search engine summary of that page: re-check before relying on it.
+
+policy:
+  # Licence families accepted for training images. Version numbers are ignored
+  # (CC BY 2.0, 3.0, 4.0 ... are all "cc-by").
+  allowed_licenses: [cc0, pd, cc-by, cc-by-sa]
+  # Rejected on purpose: anything NonCommercial (nc) or NoDerivatives (nd),
+  # fair use, "all rights reserved", GFDL-only, and unknown licences.
+  # Images copied from Google, Facebook, Instagram, YouTube or Bing are rejected
+  # even when a dataset that contains them declares an open licence: the
+  # dataset authors cannot relicense photos they do not own.
+  never_from: [google, facebook, instagram, youtube, bing]
+
+sources:
+  # ---------------------------------------------------------------- per-item
+  - id: wikimedia-commons
+    name: Wikimedia Commons
+    url: https://commons.wikimedia.org
+    kind: per_item_api
+    status: approved_per_item
+    license: per file (CC0, public domain, CC BY, CC BY-SA kept; everything else dropped)
+    attribution: >-
+      Per file. The download script stores author, licence, licence URL and file
+      page URL for every image in ATTRIBUTION.csv next to the images.
+    review:
+      date: 2026-10-12
+      verified_by: >-
+        Licence is read per file from the Commons API (extmetadata License /
+        LicenseShortName) and filtered by data/afcdata/licenses.py.
+    notes: >-
+      Counts come from Commons categories (see data/dishes.yaml). Images still
+      need a human check (right dish, real photo, no duplicates) before training.
+
+  - id: openverse
+    name: Openverse
+    url: https://openverse.org
+    kind: per_item_api
+    status: approved_per_item
+    license: per image (queried with license=cc0,pdm,by,by-sa)
+    attribution: Per image, stored in ATTRIBUTION.csv like Commons.
+    review:
+      date: 2026-10-12
+      verified_by: >-
+        Licence filter is applied in the API query and re-checked per result by
+        data/afcdata/licenses.py. Wikimedia results are skipped to avoid
+        double counting with the Commons source.
+    notes: >-
+      Anonymous API access is heavily rate limited. Search hits are matched on
+      title/tags and are much noisier than Commons categories: treat counts as an
+      upper bound. An optional API token can be supplied through the
+      OPENVERSE_CLIENT_ID / OPENVERSE_CLIENT_SECRET environment variables.
+
+  # ---------------------------------------------------------------- datasets
+  - id: mendeley-african-foods
+    name: African Foods Datasets
+    url: https://data.mendeley.com/datasets/rrzhwbg3kw
+    doi: 10.17632/rrzhwbg3kw.2
+    version: 2
+    published: 2023-12-20
+    kind: dataset
+    declared_license: CC BY 4.0
+    authors: [Grace Ataguba, Emeka Ogbuju, Daniel James Omaye, Rock Ezekiel]  # Mendeley v1 contributors (search snippet)
+    paper:
+      title: African foods for deep learning-based food recognition systems dataset
+      journal: Data in Brief 53 (2024) 110092
+      pmc: https://pmc.ncbi.nlm.nih.gov/articles/PMC10847758
+      pubmed: https://pubmed.ncbi.nlm.nih.gov/38328289/
+    dishes: [ekwang, eru, ndole, jollof_rice, palm_nut_soup, waakye]
+    reported_counts: {ekwang: 204, eru: 206, ndole: 205, jollof_rice: 347, palm_nut_soup: 392, waakye: 400}
+    provenance: >-
+      The Mendeley description and the paper say the images were collected from
+      YouTube, Facebook, Google Images, "other Creative Commons Attribution
+      sources" and the authors' own photos taken in restaurants ("Field").
+      YouTube/Facebook frames were captured with a screenshot tool, "contingent
+      upon the permissions of food page owners".
+    status: excluded
+    status_reason: >-
+      Most images come from Google Images, YouTube and Facebook. The dataset's
+      CC BY 4.0 label cannot cover photos the authors do not own, and the brief
+      forbids images from these platforms. The per-image origin is not published,
+      so the clean part cannot be separated.
+    open_questions:
+      - >-
+        Could the authors share only their own "Field" photos (Table 1 of the
+        paper reports roughly 5-40 per dish, extraction uncertain) and the
+        Creative Commons images with their original credits? That subset would
+        be usable but is far below 150 per dish.
+    review:
+      date: 2026-10-12
+      verified_by: >-
+        web search snippets of the Mendeley record and of the Data in Brief
+        paper (PMC10847758). The Mendeley page could not be opened directly.
+
+  - id: mendeley-nigerian-food
+    name: Nigerian Food Dataset
+    url: https://data.mendeley.com/datasets/2vktdxfxv7
+    doi: 10.17632/2vktdxfxv7.2
+    version: 2
+    published: 2024-11-11
+    kind: dataset
+    declared_license: CC BY 4.0
+    authors: [Tito Osadebey, Samuel Oyefusi, Micah Udeogu]
+    dishes: []  # 10 Nigerian dishes; class names not confirmed
+    provenance: >-
+      The Mendeley description says: "Data was collected from Bing Images via a
+      python script."
+    status: excluded
+    status_reason: >-
+      Images scraped from Bing image search. Their copyright belongs to the
+      original photographers, not to the dataset authors, so the CC BY 4.0 label
+      does not make them reusable.
+    review:
+      date: 2026-10-12
+      verified_by: web search snippet of the Mendeley record (page not reachable directly).
+
+  - id: camerfood10
+    name: CamerFood10
+    url: https://github.com/babanthierry94/mid-DeepLabv3plus
+    kind: dataset
+    declared_license: '"CamerFood10 dataset can be used only for non-commercial research purpose." (README, Agreement section)'
+    authors: [Thierry Roland Baban A Erep, Lotfi Chaari]
+    paper:
+      title: "mid-DeepLabv3+: A Novel Approach for Image Semantic Segmentation Applied to African Food Dietary Assessments"
+      journal: Sensors 24(1) 209 (2024)
+      doi: 10.3390/s24010209
+      pmc: https://pmc.ncbi.nlm.nih.gov/articles/PMC10781344
+    provenance: Not stated in the README.
+    status: excluded
+    status_reason: >-
+      Non-commercial research use only. That is not an open licence and is
+      incompatible with publishing a model and an app for everyone. Segmentation
+      (several foods per plate) is also out of scope for now.
+    review:
+      date: 2026-10-12
+      verified_by: README of the GitHub repository, read directly.
+
+  - id: kenyanfood13
+    name: KenyanFood13
+    url: https://github.com/monajalal/Kenyan-Food
+    kind: dataset
+    declared_license: none found (no LICENSE file or terms in the README)
+    authors: [Jalal, Wang, Sankara, Zheng, Nsoesie, Betke]  # surnames as listed in the README; first names not checked
+    paper:
+      title: Scraping Social Media Photos Posted in Kenya and Elsewhere to Detect and Analyze Food Types
+      venue: MADiMA 2019 workshop (ACM Multimedia)
+      arxiv: https://arxiv.org/abs/1909.00134
+    reported_counts_total: 8174  # 13 classes
+    provenance: Scraped from Instagram posts (March 2019), per the paper title and abstract.
+    status: excluded
+    status_reason: Instagram photos with no licence from their owners, and no dataset licence.
+    review:
+      date: 2026-10-12
+      verified_by: GitHub README read directly; provenance from web search snippets of the paper.
+
+  - id: roboflow-ethiopian-dishes
+    name: Ethiopian dishes (Roboflow Universe)
+    url: https://universe.roboflow.com/ethiopian-dishes
+    kind: dataset
+    declared_license: unknown
+    status: pending
+    status_reason: >-
+      The URL from the brief could not be opened and web search did not find
+      this dataset or its licence. Roboflow datasets each declare their own
+      licence (often CC BY 4.0) but frequently contain scraped images, so the
+      image origin must be checked too.
+    open_questions:
+      - Does the dataset exist at this URL, what licence does it declare, and where do its images come from?
+    review:
+      date: 2026-10-12
+      verified_by: not verified (page unreachable, no search result).
+
+  - id: hf-tinsae-ethiopian-foods
+    name: Tinsae/Ethiopian-foods (Hugging Face)
+    url: https://huggingface.co/datasets/Tinsae/Ethiopian-foods
+    kind: dataset
+    declared_license: unknown
+    provenance: The dataset card says the images were "collected from social medias".
+    status: excluded
+    status_reason: Social media images; found while looking for the Roboflow source above.
+    review:
+      date: 2026-10-12
+      verified_by: web search snippet of the dataset card.
+
+  - id: hf-devkyle-ghanaian-food
+    name: devkyle/ghanaian-food-dataset (Hugging Face)
+    url: https://huggingface.co/datasets/devkyle/ghanaian-food-dataset
+    kind: dataset
+    declared_license: none displayed
+    dishes: []  # 30 Ghanaian dishes
+    status: excluded
+    status_reason: No licence displayed. Excluded by the project brief unless the author clarifies.
+    review:
+      date: 2026-10-12
+      verified_by: web search snippets (page not reachable directly); no licence found.

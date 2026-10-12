@@ -1,0 +1,52 @@
+name: data
+
+on:
+  pull_request:
+    paths: ["data/**", ".github/workflows/data.yml"]
+  workflow_dispatch:
+    inputs:
+      only:
+        description: "Comma-separated dish ids (empty = all)"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r data/requirements-dev.txt
+      - run: python -m pytest -q data/tests
+
+  # Counts images from the live Commons and Openverse APIs (metadata only, no
+  # image download) and publishes the table in the run summary and as an artifact.
+  inventory:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r data/requirements.txt
+      - name: Count images per dish
+        env:
+          # Optional: raises the Openverse rate limit. Unset secrets are empty strings.
+          OPENVERSE_CLIENT_ID: ${{ secrets.OPENVERSE_CLIENT_ID }}
+          OPENVERSE_CLIENT_SECRET: ${{ secrets.OPENVERSE_CLIENT_SECRET }}
+          ONLY: ${{ github.event.inputs.only }}
+        run: |
+          python data/inventory.py ${ONLY:+--only "$ONLY"} --manifest data/inventory/commons-manifest.jsonl
+      - if: always()
+        run: cat data/inventory/inventory.md >> "$GITHUB_STEP_SUMMARY" || true
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: data-inventory
+          path: data/inventory/
