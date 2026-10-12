@@ -1,0 +1,418 @@
+# Standard recipes, one per dish of data/dishes.yaml.
+#
+# STATUS: DRAFT. These recipes and portion sizes were written from general
+# culinary knowledge, not measured. They must be reviewed by people who cook
+# these dishes and the values validated by a nutritionist. See
+# docs/nutrition-method.md.
+#
+# Format
+#   ingredients: grams per 100 g of the finished dish, as eaten. `code` is the
+#     WAFCT 2019 food code (the state given in the WAFCT name: raw, boiled,
+#     stewed, fried...). `water` is plain water (no nutrients). `g` is a number
+#     or a [low, high] range; the ranges make the low and high estimates.
+#   portions: small / medium / large serving in grams of the dish.
+#   proxy: true when the WAFCT has no entry for the real ingredient and a
+#     similar food is used instead (see `note`).
+#
+# Soups and sauces are described without their accompaniment (fufu, pounded
+# yam, rice, plantain...), which the user logs as a separate dish.
+
+recipes:
+  # ---------------------------------------------------------------- Cameroon
+  - id: ndole
+    portions: {small: 150, medium: 250, large: 350}
+    notes: Soup only, without plantain, miondo or rice.
+    ingredients:
+      - {code: "04_126", g: 30}           # bitter leaf (vernonia), boiled
+      - {code: "06_026", g: 12}           # groundnut paste
+      - {code: "07_086", g: 10}           # beef, moderately fat, stewed
+      - {code: "09_057", g: 3}            # dried crayfish
+      - {code: "04_018", g: 4}            # onion
+      - {code: "11_010", g: [5, 12]}      # vegetable oil
+      - {code: water, g: 32.5}
+
+  - id: eru
+    portions: {small: 150, medium: 250, large: 350}
+    notes: Soup only, without water fufu or garri.
+    ingredients:
+      - {code: "04_092", g: 25, proxy: true, note: "eru (Gnetum africanum) leaves are not in WAFCT 2019; cassava leaves used instead"}
+      - {code: "04_120", g: 25}           # waterleaf, boiled
+      - {code: "11_004", g: [8, 15]}      # red palm oil
+      - {code: "07_086", g: 8}            # beef, moderately fat, stewed
+      - {code: "09_053", g: 4}            # dried fish
+      - {code: "09_057", g: 3}            # dried crayfish
+      - {code: water, g: 23.5}
+
+  - id: ekwang
+    portions: {small: 150, medium: 250, large: 350}
+    ingredients:
+      - {code: "02_054", g: 40}           # cocoyam, white, boiled
+      - {code: "04_097", g: 15}           # cocoyam leaves, boiled
+      - {code: "11_004", g: [8, 15]}      # red palm oil
+      - {code: "09_053", g: 4}            # dried fish
+      - {code: "09_057", g: 3}            # dried crayfish
+      - {code: "04_018", g: 3}            # onion
+      - {code: water, g: 23.5}
+
+  - id: koki
+    portions: {small: 100, medium: 150, large: 250}
+    ingredients:
+      - {code: "03_101", g: 75, note: "cowpea paste approximated by dehulled cowpea, boiled"}
+      - {code: "11_004", g: [8, 15]}      # red palm oil
+      - {code: "04_046", g: 1}            # chilli pepper
+      - {code: water, g: 12.5}
+
+  - id: achu
+    portions: {small: 300, medium: 450, large: 600}
+    notes: Pounded taro with yellow soup, as served on the plate.
+    ingredients:
+      - {code: "02_074", g: 60}           # taro, boiled
+      - {code: "11_004", g: [8, 14]}      # red palm oil (yellow soup)
+      - {code: "07_086", g: 6}            # beef, moderately fat, stewed
+      - {code: water, g: 23}
+
+  - id: okok
+    portions: {small: 150, medium: 250, large: 350}
+    notes: Sweet okok (groundnut and sugar). Salty okok with palm nut is also common.
+    ingredients:
+      - {code: "04_092", g: 35, proxy: true, note: "okok (Gnetum africanum) leaves are not in WAFCT 2019; cassava leaves used instead"}
+      - {code: "06_026", g: [12, 18]}     # groundnut paste
+      - {code: "13_002", g: 3}            # sugar
+      - {code: water, g: 47}
+
+  - id: poulet_dg
+    portions: {small: 250, medium: 350, large: 500}
+    ingredients:
+      - {code: "07_103", g: 30}           # chicken, dark meat with skin, stewed
+      - {code: "02_084", g: 30}           # plantain, deep fried
+      - {code: "04_018", g: 8}            # onion
+      - {code: "04_049", g: 5}            # sweet pepper
+      - {code: "04_124", g: 8}            # tomato, boiled
+      - {code: "11_010", g: [4, 8]}       # vegetable oil
+      - {code: water, g: 13}
+
+  - id: mbongo_tchobi
+    portions: {small: 150, medium: 250, large: 350}
+    notes: Sauce with fish, without plantain or cassava. The mbongo spice itself is not in WAFCT 2019 and is left out.
+    ingredients:
+      - {code: "09_069", g: 35}           # mackerel, boiled
+      - {code: "11_010", g: [6, 12]}      # vegetable oil
+      - {code: "04_018", g: 5}            # onion
+      - {code: "04_124", g: 5}            # tomato, boiled
+      - {code: water, g: 46}
+
+  - id: sanga
+    portions: {small: 200, medium: 300, large: 450}
+    ingredients:
+      - {code: "01_104", g: 45}           # maize, whole kernel, boiled
+      - {code: "04_092", g: 25}           # cassava leaves, boiled
+      - {code: "05_040", g: [10, 18], note: "palm nut juice approximated by oil palm fruit"}
+      - {code: "13_002", g: 2}            # sugar
+      - {code: water, g: 14}
+
+  - id: bobolo
+    portions: {small: 100, medium: 200, large: 300}
+    ingredients:
+      - {code: "02_041", g: 100, proxy: true, note: "bobolo (steamed fermented cassava stick) is not in WAFCT 2019; wet fermented cassava paste used instead"}
+
+  - id: miondo
+    portions: {small: 100, medium: 150, large: 250}
+    ingredients:
+      - {code: "02_041", g: 100, proxy: true, note: "miondo (thin steamed fermented cassava stick) is not in WAFCT 2019; wet fermented cassava paste used instead"}
+
+  - id: puff_puff
+    portions: {small: 60, medium: 100, large: 150}
+    notes: Fried dough. Ingredient amounts are for the fried product (part of the water evaporates).
+    ingredients:
+      - {code: "01_043", g: 50}           # wheat flour, white
+      - {code: "13_002", g: 10}           # sugar
+      - {code: "13_017", g: 1}            # dried yeast
+      - {code: water, g: 21}
+      - {code: "11_010", g: [12, 22]}     # vegetable oil absorbed in frying
+
+  # ---------------------------------------------------------------- Ghana
+  - id: jollof_rice
+    portions: {small: 250, medium: 350, large: 500}
+    notes: Rice only, without the chicken or fish served with it.
+    ingredients:
+      - {code: "01_135", g: 70}           # rice, white, boiled
+      - {code: "04_124", g: 8}            # tomato, boiled
+      - {code: "04_066", g: 2}            # tomato paste
+      - {code: "04_018", g: 3}            # onion
+      - {code: "04_046", g: 1}            # chilli pepper
+      - {code: "11_010", g: [5, 10]}      # vegetable oil
+      - {code: "13_008", g: 0.5}          # stock cube
+      - {code: water, g: 8}
+
+  - id: waakye
+    portions: {small: 250, medium: 350, large: 500}
+    notes: Rice and beans only, without shito, gari, spaghetti or eggs.
+    ingredients:
+      - {code: "01_135", g: 60}           # rice, white, boiled
+      - {code: "03_007", g: 30}           # cowpea, boiled
+      - {code: "11_010", g: [0, 3]}       # oil sometimes added
+      - {code: water, g: 8.5}
+
+  - id: palm_nut_soup
+    portions: {small: 150, medium: 250, large: 350}
+    notes: Soup only, without fufu, banku or rice.
+    ingredients:
+      - {code: "05_040", g: [18, 28], note: "palm nut cream approximated by oil palm fruit"}
+      - {code: "07_112", g: 10}           # goat meat, stewed
+      - {code: "09_053", g: 3}            # dried fish
+      - {code: "04_124", g: 6}            # tomato, boiled
+      - {code: "04_018", g: 4}            # onion
+      - {code: "04_046", g: 1}            # chilli pepper
+      - {code: water, g: 53}
+
+  - id: banku
+    portions: {small: 200, medium: 300, large: 450}
+    ingredients:
+      - {code: "01_099", g: 100, proxy: true, note: "banku is not in WAFCT 2019; kenkey (cooked fermented maize dough) used instead"}
+
+  - id: kenkey
+    portions: {small: 150, medium: 250, large: 350}
+    ingredients:
+      - {code: "01_099", g: 100}          # kenkey, cooked
+
+  - id: fufu
+    portions: {small: 200, medium: 300, large: 450}
+    notes: Cassava fufu. Fufu from yam or plantain has different values.
+    ingredients:
+      - {code: "02_041", g: 100}          # fermented cassava paste (wet fufu)
+
+  - id: red_red
+    portions: {small: 150, medium: 250, large: 350}
+    notes: Bean stew only, without the fried plantain.
+    ingredients:
+      - {code: "03_007", g: 55}           # cowpea, boiled
+      - {code: "11_004", g: [6, 12]}      # red palm oil
+      - {code: "04_018", g: 5}            # onion
+      - {code: "04_124", g: 6}            # tomato, boiled
+      - {code: water, g: 25}
+
+  - id: kelewele
+    portions: {small: 100, medium: 150, large: 250}
+    ingredients:
+      - {code: "02_084", g: 95}           # plantain, deep fried
+      - {code: "04_082", g: 2}            # ginger
+      - {code: "04_046", g: 1}            # chilli pepper
+      - {code: "11_010", g: [0, 4], note: "extra oil absorbed, beyond the WAFCT fried plantain"}
+
+  # ---------------------------------------------------------------- Nigeria
+  - id: egusi_soup
+    portions: {small: 150, medium: 250, large: 350}
+    notes: Soup only, without pounded yam, fufu or eba.
+    ingredients:
+      - {code: "06_013", g: 12}           # melon seed (egusi), kernel
+      - {code: "11_004", g: [6, 12]}      # red palm oil
+      - {code: "04_086", g: 15}           # amaranth leaves, boiled
+      - {code: "07_086", g: 8}            # beef, moderately fat, stewed
+      - {code: "09_053", g: 3}            # dried fish
+      - {code: "09_057", g: 3}            # dried crayfish
+      - {code: "04_018", g: 3}            # onion
+      - {code: water, g: 47}
+
+  - id: moi_moi
+    portions: {small: 100, medium: 150, large: 250}
+    ingredients:
+      - {code: "03_101", g: 70}           # dehulled cowpea, boiled
+      - {code: "11_010", g: [5, 10]}      # vegetable or palm oil
+      - {code: "04_018", g: 4}            # onion
+      - {code: "04_046", g: 2}            # chilli pepper
+      - {code: "08_002", g: 5}            # egg, boiled
+      - {code: "09_057", g: 2}            # dried crayfish
+      - {code: water, g: 9.5}
+
+  - id: pounded_yam
+    portions: {small: 200, medium: 300, large: 450}
+    ingredients:
+      - {code: "02_077", g: 95}           # yam, boiled
+      - {code: water, g: 5}
+
+  - id: amala
+    portions: {small: 200, medium: 300, large: 450}
+    ingredients:
+      - {code: "02_036", g: [25, 38]}     # yam flour; the flour-to-water ratio varies a lot
+      - {code: water, g: 68.5}
+
+  - id: suya
+    portions: {small: 80, medium: 150, large: 250}
+    ingredients:
+      - {code: "07_011", g: 85}           # beef, lean, grilled
+      - {code: "06_026", g: [5, 8], note: "suya spice (kuli kuli) approximated by groundnut paste"}
+      - {code: "11_010", g: [2, 5]}       # oil brushed on
+      - {code: "13_006", g: 2}            # dried chilli
+      - {code: "04_018", g: 3}            # onion
+
+  - id: akara
+    portions: {small: 50, medium: 100, large: 150}
+    ingredients:
+      - {code: "03_101", g: 72, note: "soaked ground cowpea approximated by dehulled cowpea, boiled"}
+      - {code: "04_018", g: 5}            # onion
+      - {code: "04_046", g: 2}            # chilli pepper
+      - {code: "11_010", g: [15, 25]}     # oil absorbed in frying
+      - {code: "13_015", g: 1}            # salt
+
+  - id: pepper_soup
+    portions: {small: 200, medium: 300, large: 450}
+    ingredients:
+      - {code: "07_112", g: 25}           # goat meat, stewed
+      - {code: "04_018", g: 2}            # onion
+      - {code: "04_046", g: 1}            # chilli pepper
+      - {code: "11_010", g: [0, 2]}       # oil, often none
+      - {code: water, g: 71}
+
+  # ---------------------------------------------------------------- Côte d'Ivoire, Senegal
+  - id: attieke
+    portions: {small: 150, medium: 250, large: 350}
+    ingredients:
+      - {code: "02_041", g: 96, proxy: true, note: "attiéké (steamed fermented cassava granules) is not in WAFCT 2019; wet fermented cassava paste used instead"}
+      - {code: "11_010", g: [0, 4]}       # oil sometimes mixed in
+
+  - id: alloco
+    portions: {small: 100, medium: 150, large: 250}
+    ingredients:
+      - {code: "02_084", g: 98}           # plantain, deep fried
+      - {code: "11_010", g: [0, 4], note: "extra oil absorbed, beyond the WAFCT fried plantain"}
+
+  - id: thieboudienne
+    portions: {small: 250, medium: 350, large: 500}
+    ingredients:
+      - {code: "01_135", g: 55}           # rice, white, boiled
+      - {code: "09_046", g: 12}           # white grouper, steamed
+      - {code: "04_090", g: 5}            # cabbage, boiled
+      - {code: "04_102", g: 4}            # eggplant, boiled
+      - {code: "02_051", g: 4}            # cassava, boiled
+      - {code: "04_066", g: 2}            # tomato paste
+      - {code: "04_018", g: 3}            # onion
+      - {code: "11_010", g: [6, 12]}      # vegetable oil
+      - {code: water, g: 6}
+
+  - id: yassa
+    portions: {small: 150, medium: 250, large: 350}
+    notes: Chicken and onion sauce, without rice.
+    ingredients:
+      - {code: "07_103", g: 35}           # chicken, dark meat with skin, stewed
+      - {code: "04_112", g: 45}           # onion, boiled
+      - {code: "12_010", g: 3}            # lemon juice
+      - {code: "11_010", g: [6, 12]}      # vegetable oil
+      - {code: water, g: 8}
+
+  - id: mafe
+    portions: {small: 150, medium: 250, large: 350}
+    notes: Peanut stew without rice.
+    ingredients:
+      - {code: "07_086", g: 15}           # beef, moderately fat, stewed
+      - {code: "06_026", g: [10, 14]}     # groundnut paste
+      - {code: "04_066", g: 3}            # tomato paste
+      - {code: "04_018", g: 3}            # onion
+      - {code: "02_068", g: 10}           # potato, boiled
+      - {code: "04_090", g: 5}            # cabbage, boiled
+      - {code: "11_010", g: [2, 6]}       # vegetable oil
+      - {code: water, g: 48}
+
+  # ---------------------------------------------------------------- East Africa
+  - id: ugali
+    portions: {small: 200, medium: 300, large: 450}
+    ingredients:
+      - {code: "01_080", g: [30, 38]}     # white maize meal, sifted
+      - {code: water, g: 66}
+
+  - id: sukuma_wiki
+    portions: {small: 100, medium: 150, large: 250}
+    ingredients:
+      - {code: "04_086", g: 75, proxy: true, note: "kale (collard greens) is not in WAFCT 2019; amaranth leaves used instead"}
+      - {code: "04_018", g: 8}            # onion
+      - {code: "04_124", g: 8}            # tomato, boiled
+      - {code: "11_010", g: [4, 8]}       # vegetable oil
+      - {code: water, g: 3}
+
+  - id: githeri
+    portions: {small: 200, medium: 300, large: 450}
+    ingredients:
+      - {code: "01_104", g: 45}           # maize, whole kernel, boiled
+      - {code: "03_023", g: 40}           # white beans, boiled
+      - {code: "04_018", g: 3}            # onion
+      - {code: "04_124", g: 4}            # tomato, boiled
+      - {code: "11_010", g: [2, 5]}       # vegetable oil
+      - {code: water, g: 4.5}
+
+  - id: nyama_choma
+    portions: {small: 150, medium: 250, large: 400}
+    ingredients:
+      - {code: "07_048", g: 100}          # goat meat, moderately fat, grilled
+
+  - id: pilau
+    portions: {small: 250, medium: 350, large: 500}
+    ingredients:
+      - {code: "01_135", g: 70}           # rice, white, boiled
+      - {code: "07_086", g: 10}           # beef, moderately fat, stewed
+      - {code: "04_018", g: 4}            # onion
+      - {code: "11_010", g: [4, 8]}       # vegetable oil
+      - {code: water, g: 10}
+
+  - id: chapati
+    portions: {small: 60, medium: 100, large: 180}
+    notes: One chapati weighs about 60 to 80 g.
+    ingredients:
+      - {code: "01_043", g: 55}           # wheat flour, white
+      - {code: water, g: 32}
+      - {code: "11_010", g: [8, 14]}      # vegetable oil
+      - {code: "13_002", g: 1}            # sugar
+      - {code: "13_015", g: 0.5}          # salt
+
+  - id: matoke
+    portions: {small: 200, medium: 300, large: 450}
+    ingredients:
+      - {code: "05_048", g: 80, note: "green banana, raw values used for the boiled banana"}
+      - {code: "04_018", g: 4}            # onion
+      - {code: "04_124", g: 6}            # tomato, boiled
+      - {code: "11_010", g: [2, 6]}       # vegetable oil
+      - {code: water, g: 6}
+
+  - id: injera
+    portions: {small: 100, medium: 200, large: 300}
+    notes: One injera weighs about 120 to 150 g.
+    ingredients:
+      - {code: "01_184", g: [35, 42], note: "teff batter: raw teff grain values for the flour"}
+      - {code: water, g: 61.5}
+
+  - id: doro_wat
+    portions: {small: 150, medium: 250, large: 350}
+    notes: Stew only, without injera.
+    ingredients:
+      - {code: "07_103", g: 30}           # chicken, dark meat with skin, stewed
+      - {code: "08_002", g: 10}           # egg, boiled
+      - {code: "04_112", g: 30}           # onion, boiled
+      - {code: "11_015", g: [6, 12]}      # ghee (niter kibbeh)
+      - {code: "13_006", g: 3}            # dried chilli (berbere)
+      - {code: water, g: 18}
+
+  - id: tibs
+    portions: {small: 150, medium: 250, large: 350}
+    ingredients:
+      - {code: "07_011", g: 60}           # beef, lean, grilled
+      - {code: "04_018", g: 15}           # onion
+      - {code: "04_124", g: 5}            # tomato, boiled
+      - {code: "04_046", g: 3}            # chilli pepper
+      - {code: "11_010", g: [5, 10]}      # oil or ghee
+      - {code: water, g: 9.5}
+
+  - id: shiro
+    portions: {small: 150, medium: 250, large: 350}
+    notes: Stew only, without injera.
+    ingredients:
+      - {code: "03_045", g: [12, 16], proxy: true, note: "chickpea flour is not in WAFCT 2019; dehulled cowpea, raw, used instead"}
+      - {code: "04_018", g: 8}            # onion
+      - {code: "04_124", g: 5}            # tomato, boiled
+      - {code: "04_015", g: 1}            # garlic
+      - {code: "11_010", g: [5, 10]}      # vegetable oil
+      - {code: water, g: 64.5}
+
+  - id: kitfo
+    portions: {small: 100, medium: 150, large: 250}
+    ingredients:
+      - {code: "07_009", g: 85}           # beef, lean, raw
+      - {code: "11_015", g: [10, 15]}     # ghee (niter kibbeh)
+      - {code: "13_006", g: 2.5}          # dried chilli (mitmita)

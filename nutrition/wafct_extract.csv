@@ -1,0 +1,58 @@
+code,name_en,name_fr,energy_kcal,water_g,protein_g,fat_g,carbohydrate_g,fibre_g,estimated
+01_043,"Wheat flour, white, unfortified","Farine de blé, blanche, non enrichie",352,12.2,10.4,1.8,72.2,2.8,
+01_080,"Maize, white, meal, sifted, unfortified","Maïs, blanc, farine tamisée, non enrichi",353,11.5,8.7,3.3,68.6,7,
+01_099,"Maize dough, fermented (kenkey), from whole white maize with salt added, cooked","Maïs, pâte, fermentée (kenkey) de maïs blanc complet, salée, cuite",139,65.8,3.7,2.1,25.2,2.6,
+01_104,"Maize, white, whole kernel, boiled* (as part of a recipe)","Maïs, blanc, grain entier, bouilli* (ingrédient de recette)",112,71.3,3.1,1.2,20.2,3.7,
+01_135,"Rice, white, boiled* (as part of a recipe)","Riz, blanc, bouilli* (ingrédient de recette)",115,70.5,2.3,0.2,25.5,1.2,fat_g
+01_184,"Teff, whole grains, raw","Teff, grains entiers, cru",351,8.8,13.3,2.4,65.1,8,
+02_036,"Yam, tuber, flour, from white yam tuber","Igname, tubercule, blanc, farine",327,9.3,6.8,0.6,66.3,14.4,fat_g
+02_041,"Cassava, fermented paste from white cassava flour (wet fufu)","Manioc, pâte fermentée de farine blanche de manioc (foufou humide)",165,57.6,1,0.4,38.7,1.7,fat_g
+02_051,"Cassava, tuber, white flesh, boiled* (as part of a recipe)","Manioc, tubercule, chair blanche, bouilli* (ingrédient de recette)",121,67.6,1.1,0.3,27,3.2,
+02_054,"Cocoyam, tuber, white, boiled* (as part of a recipe)","Chou caraïbe, tubercule, blanc, bouilli* (ingrédient de recette)",143,61.8,3.4,0.3,30.4,2.1,
+02_068,"Potato, boiled* (as part of a recipe)","Pomme de terre, bouillie* (ingrédient de recette)",79,78.2,1.5,0.1,17.4,1.7,
+02_074,"Taro, tuber, white, boiled* (as part of a recipe)","Taro, tubercule, blanc, bouilli* (ingrédient de recette)",125,66.2,2.6,0.8,24.9,4.1,
+02_077,"Yam, tuber, pale, boiled* (as part of a recipe)","Igname, tubercule, chair pâle, bouilli* (ingrédient de recette)",132,62.6,2.4,0.4,26.8,5.9,fat_g
+02_084,"Plantain, deep fried in unfortified vegetable oil*","Banane plantain, frite dans l’huile végétale non enrichie*",375,23.5,2.1,16.9,51.7,3.7,
+03_007,"Cowpea, not soaked, boiled* (without salt), drained","Niébé, non trempé, bouilli* (sans sel), égoutté",122,66.7,8.5,0.5,18.3,4.7,
+03_023,"Bean, white, not soaked, boiled* (without salt), drained","Haricot blanc, non trempé, bouilli* (sans sel), égoutté",123,65.3,8.2,0.9,17,7.1,
+03_045,"Cowpea, dehulled, raw","Niébé, décortiqué, cru",334,9.1,23.1,1.4,50.6,13.1,fat_g
+03_101,"Cowpea, dehulled, not soaked, boiled* (without salt), drained","Niébé, décortiqué, non trempé, bouilli* (sans sel), égoutté",125,66,8.6,0.5,19,4.9,fat_g
+04_015,"Garlic, flesh, raw","Ail, chair, cru",126,64.9,6.5,0.3,21.6,5.3,fat_g
+04_018,"Onion, fresh, raw","Oignon, frais, cru",37,89.3,1.1,0.1,7.1,1.8,fat_g
+04_046,"Pepper, chilli, fresh, raw","Piment, frais, cru",47,86,1.8,0.3,7.5,3.5,fat_g
+04_049,"Pepper, sweet, green, fresh, raw","Poivron vert, frais, cru",34,90,0.9,0.4,5.6,2.4,fat_g
+04_066,"Tomato, paste, concentrated, without salt","Concentré de tomate, sans sel",80,76.2,3.2,0.5,13.6,4.1,fat_g
+04_082,"Ginger, root, raw","Gingembre, racine, crue",63,81.3,2.2,0.9,9,5.4,
+04_086,"Amaranth, leaves, fresh, boiled* (as part of a recipe)","Amaranthe, feuilles, fraîches, bouillies* (ingrédient de recette)",42,84.7,4.4,0.5,3.2,4.1,fat_g
+04_090,"Cabbage, white, boiled* (as part of a recipe)","Chou, blanc, bouilli* (ingrédient de recette)",28,91.1,1.8,0.1,3.9,2.4,fat_g
+04_092,"Cassava, leaves, fresh, boiled* (as part of a recipe)","Manioc, feuilles, fraîches, bouillies* (ingrédient de recette)",99,70.3,8,1.2,9.7,8.4,
+04_097,"Cocoyam, leaves, fresh, boiled* (as part of a recipe)","Chou caraïbe, feuilles, fraîches, bouillies* (ingrédient de recette)",41,86.8,3.7,0.7,2.5,4.7,
+04_102,"Eggplant, fruit, boiled* (as part of a recipe)","Aubergine, fruit, bouilli* (ingrédient de recette)",39,87.5,1.4,0.4,4.9,5,fat_g
+04_112,"Onion, fresh, boiled* (as part of a recipe)","Oignon, frais, bouilli* (ingrédient de recette)",46,87,1.4,0.1,8.7,2.2,fat_g
+04_120,"Waterleaf, leaves, fresh, boiled* (as part of a recipe)","Feuille d’eau, feuilles, fraîches, bouillies* (ingrédient de recette)",43,86.4,2.5,0.7,4.6,4.1,fat_g
+04_124,"Tomato, red, ripe, boiled* (as part of a recipe)","Tomate, rouge, mûre, bouillie* (ingrédient de recette)",28,91.5,1.4,0.2,4.4,1.8,fat_g
+04_126,"Vernonia, leaves, bitter, fresh, boiled* (as part of a recipe)","Vernonie, feuilles, amères, fraîches, bouillies* (ingrédient de recette)",69,79,5.3,1,7.1,5.4,
+05_040,"Oil palm, fruit, raw","Noix de palme, crue",540,28.1,1.9,52.6,12.9,3.6,fat_g fibre_g
+05_048,"Banana, sweet, flesh, unripe (green), raw","Banane, chair, sucrée, non mûre (verte), crue",115,69.1,1,0.5,24.9,3.6,fat_g
+06_013,"Melon seed, kernel only, dried, raw","Graines d’égousi/pistache africaine, séchées, crues",574,6.3,27.6,45,11.6,6,
+06_026,"Groundnut paste, from groundnuts only","Arachide, pâte pure",605,4.6,23.9,49.9,11,8.3,fat_g
+07_009,"Beef meat, lean, ca. 5% fat, raw","Viande de bœuf, maigre, environ 5% de matière grasse, crue",131,71.4,22.5,4.6,0,0,
+07_011,"Beef meat, lean, ca. 5% fat, grilled* (without salt or fat)","Viande de bœuf, maigre, environ 5% de matière grasse, grillée* (sans sel ni graisse)",182,60.3,31.3,6.3,0,0,
+07_048,"Goat meat, moderately fat, ca. 10% fat, grilled* (without salt or fat)","Viande de chèvre, teneur modérée en matière grasse (env. 10%), grillée* (sans sel ni graisse)",204,56.9,25.6,11.3,0,0,
+07_086,"Beef meat, moderately fat, ca. 20% fat, stewed* (as part of a recipe)","Viande de bœuf, teneur modérée en matière grasse (env. 20%), mijotée* (ingrédient de recette)",336,45.5,26.2,25.7,0,0,
+07_103,"Chicken, dark meat with skin, stewed* (as part of a recipe)","Poulet, chair brune avec la peau, mijotée* (ingrédient de recette)",331,50.6,23.8,26.2,0,0,
+07_112,"Goat meat, moderately fat, ca. 10% fat, stewed* (as part of a recipe)","Viande de chèvre, teneur modérée en matière grasse (env. 10%), mijotée* (ingrédient de recette)",281,44.1,31,17.5,0,0,
+08_002,"Egg, chicken, boiled* (without salt)","Œuf, poule, bouilli* (sans sel)",150.2,74.5,13.5,10.6,0.2,0,fat_g
+09_046,"White grouper, fillet, steamed* (without salt)","Mérou blanc, filet, cuit à la vapeur* (sans sel)",115.7,71.8,23.3,2.5,0,0,
+09_053,"Fish, whole, dried","Poisson, entier, séché",316,13.5,60.4,8.2,0,0,
+09_057,"Shrimp (crayfish), whole, dried","Crevette, entière, séchée",322,12.3,63.1,4.2,7.9,0,
+09_069,"Mackerel, fillet, boiled* (as part of a recipe)","Maquereau, filet, bouilli* (ingrédient de recette)",171.4,57,28,6.6,0,0,
+11_004,"Palm oil, red","Huile de palme, rouge",898,0.5,0,99.8,0,0,
+11_010,"Vegetable oil, unfortified","Huile végétale, non enrichie",900,0,0,100,0,0,
+11_015,"Oil, from cow’s milk butter (ghee)","Beurre clarifié, de vache (ghee)",892,0,0.2,99,0,0,
+12_010,"Juice, lemon, fresh, unsweetened","Jus de citron, frais, sans sucre ajouté",36,90.8,0.4,0.1,8.3,0.1,
+13_002,"Sugar, white","Sucre, blanc",400,0,0,0,100,0,
+13_006,"Chilli pepper, dried","Piment rouge, séché",347,8,15,15.5,21.2,31.1,
+13_008,"Cube, beef, dry","Bouillon-cube, bœuf, sec",190,4.3,15.5,7.4,15.5,0,
+13_015,Salt,Sel,0,0.5,0,0,0,0,
+13_017,"Yeast, dried","Levure, séchée",342,5.5,38.4,6.3,21.2,23.3,

@@ -1,0 +1,37 @@
+name: nutrition
+
+on:
+  pull_request:
+    paths: ["nutrition/**", ".github/workflows/nutrition.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r nutrition/requirements.txt pytest
+      - run: python -m pytest -q nutrition/tests
+      - name: dishes.json is up to date with recipes and the WAFCT extract
+        if: hashFiles('nutrition/wafct_extract.csv') != ''
+        run: python nutrition/compute.py --check
+
+  # Downloads the WAFCT 2019 Excel file and prints the foods used by the recipes.
+  # The file itself is never uploaded (FAO licence, see nutrition/README.md).
+  wafct:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r nutrition/requirements.txt
+      - run: python nutrition/wafct.py intro
+      - name: wafct_extract.csv matches WAFCT 2019 (prints a fresh extract otherwise)
+        run: python nutrition/wafct.py extract --check
