@@ -1,11 +1,14 @@
 # Standard recipes, one per dish of data/dishes.yaml.
 #
-# STATUS: DRAFT. These recipes and portion sizes were written from general
-# culinary knowledge, not measured. They must be reviewed by people who cook
+# STATUS: DRAFT. Recipes with `sources` were checked against published recipes;
+# the others were written from general culinary knowledge. Nothing was measured. They must be reviewed by people who cook
 # these dishes and the values validated by a nutritionist. See
 # docs/nutrition-method.md.
 #
 # Format
+#   sources: published recipes or measurements the amounts were derived from
+#     (blogs and recipe sites mostly; checked online on 2026-10-12). `notes` say
+#     how they were converted to grams per 100 g of finished dish.
 #   ingredients: grams per 100 g of the finished dish, as eaten. `code` is the
 #     WAFCT 2019 food code (the state given in the WAFCT name: raw, boiled,
 #     stewed, fried...). `water` is plain water (no nutrients). `g` is a number
@@ -21,97 +24,144 @@ recipes:
   # ---------------------------------------------------------------- Cameroon
   - id: ndole
     portions: {small: 150, medium: 250, large: 350}
-    notes: Soup only, without plantain, miondo or rice.
+    notes: >-
+      Soup only, without plantain, miondo or rice. Scaled from afrik.com (2 kg
+      leaves, 1.6 kg beef, 300 g groundnut paste, 150 g dried shrimp, 2 dl oil):
+      about 3.6 kg cooked. Meat varies a lot (fish, beef, shrimp "royal").
+    sources: ["https://www.afrik.com/ndole-a-la-viande", "https://laviebami.com/?p=1118"]
     ingredients:
-      - {code: "04_126", g: 30}           # bitter leaf (vernonia), boiled
-      - {code: "06_026", g: 12}           # groundnut paste
-      - {code: "07_086", g: 10}           # beef, moderately fat, stewed
-      - {code: "09_057", g: 3}            # dried crayfish
-      - {code: "04_018", g: 4}            # onion
-      - {code: "11_010", g: [5, 12]}      # vegetable oil
-      - {code: water, g: 32.5}
+      - {code: "04_126", g: 40}           # bitter leaf (vernonia), boiled
+      - {code: "06_026", g: [8, 12]}      # groundnut paste
+      - {code: "07_086", g: [10, 25]}     # beef, moderately fat, stewed
+      - {code: "09_057", g: 4}            # dried crayfish / shrimp
+      - {code: "04_018", g: 3}            # onion
+      - {code: "11_010", g: [5, 10]}      # vegetable oil
+      - {code: water, g: 18}
 
   - id: eru
     portions: {small: 150, medium: 250, large: 350}
-    notes: Soup only, without water fufu or garri.
+    notes: >-
+      Soup only, without water fufu or garri. From afrifoodnetwork (serves 8:
+      100 g dried eru, 750 g spinach or waterleaf, 1 kg beef and skin, 500 g
+      smoked fish, 30 g crayfish, 500 ml palm oil) and africanbites (1 cup palm
+      oil for a similar pot): palm oil 7 to 16 % of the cooked soup.
+    sources: ["https://afrifoodnetwork.com/recipes/soup-stew-recipes/eru-soup/", "https://www.africanbites.com/?p=1821"]
     ingredients:
-      - {code: "04_092", g: 25, proxy: true, note: "eru (Gnetum africanum) leaves are not in WAFCT 2019; cassava leaves used instead"}
-      - {code: "04_120", g: 25}           # waterleaf, boiled
-      - {code: "11_004", g: [8, 15]}      # red palm oil
-      - {code: "07_086", g: 8}            # beef, moderately fat, stewed
-      - {code: "09_053", g: 4}            # dried fish
-      - {code: "09_057", g: 3}            # dried crayfish
-      - {code: water, g: 23.5}
+      - {code: "04_092", g: 15, proxy: true, note: "eru (Gnetum africanum) leaves are not in WAFCT 2019; cassava leaves used instead"}
+      - {code: "04_120", g: 22}           # waterleaf, boiled
+      - {code: "11_004", g: [7, 16]}      # red palm oil
+      - {code: "07_086", g: 12}           # beef and cow skin, stewed
+      - {code: "09_053", g: 8, note: "smoked fish approximated by dried fish"}
+      - {code: "09_057", g: 1.5}          # dried crayfish
+      - {code: water, g: 30}
 
   - id: ekwang
     portions: {small: 150, medium: 250, large: 350}
+    notes: >-
+      From africanbites (serves 4-5: 1.8 kg grated cocoyam, 4-5 bunches of
+      leaves, 1.5-2 cups palm oil, meat, dried fish, crayfish) and the Kwacoco
+      Bible (1 cup palm oil, 8 servings): palm oil 7 to 13 % of the dish.
+    sources: ["https://africanbites.com/?p=6187", "https://afrifoodnetwork.com/?p=13350"]
     ingredients:
-      - {code: "02_054", g: 40}           # cocoyam, white, boiled
-      - {code: "04_097", g: 15}           # cocoyam leaves, boiled
-      - {code: "11_004", g: [8, 15]}      # red palm oil
-      - {code: "09_053", g: 4}            # dried fish
-      - {code: "09_057", g: 3}            # dried crayfish
-      - {code: "04_018", g: 3}            # onion
-      - {code: water, g: 23.5}
+      - {code: "02_054", g: 50}           # cocoyam, white, boiled
+      - {code: "04_097", g: 14}           # cocoyam leaves, boiled
+      - {code: "11_004", g: [7, 13]}      # red palm oil
+      - {code: "07_086", g: 8}            # beef, stewed
+      - {code: "09_053", g: 3}            # dried fish
+      - {code: "09_057", g: 1}            # dried crayfish
+      - {code: water, g: 14}
 
   - id: koki
     portions: {small: 100, medium: 150, large: 250}
+    notes: >-
+      From afrik.com: 500 g dried cowpea (soaked, dehulled), 30 cl palm oil,
+      0.5 l water, steamed in leaves (about 1.8 kg cooked).
+    sources: ["https://www.afrik.com/koki"]
     ingredients:
-      - {code: "03_101", g: 75, note: "cowpea paste approximated by dehulled cowpea, boiled"}
-      - {code: "11_004", g: [8, 15]}      # red palm oil
+      - {code: "03_045", g: 28}           # dehulled cowpea, raw (dry weight)
+      - {code: "11_004", g: [10, 17]}     # red palm oil
       - {code: "04_046", g: 1}            # chilli pepper
-      - {code: water, g: 12.5}
+      - {code: water, g: 57.5}
 
   - id: achu
     portions: {small: 300, medium: 450, large: 600}
-    notes: Pounded taro with yellow soup, as served on the plate.
+    notes: >-
+      Pounded taro with yellow soup, as served on the plate. From africanbites
+      and afrifoodnetwork (2 kg cocoyam, 1/2 cup palm oil, 6-7 cups stock,
+      0.5-0.9 kg meat for about 6): palm oil only 3 to 6 % of the plate.
+    sources: ["https://www.africanbites.com/wprm_print/achu-soup", "https://afrifoodnetwork.com/recipes/soup-stew-recipes/achu-soup/"]
     ingredients:
-      - {code: "02_074", g: 60}           # taro, boiled
-      - {code: "11_004", g: [8, 14]}      # red palm oil (yellow soup)
-      - {code: "07_086", g: 6}            # beef, moderately fat, stewed
-      - {code: water, g: 23}
+      - {code: "02_074", g: 57}           # taro, boiled
+      - {code: "11_004", g: [3, 6]}       # red palm oil (yellow soup)
+      - {code: "07_086", g: [6, 12]}      # beef, cow skin, tripe, stewed
+      - {code: water, g: 29.5}
 
   - id: okok
     portions: {small: 150, medium: 250, large: 350}
-    notes: Sweet okok (groundnut and sugar). Salty okok with palm nut is also common.
+    notes: >-
+      From Cameroun24 (about 4 servings: 250 g okok leaves, 400 g palm nut
+      juice, 300 g roasted groundnut paste, 500 ml water, 2 tbsp sugar).
+      Canned palm nut juice is taken as half palm fruit pulp, half water.
+    sources: ["https://cameroun24.net/article/24545-la-recette-de-l-okok-ou-fumbwa.html"]
     ingredients:
-      - {code: "04_092", g: 35, proxy: true, note: "okok (Gnetum africanum) leaves are not in WAFCT 2019; cassava leaves used instead"}
-      - {code: "06_026", g: [12, 18]}     # groundnut paste
-      - {code: "13_002", g: 3}            # sugar
-      - {code: water, g: 47}
+      - {code: "04_092", g: 20, proxy: true, note: "okok (Gnetum africanum) leaves are not in WAFCT 2019; cassava leaves used instead"}
+      - {code: "06_026", g: [18, 25]}     # groundnut paste
+      - {code: "05_040", g: [10, 18], note: "palm nut juice approximated by oil palm fruit"}
+      - {code: "13_002", g: 2}            # sugar
+      - {code: water, g: 42.5}
 
   - id: poulet_dg
     portions: {small: 250, medium: 350, large: 500}
+    notes: >-
+      From camer.be (6 servings: 2 kg chicken, 8 ripe plantains, 4 carrots,
+      2 peppers, 2 onions, 3 tomatoes, 200 g tomato sauce, 2 tbsp oil). The
+      plantain is fried; the chicken is sometimes fried too.
+    sources: ["https://www.camer.be/83261/11:1/societe", "https://www.afrik.com/poulet-dg"]
     ingredients:
-      - {code: "07_103", g: 30}           # chicken, dark meat with skin, stewed
+      - {code: "07_103", g: 27}           # chicken, dark meat with skin, stewed
       - {code: "02_084", g: 30}           # plantain, deep fried
-      - {code: "04_018", g: 8}            # onion
-      - {code: "04_049", g: 5}            # sweet pepper
-      - {code: "04_124", g: 8}            # tomato, boiled
-      - {code: "11_010", g: [4, 8]}       # vegetable oil
-      - {code: water, g: 13}
+      - {code: "04_049", g: 21, note: "sweet peppers, and carrots approximated by sweet pepper"}
+      - {code: "04_018", g: 7}            # onion
+      - {code: "04_124", g: 12}           # tomato, boiled
+      - {code: "11_010", g: [1, 5]}       # vegetable oil
 
   - id: mbongo_tchobi
     portions: {small: 150, medium: 250, large: 350}
-    notes: Sauce with fish, without plantain or cassava. The mbongo spice itself is not in WAFCT 2019 and is left out.
+    notes: >-
+      Fish in black sauce, without plantain or cassava. From afrik.com (6
+      servings: 2 kg fish such as catfish, 200 g onion, 100 g njansang, 1 tomato,
+      10 cl oil, 50 g mbongo spice). Fish weight is the edible part.
+    sources: ["https://www.afrik.com/mbongo-tjobi-ou-mbongo-tchobi"]
     ingredients:
-      - {code: "09_069", g: 35}           # mackerel, boiled
-      - {code: "11_010", g: [6, 12]}      # vegetable oil
-      - {code: "04_018", g: 5}            # onion
+      - {code: "09_108", g: 59}           # catfish, boiled
+      - {code: "04_018", g: 10}           # onion
+      - {code: "06_013", g: 5, proxy: true, note: "njansang seeds are not in WAFCT 2019; melon seed used instead"}
       - {code: "04_124", g: 5}            # tomato, boiled
-      - {code: water, g: 46}
+      - {code: "11_010", g: [3, 6]}       # vegetable oil
+      - {code: "13_006", g: 2.5, proxy: true, note: "mbongo spice is not in WAFCT 2019; dried chilli used instead"}
+      - {code: water, g: 14}
 
   - id: sanga
     portions: {small: 200, medium: 300, large: 450}
+    notes: >-
+      From Cameroun24 (1 kg zom leaves, 500 g canned palm nut juice, 2 kg maize
+      on the cob, sugar). Canned palm nut juice is taken as half palm fruit
+      pulp, half water.
+    sources: ["https://cameroun24.net/article/24811-La_recette_du_sanga.html", "https://www.afrik.com/sanga"]
     ingredients:
-      - {code: "01_104", g: 45}           # maize, whole kernel, boiled
-      - {code: "04_092", g: 25}           # cassava leaves, boiled
-      - {code: "05_040", g: [10, 18], note: "palm nut juice approximated by oil palm fruit"}
-      - {code: "13_002", g: 2}            # sugar
-      - {code: water, g: 14}
+      - {code: "01_104", g: 41}           # maize, whole kernel, boiled
+      - {code: "04_086", g: 29, proxy: true, note: "zom (black nightshade) leaves are not in WAFCT 2019; amaranth leaves used instead"}
+      - {code: "05_040", g: [8, 14], note: "palm nut juice approximated by oil palm fruit"}
+      - {code: "13_002", g: 1.5}          # sugar
+      - {code: water, g: 17.5}
 
   - id: bobolo
     portions: {small: 100, medium: 200, large: 300}
+    notes: >-
+      An FAO table gives 259 kcal/100 g for "bâton de manioc" (one sample, 35 %
+      water); an FAO note on chikwangue gives 35-45 % dry matter, which matches
+      the proxy below (58 % water). The proxy may underestimate dense sticks.
+    sources: ["https://www.fao.org/4/x6877e/X6877E07.htm"]
     ingredients:
       - {code: "02_041", g: 100, proxy: true, note: "bobolo (steamed fermented cassava stick) is not in WAFCT 2019; wet fermented cassava paste used instead"}
 
@@ -122,27 +172,35 @@ recipes:
 
   - id: puff_puff
     portions: {small: 60, medium: 100, large: 150}
-    notes: Fried dough. Ingredient amounts are for the fried product (part of the water evaporates).
+    notes: >-
+      From 9jafoodie (375 g flour, 133-201 g sugar, yeast, 2 cups water, 20-24
+      pieces), with about 30 % of the water evaporated and 15-20 % oil absorbed
+      in frying (estimate).
+    sources: ["https://9jafoodie.com/puff-puff/", "https://kscuisine.com/puff-puff/", "https://www.nigerianfoodtv.com/puff-puff-how-to-make-nigerian-puff/"]
     ingredients:
-      - {code: "01_043", g: 50}           # wheat flour, white
-      - {code: "13_002", g: 10}           # sugar
-      - {code: "13_017", g: 1}            # dried yeast
-      - {code: water, g: 21}
+      - {code: "01_043", g: 37}           # wheat flour, white
+      - {code: "13_002", g: [8, 15]}      # sugar
+      - {code: "13_017", g: 0.7}          # dried yeast
+      - {code: water, g: 33.8}
       - {code: "11_010", g: [12, 22]}     # vegetable oil absorbed in frying
 
   # ---------------------------------------------------------------- Ghana
   - id: jollof_rice
     portions: {small: 250, medium: 350, large: 500}
-    notes: Rice only, without the chicken or fish served with it.
+    notes: >-
+      Rice only, without the chicken or fish served with it. Oil from 1/2 cup
+      per 800 g raw rice (Wikibooks) to 1 cup per 1 kg (Gambian recipe): 3 to 7 %
+      of the cooked dish.
+    sources: ["https://en.wikibooks.org/wiki/Cookbook:Jollof_Rice", "https://www.saveur.com/article/recipes/jollof-rice"]
     ingredients:
-      - {code: "01_135", g: 70}           # rice, white, boiled
-      - {code: "04_124", g: 8}            # tomato, boiled
-      - {code: "04_066", g: 2}            # tomato paste
+      - {code: "01_135", g: 74.5}         # rice, white, boiled
+      - {code: "04_124", g: 10}           # tomato, boiled
+      - {code: "04_049", g: 4}            # sweet pepper
       - {code: "04_018", g: 3}            # onion
+      - {code: "04_066", g: 1.7}          # tomato paste
       - {code: "04_046", g: 1}            # chilli pepper
-      - {code: "11_010", g: [5, 10]}      # vegetable oil
-      - {code: "13_008", g: 0.5}          # stock cube
-      - {code: water, g: 8}
+      - {code: "11_010", g: [3, 7]}       # vegetable oil
+      - {code: "13_008", g: 0.8}          # stock cube
 
   - id: waakye
     portions: {small: 250, medium: 350, large: 500}
@@ -155,15 +213,22 @@ recipes:
 
   - id: palm_nut_soup
     portions: {small: 150, medium: 250, large: 350}
-    notes: Soup only, without fufu, banku or rice.
+    notes: >-
+      Soup only, without fufu, banku or rice. From savorythoughts (6 servings:
+      1 can (737 g) palm nut cream, 2 lb beef bones, smoked fish, 6.5 cups water,
+      1/2 cup oil). The palm fruit content of canned cream is uncertain, hence
+      the wide range.
+    sources: ["https://www.savorythoughts.com/ghanaian-palm-nut-soup-abenkwan-recipe/", "https://afrifoodnetwork.com/recipes/soup-stew-recipes/palmnut-soup/"]
     ingredients:
-      - {code: "05_040", g: [18, 28], note: "palm nut cream approximated by oil palm fruit"}
-      - {code: "07_112", g: 10}           # goat meat, stewed
-      - {code: "09_053", g: 3}            # dried fish
-      - {code: "04_124", g: 6}            # tomato, boiled
-      - {code: "04_018", g: 4}            # onion
+      - {code: "05_040", g: [12, 25], note: "palm nut cream approximated by oil palm fruit"}
+      - {code: "11_010", g: [0, 4]}       # vegetable oil, in some recipes
+      - {code: "07_112", g: 10}           # goat or beef, stewed
+      - {code: "09_053", g: 5, note: "smoked fish approximated by dried fish"}
+      - {code: "04_124", g: 10}           # tomato, boiled
+      - {code: "04_066", g: 1}            # tomato paste
+      - {code: "04_018", g: 5}            # onion
       - {code: "04_046", g: 1}            # chilli pepper
-      - {code: water, g: 53}
+      - {code: water, g: 47.5}
 
   - id: banku
     portions: {small: 200, medium: 300, large: 450}
@@ -202,27 +267,37 @@ recipes:
   # ---------------------------------------------------------------- Nigeria
   - id: egusi_soup
     portions: {small: 150, medium: 250, large: 350}
-    notes: Soup only, without pounded yam, fufu or eba.
+    notes: >-
+      Soup only, without pounded yam, fufu or eba. From SBS (6 servings: 500 g
+      beef, 175 g egusi, 125 ml palm oil, stockfish, crayfish, spinach) and
+      africanbites (4 servings: 450 g meat, 120 g egusi, 120 ml oil).
+    sources: ["https://www.sbs.com.au/food/recipe/melon-seed-and-beef-soup-egusi/1a43zmld6", "https://www.africanbites.com/wprm_print/egusi-soup"]
     ingredients:
-      - {code: "06_013", g: 12}           # melon seed (egusi), kernel
-      - {code: "11_004", g: [6, 12]}      # red palm oil
-      - {code: "04_086", g: 15}           # amaranth leaves, boiled
-      - {code: "07_086", g: 8}            # beef, moderately fat, stewed
-      - {code: "09_053", g: 3}            # dried fish
-      - {code: "09_057", g: 3}            # dried crayfish
+      - {code: "06_013", g: 10.5}         # melon seed (egusi), kernel
+      - {code: "11_004", g: [6, 10]}      # red palm oil
+      - {code: "04_086", g: 12}           # amaranth leaves, boiled
+      - {code: "07_086", g: 18}           # beef, moderately fat, stewed
+      - {code: "09_053", g: 5}            # dried fish / stockfish
+      - {code: "09_057", g: 2}            # dried crayfish
       - {code: "04_018", g: 3}            # onion
-      - {code: water, g: 47}
+      - {code: water, g: 41.5}
 
   - id: moi_moi
     portions: {small: 100, medium: 150, large: 250}
+    notes: >-
+      From africanbites (6 servings: 520 g black-eyed peas, 710 ml water or
+      stock, oil, crayfish, smoked fish, 3 eggs) and other recipes with 1/4 cup
+      oil. Fish is optional, hence the range.
+    sources: ["https://www.africanbites.com/wprm_print/moi-moi-recipe", "https://cheflolaskitchen.com/make-moin-moin-moi-moi/"]
     ingredients:
-      - {code: "03_101", g: 70}           # dehulled cowpea, boiled
+      - {code: "03_101", g: 60}           # dehulled cowpea, boiled
       - {code: "11_010", g: [5, 10]}      # vegetable or palm oil
       - {code: "04_018", g: 4}            # onion
       - {code: "04_046", g: 2}            # chilli pepper
-      - {code: "08_002", g: 5}            # egg, boiled
-      - {code: "09_057", g: 2}            # dried crayfish
-      - {code: water, g: 9.5}
+      - {code: "08_002", g: 6}            # egg, boiled
+      - {code: "09_057", g: 1}            # dried crayfish
+      - {code: "09_053", g: [0, 8]}       # dried or smoked fish, optional
+      - {code: water, g: 15.5}
 
   - id: pounded_yam
     portions: {small: 200, medium: 300, large: 450}
@@ -232,26 +307,38 @@ recipes:
 
   - id: amala
     portions: {small: 200, medium: 300, large: 450}
+    notes: >-
+      Recipes use 2 cups yam flour for 4 to 5 cups water (K's Cuisine, Chef Lola's
+      Kitchen): 18 to 26 % flour in the cooked amala.
+    sources: ["https://kscuisine.com/?p=901", "https://cheflolaskitchen.com/amala-recipe/"]
     ingredients:
-      - {code: "02_036", g: [25, 38]}     # yam flour; the flour-to-water ratio varies a lot
-      - {code: water, g: 68.5}
+      - {code: "02_036", g: [18, 26]}     # yam flour
+      - {code: water, g: 78}
 
   - id: suya
     portions: {small: 80, medium: 150, large: 250}
+    notes: >-
+      From Chop Chop (Ozoz Sokoh): 450 g beef, 3 tbsp oil, 35 g yaji, served
+      with yajin kuli (ground kuli kuli). How much kuli kuli is eaten varies.
+    sources: ["https://tastecanada.org/beef-suya/", "https://cheflolaskitchen.com/suya/"]
     ingredients:
-      - {code: "07_011", g: 85}           # beef, lean, grilled
-      - {code: "06_026", g: [5, 8], note: "suya spice (kuli kuli) approximated by groundnut paste"}
+      - {code: "07_011", g: 83}           # beef, lean, grilled
+      - {code: "06_026", g: [5, 12], note: "kuli kuli (defatted groundnut cake) approximated by groundnut paste"}
       - {code: "11_010", g: [2, 5]}       # oil brushed on
       - {code: "13_006", g: 2}            # dried chilli
       - {code: "04_018", g: 3}            # onion
 
   - id: akara
     portions: {small: 50, medium: 100, large: 150}
+    notes: >-
+      Studies measured 14-15 % fat (Opaleke et al. 2023) and about 26 % fat
+      (Plahar 2004, control akara) in fried akara; the oil range covers both.
+    sources: ["https://ph04.tci-thaijo.org/index.php/JCST/article/view/1750", "https://openscholar.uga.edu/record/19093"]
     ingredients:
       - {code: "03_101", g: 72, note: "soaked ground cowpea approximated by dehulled cowpea, boiled"}
       - {code: "04_018", g: 5}            # onion
       - {code: "04_046", g: 2}            # chilli pepper
-      - {code: "11_010", g: [15, 25]}     # oil absorbed in frying
+      - {code: "11_010", g: [13, 26]}     # oil absorbed in frying
       - {code: "13_015", g: 1}            # salt
 
   - id: pepper_soup
@@ -266,6 +353,7 @@ recipes:
   # ---------------------------------------------------------------- Côte d'Ivoire, Senegal
   - id: attieke
     portions: {small: 150, medium: 250, large: 350}
+    notes: No reference value for cooked attiéké was found online (only a dry-product value of about 350 kcal/100 g).
     ingredients:
       - {code: "02_041", g: 96, proxy: true, note: "attiéké (steamed fermented cassava granules) is not in WAFCT 2019; wet fermented cassava paste used instead"}
       - {code: "11_010", g: [0, 4]}       # oil sometimes mixed in
@@ -278,46 +366,64 @@ recipes:
 
   - id: thieboudienne
     portions: {small: 250, medium: 350, large: 500}
+    notes: >-
+      From au-senegal.com, afrik.com and annuaireci (6 servings: 0.5-1 kg broken
+      rice, 0.5-1.5 kg fish, 100-250 g tomato paste, 150-250 ml oil, dried fish,
+      vegetables).
+    sources: ["https://www.au-senegal.com/ceebu-jen-riz-au-poisson-le-plat-national,3443.html?lang=fr", "https://www.afrik.com/tieboudien"]
     ingredients:
-      - {code: "01_135", g: 55}           # rice, white, boiled
-      - {code: "09_046", g: 12}           # white grouper, steamed
-      - {code: "04_090", g: 5}            # cabbage, boiled
-      - {code: "04_102", g: 4}            # eggplant, boiled
-      - {code: "02_051", g: 4}            # cassava, boiled
-      - {code: "04_066", g: 2}            # tomato paste
-      - {code: "04_018", g: 3}            # onion
-      - {code: "11_010", g: [6, 12]}      # vegetable oil
-      - {code: water, g: 6}
+      - {code: "01_135", g: 54}           # rice, white, boiled
+      - {code: "09_046", g: 14}           # white grouper (thiof), steamed
+      - {code: "09_053", g: 2}            # dried fish
+      - {code: "04_090", g: 7}            # cabbage, boiled
+      - {code: "04_102", g: 5}            # eggplant, boiled
+      - {code: "02_051", g: 5}            # cassava, boiled
+      - {code: "04_049", g: 3, note: "carrot approximated by sweet pepper"}
+      - {code: "04_066", g: 4.5}          # tomato paste
+      - {code: "11_010", g: [3, 8]}       # vegetable oil
 
   - id: yassa
     portions: {small: 150, medium: 250, large: 350}
-    notes: Chicken and onion sauce, without rice.
+    notes: >-
+      Chicken and onion sauce, without rice. From au-senegal.com (6 servings:
+      1.5 kg chicken, 1 kg onions, 5 lemons, 5 tbsp oil) and evous.fr (6 tbsp oil).
+    sources: ["https://www.au-senegal.com/poulet-au-yassa,3445.html?lang=fr", "https://www.evous.fr/recettes-de-cuisine/Recettes-du-monde/Recette-du-Senegal-Poulet-Yassa,1116815.html"]
     ingredients:
-      - {code: "07_103", g: 35}           # chicken, dark meat with skin, stewed
-      - {code: "04_112", g: 45}           # onion, boiled
-      - {code: "12_010", g: 3}            # lemon juice
-      - {code: "11_010", g: [6, 12]}      # vegetable oil
-      - {code: water, g: 8}
+      - {code: "07_103", g: 38}           # chicken, dark meat with skin, stewed
+      - {code: "04_112", g: 40}           # onion, boiled
+      - {code: "12_010", g: 6}            # lemon juice
+      - {code: "11_010", g: [4, 8]}       # vegetable oil
+      - {code: water, g: 10}
 
   - id: mafe
     portions: {small: 150, medium: 250, large: 350}
-    notes: Peanut stew without rice.
+    notes: >-
+      Peanut stew without rice. From au-senegal.com (6 servings: 1 kg meat,
+      200 g groundnut paste, 1/4 l oil, 100 g tomato paste, cabbage, carrots,
+      sweet potatoes, potatoes, turnips, onions, 1.5 l water); other recipes
+      use more groundnut paste.
+    sources: ["https://www.au-senegal.com/le-mafe,3446", "https://www.afrik.com/poulet-mafe-a-la-sauce-darachide"]
     ingredients:
-      - {code: "07_086", g: 15}           # beef, moderately fat, stewed
-      - {code: "06_026", g: [10, 14]}     # groundnut paste
-      - {code: "04_066", g: 3}            # tomato paste
-      - {code: "04_018", g: 3}            # onion
-      - {code: "02_068", g: 10}           # potato, boiled
-      - {code: "04_090", g: 5}            # cabbage, boiled
-      - {code: "11_010", g: [2, 6]}       # vegetable oil
-      - {code: water, g: 48}
+      - {code: "07_086", g: 14}           # beef, moderately fat, stewed
+      - {code: "06_026", g: [4, 10]}      # groundnut paste
+      - {code: "11_010", g: [3, 6]}       # vegetable oil
+      - {code: "04_066", g: 2}            # tomato paste
+      - {code: "04_018", g: 4}            # onion
+      - {code: "02_068", g: 25, note: "potatoes, and sweet potatoes and turnips approximated by potato"}
+      - {code: "04_090", g: 15}           # cabbage, boiled
+      - {code: "04_049", g: 4, note: "carrot approximated by sweet pepper"}
+      - {code: water, g: 24.5}
 
   # ---------------------------------------------------------------- East Africa
   - id: ugali
     portions: {small: 200, medium: 300, large: 450}
+    notes: >-
+      Recipes use 2 cups maize flour for 4 cups water, up to 4 cups flour for
+      4.5 cups water for a firm ugali: 22 to 34 % flour in the cooked ugali.
+    sources: ["https://explorepartsunknown.com/kenya/recipe-kenyan-ugali/", "https://www.the-star.co.ke/sasa/2022-10-28-how-to-make-ugali-the-proper-way"]
     ingredients:
-      - {code: "01_080", g: [30, 38]}     # white maize meal, sifted
-      - {code: water, g: 66}
+      - {code: "01_080", g: [22, 34]}     # white maize meal, sifted
+      - {code: water, g: 72}
 
   - id: sukuma_wiki
     portions: {small: 100, medium: 150, large: 250}
@@ -354,7 +460,11 @@ recipes:
 
   - id: chapati
     portions: {small: 60, medium: 100, large: 180}
-    notes: One chapati weighs about 60 to 80 g.
+    notes: >-
+      One chapati weighs about 60 to 90 g. From Tara's Multicultural Table
+      (375 g flour, 12 g sugar, 30 ml oil, 300 ml water, 8 chapatis) plus oil
+      for layering and frying.
+    sources: ["https://tarasmulticulturaltable.com/wprm_print/chapati-za-ngozi-kenyan-soft-layered-flatbread"]
     ingredients:
       - {code: "01_043", g: 55}           # wheat flour, white
       - {code: water, g: 32}
@@ -373,21 +483,28 @@ recipes:
 
   - id: injera
     portions: {small: 100, medium: 200, large: 300}
-    notes: One injera weighs about 120 to 150 g.
+    notes: >-
+      One injera weighs about 120 to 150 g. Consistent with the common value of
+      about 131 kcal/100 g and with 59-63 % moisture measured in a study.
+    sources: ["https://en.wikipedia.org/wiki/Injera", "https://doaj.org/article/46b048785bcc4b3ead22100166fa6fdd"]
     ingredients:
       - {code: "01_184", g: [35, 42], note: "teff batter: raw teff grain values for the flour"}
       - {code: water, g: 61.5}
 
   - id: doro_wat
     portions: {small: 150, medium: 250, large: 350}
-    notes: Stew only, without injera.
+    notes: >-
+      Stew only, without injera. From Gneiss Spice (after Yohanis Gebreyesus; 4
+      servings: 2 chicken legs, 500 g onions, 40 g berbere, 3 tbsp niter kibbeh,
+      4 eggs) and The Daring Gourmet (2 tbsp niter kibbeh for 6).
+    sources: ["https://gneissspice.com/blogs/recipes/tagged/africa", "https://www.daringgourmet.com/wprm_print/45037"]
     ingredients:
-      - {code: "07_103", g: 30}           # chicken, dark meat with skin, stewed
-      - {code: "08_002", g: 10}           # egg, boiled
-      - {code: "04_112", g: 30}           # onion, boiled
-      - {code: "11_015", g: [6, 12]}      # ghee (niter kibbeh)
-      - {code: "13_006", g: 3}            # dried chilli (berbere)
-      - {code: water, g: 18}
+      - {code: "07_103", g: 34}           # chicken, dark meat with skin, stewed
+      - {code: "08_002", g: 15}           # egg, boiled
+      - {code: "04_112", g: 25}           # onion, boiled
+      - {code: "11_015", g: [2, 6]}       # ghee (niter kibbeh)
+      - {code: "13_006", g: 3.5}          # dried chilli (berbere)
+      - {code: water, g: 18.5}
 
   - id: tibs
     portions: {small: 150, medium: 250, large: 350}
@@ -401,18 +518,27 @@ recipes:
 
   - id: shiro
     portions: {small: 150, medium: 250, large: 350}
-    notes: Stew only, without injera.
+    notes: >-
+      Stew only, without injera. From pulses.org and Addis Standard (4 servings:
+      1/2 cup shiro powder, 1/2 cup oil, 2 onions, 1 tomato, 1.5-2 cups water).
+      Shiro is oil-rich.
+    sources: ["https://pulses.org/recipes/recipe/236-shiro", "https://archive.addisstandard.com/?p=1738"]
     ingredients:
-      - {code: "03_045", g: [12, 16], proxy: true, note: "chickpea flour is not in WAFCT 2019; dehulled cowpea, raw, used instead"}
-      - {code: "04_018", g: 8}            # onion
-      - {code: "04_124", g: 5}            # tomato, boiled
+      - {code: "03_045", g: [7, 12], proxy: true, note: "chickpea flour (shiro powder) is not in WAFCT 2019; dehulled cowpea, raw, used instead"}
+      - {code: "11_010", g: [8, 15]}      # vegetable oil
+      - {code: "04_018", g: 18}           # onion
+      - {code: "04_124", g: 14}           # tomato, boiled
       - {code: "04_015", g: 1}            # garlic
-      - {code: "11_010", g: [5, 10]}      # vegetable oil
-      - {code: water, g: 64.5}
+      - {code: "13_006", g: 2}            # dried chilli (berbere)
+      - {code: water, g: 44}
 
   - id: kitfo
     portions: {small: 100, medium: 150, large: 250}
+    notes: >-
+      From recipes with 3 tbsp niter kibbeh per 450 g beef up to 1/3 cup per
+      680 g: about 7 to 11 % butter.
+    sources: ["https://noahtanen.substack.com/p/kitfo"]
     ingredients:
-      - {code: "07_009", g: 85}           # beef, lean, raw
-      - {code: "11_015", g: [10, 15]}     # ghee (niter kibbeh)
-      - {code: "13_006", g: 2.5}          # dried chilli (mitmita)
+      - {code: "07_009", g: 89.5}         # beef, lean, raw
+      - {code: "11_015", g: [7, 11]}      # ghee (niter kibbeh)
+      - {code: "13_006", g: 1.5}          # dried chilli (mitmita)

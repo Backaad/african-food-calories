@@ -62,10 +62,12 @@ def test_validate_catches_common_mistakes():
 
 def test_build_carries_names_disclaimer_and_status():
     dishes_doc = {"dishes": [{"id": "jollof_rice", "names": {"en": "Jollof rice", "fr": "Riz jollof"}, "countries": ["GH"]}]}
-    recipes = {"recipes": [recipe([{"code": "01_001", "g": 95}, {"code": "11_001", "g": 5, "note": "palm or vegetable oil"}])]}
+    recipes = {"recipes": [recipe([{"code": "01_001", "g": 95}, {"code": "11_001", "g": 5, "note": "palm or vegetable oil"}],
+                                  sources=["https://example.org/jollof"])]}
     out = compute.build(recipes, FOODS, dishes_doc)
     dish = out["dishes"][0]
     assert out["disclaimer"]["fr"].startswith("Estimation à faire valider par un nutritionniste")
     assert dish["names"]["fr"] == "Riz jollof"
     assert dish["recipe_status"] == "draft" and dish["validated_by_nutritionist"] is False
+    assert dish["recipe_sources"] == ["https://example.org/jollof"]
     assert dish["recipe"][1] == {"code": "11_001", "name": "Oil, palm", "g": 5, "note": "palm or vegetable oil"}

@@ -163,6 +163,7 @@ def build(recipes: dict, foods: dict[str, dict], dishes_doc: dict) -> dict:
                 }
                 for i in recipe["ingredients"]
             ],
+            "recipe_sources": recipe.get("sources", []),
             "recipe_status": recipe.get("status", "draft"),
             "validated_by_nutritionist": False,
             **({"notes": recipe["notes"]} if recipe.get("notes") else {}),

@@ -24,9 +24,14 @@ only. The fufu, pounded yam, rice, plantain or injera is a separate dish in the
 list, and the user logs both. Achu is the exception: the pounded taro and
 yellow soup are always served together and are one recipe.
 
-The recipes were drafted from general knowledge of how these dishes are cooked.
-They were not measured in kitchens. They need to be reviewed by people who
-cook these dishes.
+For 28 dishes, the recipe was checked against published recipes (recipe sites,
+blogs, a few studies): their links are in `sources`, and `notes` explain how the
+quantities were converted into grams per 100 g of finished dish (cooking losses,
+weight of meat without bones, canned palm nut juice taken as half pulp, half
+water...). The other dishes are simple (fufu, kenkey, pounded yam, fried
+plantain, grilled meat...) or were drafted from general knowledge. Nothing was
+measured in a kitchen. The recipes need to be reviewed by people who cook these
+dishes.
 
 ## 2. Nutrient values from WAFCT 2019
 
