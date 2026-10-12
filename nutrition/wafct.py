@@ -4,6 +4,8 @@
     python nutrition/wafct.py fetch                 # find and download the Excel file
     python nutrition/wafct.py describe              # sheet names and header rows
     python nutrition/wafct.py search cassava palm   # foods whose name matches, with key nutrients
+    python nutrition/wafct.py extract               # write wafct_extract.csv for the codes used in recipes.yaml
+    python nutrition/wafct.py extract --check       # fail if wafct_extract.csv differs from the WAFCT file
 
 The Excel file is not committed (see nutrition/README.md for its licence); only the
 rows used by the recipes are extracted, with their WAFCT codes.
@@ -160,11 +162,61 @@ def search(terms: list[str], path: Path = XLSX, limit: int = 15) -> str:
     return "\n".join(lines)
 
 
+EXTRACT = NUTRITION_DIR / "wafct_extract.csv"
+RECIPES = NUTRITION_DIR / "recipes.yaml"
+EXTRACT_FIELDS = ["code", "name_en", "name_fr", *COMPONENTS, "estimated"]
+
+
+def recipe_codes(path: Path = RECIPES) -> list[str]:
+    import yaml
+
+    with open(path, encoding="utf-8") as f:
+        recipes = yaml.safe_load(f)["recipes"]
+    return sorted({i["code"] for r in recipes for i in r["ingredients"] if i["code"] != "water"})
+
+
+def extract_rows(codes: list[str], path: Path = XLSX) -> list[dict]:
+    """WAFCT values of the given codes. `estimated` lists the fields the table
+    gives in brackets (imputed, borrowed or calculated values)."""
+    _, records = load_table(path)
+    by_code = {r["code"]: r for r in records}
+    missing = [c for c in codes if c not in by_code]
+    if missing:
+        raise KeyError(f"codes not in WAFCT 2019: {missing}")
+    rows = []
+    for code in codes:
+        r = by_code[code]
+        row = {"code": code, "name_en": _norm(r.get("name_en")), "name_fr": _norm(r.get("name_fr"))}
+        estimated = []
+        for key in COMPONENTS:
+            raw = r.get(key)
+            value = to_number(raw)
+            row[key] = "" if value is None else f"{value:g}"
+            if isinstance(raw, str) and raw.strip().startswith("["):
+                estimated.append(key)
+        row["estimated"] = " ".join(estimated)
+        rows.append(row)
+    return rows
+
+
+def rows_to_csv(rows: list[dict]) -> str:
+    import csv
+    import io
+
+    buffer = io.StringIO()
+    writer = csv.DictWriter(buffer, fieldnames=EXTRACT_FIELDS, lineterminator="\n")
+    writer.writeheader()
+    writer.writerows(rows)
+    return buffer.getvalue()
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = parser.add_subparsers(dest="command", required=True)
     sub.add_parser("fetch")
     sub.add_parser("describe")
+    e = sub.add_parser("extract")
+    e.add_argument("--check", action="store_true")
     s = sub.add_parser("search")
     s.add_argument("terms", nargs="*")
     s.add_argument("--file", type=Path, help="one search pattern per line")
@@ -175,6 +227,16 @@ def main(argv=None):
         print(fetch())
     elif args.command == "describe":
         print(describe(fetch()))
+    elif args.command == "extract":
+        text = rows_to_csv(extract_rows(recipe_codes(), fetch()))
+        if args.check:
+            if not EXTRACT.exists() or EXTRACT.read_text(encoding="utf-8") != text:
+                print(text)
+                sys.exit("wafct_extract.csv differs from WAFCT 2019 (fresh extract printed above)")
+            print("wafct_extract.csv matches WAFCT 2019")
+        else:
+            EXTRACT.write_text(text, encoding="utf-8")
+            print(text)
     elif args.command == "search":
         terms = list(args.terms)
         if args.file:

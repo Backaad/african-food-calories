@@ -59,3 +59,18 @@ def test_find_excel_urls_prefers_wafct():
     html = '<a href="/fileadmin/user_upload/faoweb/2020/WAFCT_2019.xlsx">x</a><a href="other.xls">y</a>'
     assert wafct.find_excel_urls(html, "https://www.fao.org/infoods/") == [
         "https://www.fao.org/fileadmin/user_upload/faoweb/2020/WAFCT_2019.xlsx"]
+
+
+def test_extract_rows_flags_bracketed_values(workbook):
+    rows = wafct.extract_rows(["01_001", "04_007"], workbook)
+    assert rows[0]["code"] == "01_001" and rows[0]["name_fr"] == "Riz, blanc, bouilli"
+    assert rows[0]["fat_g"] == "0.3" and rows[0]["fibre_g"] == "0"
+    assert rows[0]["estimated"] == "fat_g"
+    assert rows[1]["estimated"] == ""
+    text = wafct.rows_to_csv(rows)
+    assert text.splitlines()[0] == "code,name_en,name_fr,energy_kcal,water_g,protein_g,fat_g,carbohydrate_g,fibre_g,estimated"
+
+
+def test_extract_rows_rejects_unknown_codes(workbook):
+    with pytest.raises(KeyError, match="99_999"):
+        wafct.extract_rows(["99_999"], workbook)
