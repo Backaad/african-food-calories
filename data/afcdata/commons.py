@@ -12,11 +12,13 @@ API = "https://commons.wikimedia.org/w/api.php"
 SOURCE_ID = "wikimedia-commons"
 PHOTO_MIMES = frozenset({"image/jpeg", "image/png", "image/webp"})
 THUMB_WIDTH = 640
+SEARCH_MAX_BATCHES = 10  # 500 files per search term at most
 
 
 @dataclass
 class CommonsResult:
-    records: list[ImageRecord] = field(default_factory=list)
+    records: list[ImageRecord] = field(default_factory=list)  # from categories
+    search_records: list[ImageRecord] = field(default_factory=list)  # from title search only
     rejected: Counter = field(default_factory=Counter)  # licence family or "not-a-photo" -> count
     missing_categories: list[str] = field(default_factory=list)
     walked_categories: list[str] = field(default_factory=list)
@@ -26,15 +28,17 @@ def _base_params(**extra) -> dict:
     return {"action": "query", "format": "json", "formatversion": 2, "maxlag": 5, **extra}
 
 
-def _query_all(client, params: dict):
+def _query_all(client, params: dict, max_batches: int | None = None):
     """Yield every response of a query, following MediaWiki continuation."""
     cont: dict = {}
+    batches = 0
     while True:
         data = client.get_json(API, {**params, **cont})
         if "error" in data:
             raise RuntimeError(f"Commons API error: {data['error']}")
         yield data
-        if "continue" not in data:
+        batches += 1
+        if "continue" not in data or (max_batches and batches >= max_batches):
             return
         cont = data["continue"]
 
@@ -118,25 +122,34 @@ def parse_page(page: dict, dish_id: str) -> tuple[ImageRecord | None, str]:
     return record, family
 
 
-def list_files(client, category: str):
-    """Yield raw API pages (files with imageinfo) of one category."""
-    params = _base_params(
-        generator="categorymembers",
-        gcmtitle=category,
-        gcmtype="file",
-        gcmlimit=50,
-        prop="imageinfo",
-        iiprop="url|mime|extmetadata",
-        iiurlwidth=THUMB_WIDTH,
-        iiextmetadatafilter="License|LicenseShortName|LicenseUrl|Artist",
-    )
+_IMAGEINFO = {
+    "prop": "imageinfo",
+    "iiprop": "url|mime|extmetadata",
+    "iiurlwidth": THUMB_WIDTH,
+    "iiextmetadatafilter": "License|LicenseShortName|LicenseUrl|Artist",
+}
+
+
+def _files(client, params: dict, max_batches: int | None = None):
+    """Yield raw API pages (files with imageinfo) of a generator query."""
     pages: dict[int, dict] = {}
-    for data in _query_all(client, params):
+    for data in _query_all(client, params, max_batches):
         for page in data.get("query", {}).get("pages", []):
             merged = pages.setdefault(page["pageid"], page)
             if page.get("imageinfo") and not merged.get("imageinfo"):
                 merged["imageinfo"] = page["imageinfo"]
     yield from pages.values()
+
+
+def list_files(client, category: str):
+    """Yield the files of one category."""
+    return _files(client, _base_params(generator="categorymembers", gcmtitle=category, gcmtype="file", gcmlimit=50, **_IMAGEINFO))
+
+
+def search_files(client, term: str):
+    """Yield files whose title contains `term` (File namespace only)."""
+    params = _base_params(generator="search", gsrsearch=f'intitle:"{term}"', gsrnamespace=6, gsrlimit=50, **_IMAGEINFO)
+    return _files(client, params, max_batches=SEARCH_MAX_BATCHES)
 
 
 def collect(client, dish: dict, depth: int = 1) -> CommonsResult:
@@ -150,9 +163,19 @@ def collect(client, dish: dict, depth: int = 1) -> CommonsResult:
             if page["pageid"] in seen_ids:
                 continue
             seen_ids.add(page["pageid"])
-            record, family = parse_page(page, dish["id"])
-            if record:
-                result.records.append(record)
-            else:
-                result.rejected[family] += 1
+            _keep(result, result.records, page, dish["id"])
+    for term in dish.get("commons_search", []):
+        for page in search_files(client, term):
+            if page["pageid"] in seen_ids:
+                continue
+            seen_ids.add(page["pageid"])
+            _keep(result, result.search_records, page, dish["id"])
     return result
+
+
+def _keep(result: CommonsResult, bucket: list, page: dict, dish_id: str) -> None:
+    record, family = parse_page(page, dish_id)
+    if record:
+        bucket.append(record)
+    else:
+        result.rejected[family] += 1

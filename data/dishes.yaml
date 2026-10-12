@@ -5,6 +5,9 @@
 #                       Several candidates may be listed; missing ones are reported
 #                       by the inventory and simply skipped.
 #   commons_exclude     Sub-categories to skip when walking the categories above.
+#   commons_search      Words searched in Commons file titles, for dishes without a
+#                       category. Less reliable than a category, so these hits only
+#                       count towards the upper bound.
 #   openverse_queries   Openverse search strings. Each query costs one API call in
 #                       the inventory; the dish count is the largest single result.
 #
@@ -20,17 +23,20 @@ dishes:
   - id: ndole
     names: {en: Ndolé, fr: Ndolé}
     countries: [CM]
-    commons_categories: [Ndolé, Ndole]
+    commons_categories: [Ndolè, Ndolé, Ndole]
+    commons_search: [ndolé, ndolè, ndole]
     openverse_queries: [ndole]
   - id: eru
     names: {en: Eru, fr: Eru}
     countries: [CM, NG]
     commons_categories: [Eru (food), Eru soup]
+    commons_search: [eru]
     openverse_queries: [eru soup]
   - id: ekwang
     names: {en: Ekwang, fr: Ekwang}
     countries: [CM]
     commons_categories: [Ekwang, Ekpang nkukwo]
+    commons_search: [ekwang, ekpang]
     openverse_queries: [ekwang]
   - id: koki
     names: {en: Koki, fr: Koki}
@@ -41,11 +47,13 @@ dishes:
     names: {en: Achu with yellow soup, fr: Achu sauce jaune}
     countries: [CM]
     commons_categories: [Achu (food), Achu soup]
+    commons_search: [achu]
     openverse_queries: [achu soup]
   - id: okok
     names: {en: Okok, fr: Okok}
     countries: [CM]
     commons_categories: [Okok (food)]
+    commons_search: [okok]
     openverse_queries: [okok]
   - id: poulet_dg
     names: {en: Poulet DG, fr: Poulet DG}
@@ -56,6 +64,7 @@ dishes:
     names: {en: Mbongo tchobi, fr: Mbongo tchobi}
     countries: [CM]
     commons_categories: [Mbongo tchobi, Mbongo]
+    commons_search: [mbongo]
     openverse_queries: [mbongo tchobi]
   - id: sanga
     names: {en: Sanga, fr: Sanga}
@@ -75,7 +84,7 @@ dishes:
   - id: puff_puff
     names: {en: Puff-puff, fr: Beignets (puff-puff)}
     countries: [CM, NG, GH]
-    commons_categories: [Puff-puff, Puff puff]
+    commons_categories: [Puff puff (food), Puff-puff, Puff puff]
     openverse_queries: [puff puff]
 
   # ---------------------------------------------------------------- Ghana
@@ -154,7 +163,7 @@ dishes:
   - id: pepper_soup
     names: {en: Pepper soup, fr: Pepper soup}
     countries: [NG, CM, GH]
-    commons_categories: [Pepper soup]
+    commons_categories: [Nigerian pepper soup, Pepper soup]
     openverse_queries: [pepper soup]
 
   # ---------------------------------------------------------------- Côte d'Ivoire, Senegal
@@ -162,6 +171,7 @@ dishes:
     names: {en: Attiéké, fr: Attiéké}
     countries: [CI]
     commons_categories: [Attiéké, Attieke]
+    commons_search: [attiéké, attieke]
     openverse_queries: [attieke]
   - id: alloco
     names: {en: Alloco (fried plantain), fr: Alloco}
@@ -218,7 +228,7 @@ dishes:
   - id: matoke
     names: {en: Matoke, fr: Matoke}
     countries: [UG]
-    commons_categories: [Matoke, Matooke]
+    commons_categories: [Matooke dishes, Matoke, Matooke]
     openverse_queries: [matoke, matooke]
   - id: injera
     names: {en: Injera, fr: Injera}
@@ -238,7 +248,7 @@ dishes:
   - id: shiro
     names: {en: Shiro, fr: Shiro}
     countries: [ET, ER]
-    commons_categories: [Shiro (food)]
+    commons_categories: [Shiro, Shiro (food)]
     openverse_queries: [shiro wat]
   - id: kitfo
     names: {en: Kitfo, fr: Kitfo}

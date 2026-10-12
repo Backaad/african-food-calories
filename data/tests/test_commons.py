@@ -104,3 +104,23 @@ def test_collect_follows_continuation_and_dedupes_across_categories():
     assert result.missing_categories == ["Category:Nope"]
     assert result.walked_categories == ["Category:Ndolé", "Category:Ndolé in Douala"]
     assert all(params["maxlag"] == 5 for _, params in client.calls)
+
+
+def test_title_search_is_separate_capped_and_deduped(monkeypatch):
+    monkeypatch.setattr(commons, "SEARCH_MAX_BATCHES", 2)
+
+    def search(params):
+        offset = int(params.get("gsroffset", 0))
+        assert params["gsrsearch"] == 'intitle:"eru"' and params["gsrnamespace"] == 6
+        return {"continue": {"gsroffset": offset + 1, "continue": "gsroffset||"},
+                "query": {"pages": [file_page(1, "cc-by-4.0", "CC BY 4.0") if offset == 0 else file_page(10 + offset, "cc0", "CC0")]}}
+
+    client = FakeClient([
+        (lambda u, p: p.get("prop") == "categoryinfo", {"query": {"pages": [{"title": "Category:Eru", "categoryinfo": {"size": 1}}]}}),
+        (lambda u, p: p.get("list") == "categorymembers", {"query": {"categorymembers": []}}),
+        (lambda u, p: p.get("generator") == "categorymembers", {"query": {"pages": [file_page(1, "cc-by-4.0", "CC BY 4.0")]}}),
+        (lambda u, p: p.get("generator") == "search", search),
+    ])
+    result = commons.collect(client, {"id": "eru", "commons_categories": ["Eru"], "commons_search": ["eru"]}, depth=1)
+    assert [r.identifier for r in result.records] == ["1"]
+    assert [r.identifier for r in result.search_records] == ["11"]  # page 1 already found in the category; cap after 2 batches

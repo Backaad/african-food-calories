@@ -88,7 +88,8 @@ def fetch(client, record, target: Path) -> bool:
 
 
 def collect_dish(dish, args, commons_client, openverse_client):
-    records = commons.collect(commons_client, dish, depth=args.commons_depth).records
+    result = commons.collect(commons_client, dish, depth=args.commons_depth)
+    records = result.records + result.search_records
     if args.openverse_pages > 0:
         for query in dish.get("openverse_queries", []):
             records.extend(openverse.search(openverse_client, query, dish["id"], args.openverse_pages))

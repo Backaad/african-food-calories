@@ -42,10 +42,11 @@ def count_commons(client, dish, depth, manifest):
         print(f"  commons error: {exc}", file=sys.stderr)
         return {"error": str(exc)}
     if manifest:
-        for record in result.records:
+        for record in result.records + result.search_records:
             manifest.write(json.dumps(record.to_dict(), ensure_ascii=False) + "\n")
     return {
         "allowed": len(result.records),
+        "search_allowed": len(result.search_records),
         "rejected": dict(result.rejected),
         "licenses": _family_counts(result.records),
         "missing_categories": result.missing_categories,

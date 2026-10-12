@@ -23,6 +23,12 @@ def test_openverse_only_raises_upper_bound():
     assert row["status_upper_bound"] == "model"
 
 
+def test_commons_search_only_raises_upper_bound():
+    row = summarize_dish(DISH, {"allowed": 10, "search_allowed": 15, "rejected": {}}, {"hits": 0}, {}, THRESHOLDS)
+    assert row["reliable"] == 10 and row["upper_bound"] == 25
+    assert row["status"] == "manual" and row["status_upper_bound"] == "few_shot"
+
+
 def test_failed_sources_are_not_counted_as_zero():
     row = summarize_dish(DISH, {"error": "boom"}, {"hits": 3}, {}, THRESHOLDS)
     assert row["status"] == "unknown" and row["status_upper_bound"] == "unknown"
@@ -33,13 +39,15 @@ def test_failed_sources_are_not_counted_as_zero():
 def test_render_markdown_lists_dishes_missing_categories_and_excluded_datasets():
     sources = load_yaml(SOURCES_PATH)
     rows = [
-        summarize_dish(DISH, {"allowed": 160, "rejected": {"cc-by-nc": 3}, "missing_categories": ["Category:Ndole"]},
-                       {"hits": 5}, {}, THRESHOLDS),
+        summarize_dish(DISH, {"allowed": 160, "search_allowed": 4, "rejected": {"cc-by-nc": 3},
+                              "missing_categories": ["Category:Ndole"], "walked_categories": ["Category:Ndolè", "Category:Ndolè in Douala"]},
+                       {"hits": 240}, {}, THRESHOLDS),
         summarize_dish({**DISH, "id": "eru", "names": {"en": "Eru", "fr": "Eru"}}, None, {"error": "rate-limited"}, {}, THRESHOLDS),
     ]
     text = render_markdown(rows, sources, THRESHOLDS, {"date": "2026-10-12", "commons_depth": 1})
-    assert "| Ndolé (`ndole`) | CM | 160 | 3 | 5 | model (needs review) |" in text
-    assert "| Eru (`eru`) | CM | not run |  | rate-limited | not counted | not counted |" in text
+    assert "| Ndolé (`ndole`) | CM | 160 | 4 | 3 | ≥240 | model (needs review) |" in text
+    assert "| Eru (`eru`) | CM | not run |  |  | rate-limited | not counted | not counted |" in text
+    assert "- `ndole`: Ndolè, Ndolè in Douala" in text
     assert "- `ndole`: Category:Ndole" in text
     assert "Totals: 1 model, 0 few-shot, 0 manual entry, 1 not counted (2 dishes)." in text
     assert "African Foods Datasets" in text and "Nigerian Food Dataset" in text

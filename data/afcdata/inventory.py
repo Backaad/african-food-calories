@@ -2,6 +2,10 @@
 
 from datetime import date
 
+# Anonymous Openverse searches never report more than this many results (observed
+# in the first CI run: many unrelated queries returned exactly 240).
+OPENVERSE_CEILING = 240
+
 STATUS_LABELS = {
     "model": "model (needs review)",
     "few_shot": "few-shot test",
@@ -28,7 +32,8 @@ def summarize_dish(dish: dict, commons: dict | None, openverse: dict | None, dat
     commons_ok = commons is not None and not commons.get("error")
     openverse_ok = openverse is not None and not openverse.get("error")
     reliable = (commons["allowed"] if commons_ok else 0) + sum(datasets.values())
-    upper = reliable + (openverse["hits"] if openverse_ok else 0)
+    commons_search = commons.get("search_allowed", 0) if commons_ok else 0
+    upper = reliable + commons_search + (openverse["hits"] if openverse_ok else 0)
     return {
         "id": dish["id"],
         "name": dish["names"]["en"],
@@ -62,12 +67,19 @@ def _rejected_cell(commons: dict | None) -> str:
     return str(sum(commons.get("rejected", {}).values()))
 
 
+def _search_cell(commons: dict | None) -> str:
+    if not commons or commons.get("error"):
+        return ""
+    return str(commons.get("search_allowed", 0))
+
+
 def _openverse_cell(openverse: dict | None) -> str:
     if openverse is None:
         return "not run"
     if openverse.get("error"):
         return openverse["error"]
-    return str(openverse["hits"])
+    hits = openverse["hits"]
+    return f"≥{hits}" if hits >= OPENVERSE_CEILING else str(hits)
 
 
 def render_markdown(rows: list[dict], sources_doc: dict, thresholds: dict, run_info: dict) -> str:
@@ -84,22 +96,26 @@ def render_markdown(rows: list[dict], sources_doc: dict, thresholds: dict, run_i
         "",
         "- **Commons**: files in the dish's Wikimedia Commons categories whose own licence is"
         " CC0, public domain, CC BY or CC BY-SA, and that are JPEG/PNG/WebP.",
-        "- **Rejected**: files in the same categories that were dropped (NC/ND/unknown licence, or not a photo format).",
+        "- **Commons search**: extra open-licence files whose *title* contains the dish name, for dishes"
+        " without a good category. Not curated: upper bound only.",
+        "- **Rejected**: files in the same categories or searches that were dropped (NC/ND/unknown licence,"
+        " or not a photo format).",
         "- **Openverse**: open-licence search hits outside Wikimedia. Keyword matches, *not reviewed*:"
-        " many are not the dish. Upper bound only.",
+        f" many are not the dish. Upper bound only. Anonymous searches stop at {OPENVERSE_CEILING}, shown as"
+        f" ≥{OPENVERSE_CEILING}.",
         f"- **Status** uses the reliable count (Commons + approved datasets):"
         f" ≥ {thresholds['model']} → model, ≥ {thresholds['few_shot']} → few-shot test, otherwise manual entry."
-        " *If Openverse holds* shows the status the upper bound would give.",
+        " *If the upper bound holds* adds Commons search and Openverse hits.",
         "- No count here has been reviewed by a person yet. \"Usable\" photos (right dish, real photo,"
         " no duplicates) will be fewer.",
         "",
-        "| Dish | Countries | Commons | Rejected | Openverse | Status | If Openverse holds |",
-        "|---|---|---:|---:|---:|---|---|",
+        "| Dish | Countries | Commons | Commons search | Rejected | Openverse | Status | If the upper bound holds |",
+        "|---|---|---:|---:|---:|---:|---|---|",
     ]
     for r in rows:
         lines.append(
             f"| {r['name']} (`{r['id']}`) | {', '.join(r['countries'])} | {_commons_cell(r['commons'])}"
-            f" | {_rejected_cell(r['commons'])} | {_openverse_cell(r['openverse'])}"
+            f" | {_search_cell(r['commons'])} | {_rejected_cell(r['commons'])} | {_openverse_cell(r['openverse'])}"
             f" | {STATUS_LABELS[r['status']]} | {STATUS_LABELS[r['status_upper_bound']]} |"
         )
 
@@ -116,6 +132,19 @@ def render_markdown(rows: list[dict], sources_doc: dict, thresholds: dict, run_i
     ]
     missing = [(r["id"], c) for r in rows for c in ((r["commons"] or {}).get("missing_categories") or [])]
     lines += [f"- `{dish_id}`: {cat}" for dish_id, cat in missing] or ["- none"]
+
+    lines += [
+        "",
+        "## Commons categories walked",
+        "",
+        "Check these for categories that drift away from the dish, and list them under"
+        " `commons_exclude` in `data/dishes.yaml`.",
+        "",
+    ]
+    for r in rows:
+        walked = (r["commons"] or {}).get("walked_categories") or []
+        if walked:
+            lines.append(f"- `{r['id']}`: " + ", ".join(c.removeprefix("Category:") for c in walked))
 
     lines += [
         "",
