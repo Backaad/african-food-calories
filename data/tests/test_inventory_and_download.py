@@ -3,7 +3,7 @@ from pathlib import Path
 import download
 from afcdata import ImageRecord
 from afcdata.catalog import load_yaml, SOURCES_PATH
-from afcdata.inventory import classify, render_markdown, summarize_dish
+from afcdata.inventory import classify, render_markdown, shared_files, summarize_dish
 
 THRESHOLDS = {"model": 150, "few_shot": 20}
 DISH = {"id": "ndole", "names": {"en": "Ndolé", "fr": "Ndolé"}, "countries": ["CM"]}
@@ -68,3 +68,12 @@ def test_file_path_is_safe_and_typed():
     assert path.parent == Path("/out/waakye")  # no directory traversal
     assert path.name == "openverse-.._.._etc_passwd.jpg"
     assert download.file_path(Path("/out"), record("7", "https://x/a", mime="image/png")).suffix == ".png"
+
+
+def test_shared_files_between_dishes():
+    rows = [
+        summarize_dish({**DISH, "id": "fufu"}, {"allowed": 3, "identifiers": ["1", "2", "3"]}, None, {}, THRESHOLDS),
+        summarize_dish({**DISH, "id": "eru"}, {"allowed": 2, "identifiers": ["2", "3"]}, None, {}, THRESHOLDS),
+        summarize_dish({**DISH, "id": "koki"}, {"allowed": 1, "identifiers": ["9"]}, None, {}, THRESHOLDS),
+    ]
+    assert shared_files(rows) == [("eru", "fufu", 2)]

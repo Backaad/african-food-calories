@@ -49,6 +49,19 @@ def summarize_dish(dish: dict, commons: dict | None, openverse: dict | None, dat
     }
 
 
+def shared_files(rows: list[dict]) -> list[tuple[str, str, int]]:
+    """Pairs of dishes whose Commons candidates share files, with the count."""
+    ids = {r["id"]: set((r["commons"] or {}).get("identifiers") or []) for r in rows}
+    names = sorted(ids)
+    pairs = []
+    for i, a in enumerate(names):
+        for b in names[i + 1:]:
+            n = len(ids[a] & ids[b])
+            if n:
+                pairs.append((a, b, n))
+    return pairs
+
+
 def _cell(text: str) -> str:
     return str(text).replace("|", "\\|")
 
@@ -145,6 +158,11 @@ def render_markdown(rows: list[dict], sources_doc: dict, thresholds: dict, run_i
         walked = (r["commons"] or {}).get("walked_categories") or []
         if walked:
             lines.append(f"- `{r['id']}`: " + ", ".join(c.removeprefix("Category:") for c in walked))
+
+    lines += ["", "## Files shared by several dishes", "",
+              "The same Commons file found for two dishes (e.g. a plate of fufu with eru). It needs one"
+              " label, or none, before training.", ""]
+    lines += [f"- `{a}` and `{b}`: {n} files" for a, b, n in shared_files(rows)] or ["- none"]
 
     lines += [
         "",

@@ -97,16 +97,19 @@ dishes:
     names: {en: Waakye, fr: Waakye}
     countries: [GH]
     commons_categories: [Waakye]
+    commons_exclude: [Waakye Festival]
     openverse_queries: [waakye]
   - id: palm_nut_soup
     names: {en: Palm nut soup, fr: Sauce graine}
     countries: [GH, CI, NG, CM]
     commons_categories: [Palm nut soup, Banga soup, Sauce graine]
+    commons_exclude: [Abak atama soup, Banga soup preparation by GS Likoko]
     openverse_queries: [palm nut soup, banga soup]
   - id: banku
     names: {en: Banku, fr: Banku}
     countries: [GH]
     commons_categories: [Banku]
+    commons_exclude: [Banku preparation in Ghana]
     openverse_queries: [banku]
   - id: kenkey
     names: {en: Kenkey, fr: Kenkey}
@@ -117,6 +120,7 @@ dishes:
     names: {en: Fufu, fr: Foufou}
     countries: [GH, NG, CM, CI]
     commons_categories: [Fufu]
+    commons_exclude: [Pounded yam, Corn fufu, Fufu preparation in Ghana]
     openverse_queries: [fufu]
   - id: red_red
     names: {en: Red red, fr: Red red}
@@ -134,11 +138,13 @@ dishes:
     names: {en: Egusi soup, fr: Sauce egusi}
     countries: [NG, CM, GH]
     commons_categories: [Egusi soup, Egusi]
+    commons_exclude: [Kontomire stew]
     openverse_queries: [egusi]
   - id: moi_moi
     names: {en: Moi moi, fr: Moi moi}
     countries: [NG]
     commons_categories: [Moin moin, Moi moi]
+    commons_exclude: [Abará]
     openverse_queries: [moi moi, moin moin]
   - id: pounded_yam
     names: {en: Pounded yam, fr: Igname pilée}
@@ -159,6 +165,7 @@ dishes:
     names: {en: Akara, fr: Accra de haricots}
     countries: [NG, GH, SN]
     commons_categories: [Akara]
+    commons_exclude: [Akara in Brazil]
     openverse_queries: [akara]
   - id: pepper_soup
     names: {en: Pepper soup, fr: Pepper soup}
@@ -182,6 +189,7 @@ dishes:
     names: {en: Thieboudienne, fr: Thiéboudienne}
     countries: [SN]
     commons_categories: [Thieboudienne, Ceebu jën]
+    commons_exclude: [Thieboudienne preparation]
     openverse_queries: [thieboudienne, ceebu jen]
   - id: yassa
     names: {en: Yassa, fr: Yassa}
@@ -214,6 +222,7 @@ dishes:
     names: {en: Nyama choma, fr: Nyama choma}
     countries: [KE, TZ]
     commons_categories: [Nyama choma]
+    commons_exclude: [Nyama choma preparations]
     openverse_queries: [nyama choma]
   - id: pilau
     names: {en: Pilau, fr: Pilau}
@@ -224,6 +233,7 @@ dishes:
     names: {en: Chapati (East African), fr: Chapati}
     countries: [KE, TZ, UG]
     commons_categories: [Chapati in Kenya, Chapati in Tanzania, Chapati in Uganda]
+    commons_exclude: [Chapati making in Kenya, Chapati making in Uganda, Kikomando, Rolex from Uganda]
     openverse_queries: [chapati kenya]
   - id: matoke
     names: {en: Matoke, fr: Matoke}

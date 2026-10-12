@@ -49,6 +49,7 @@ def count_commons(client, dish, depth, manifest):
         "search_allowed": len(result.search_records),
         "rejected": dict(result.rejected),
         "licenses": _family_counts(result.records),
+        "identifiers": sorted(r.identifier for r in result.records + result.search_records),
         "missing_categories": result.missing_categories,
         "walked_categories": result.walked_categories,
     }
