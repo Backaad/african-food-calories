@@ -63,7 +63,7 @@ Two reliable sources of dish labels, before any human review of the photos:
   for eru, okok, mbongo tchobi, sanga, miondo.
 
 Title searches on Commons find more candidates for some dishes without a
-category (eru 103, attiéké 95, achu 25, ndolé +19), and Openverse finds many
+category (eru 100, attiéké 97, achu 25, ndolé +19), and Openverse finds many
 keyword hits. Neither is a reliable label: they are listed as an upper bound
 until someone checks the photos.
 
