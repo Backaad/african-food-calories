@@ -1,0 +1,41 @@
+# Tiny configuration for the CI smoke run on real data (CPU, minutes): checks that
+# every step works end to end. Its metrics mean nothing.
+
+seed: 42
+image_size: 128
+min_images: 10
+max_per_class: 20
+split:
+  train: 0.7
+  val: 0.15
+  test: 0.15
+camerfood10:
+  min_area: 0.1
+  pad: 0.1
+student:
+  arch: mobilenet_v3_small
+  batch_size: 32
+  dropout: 0.2
+  epochs_head: 1
+  lr_head: 0.001
+  epochs_finetune: 1
+  fine_tune_layers: 40
+  lr_finetune: 1.0e-05
+  patience: 3
+teacher:
+  arch: mobilenet_v3_small
+  batch_size: 32
+  dropout: 0.3
+  epochs_head: 1
+  lr_head: 0.001
+  epochs_finetune: 0
+  fine_tune_layers: 80
+  lr_finetune: 1.0e-05
+  patience: 3
+distillation:
+  alpha: 0.3
+  temperature: 4.0
+  epochs: 1
+  lr: 3.0e-05
+  fine_tune_layers: 40
+  patience: 3
