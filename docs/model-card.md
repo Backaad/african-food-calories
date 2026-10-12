@@ -1,10 +1,9 @@
 # Model card: african-food-calories dish classifier
 
-> **Status: not trained yet.** The training code is ready
-> (`training/notebooks/train_classifier.ipynb`); no model has been trained and
-> no metric below has been measured. Every "to be measured" value will be
-> filled from `metrics.json` after the first training run. Nothing here is a
-> verified result until then.
+> **Status: first training run (2026-10-12), not yet in the app.** Values below
+> come from `training/results/2026-10-12-run1/` (Kaggle GPU, student only, no
+> teacher). They are measured on a test set from the same sources as the
+> training images; accuracy on real phone photos is not measured yet.
 
 ## What it does
 
@@ -20,13 +19,10 @@ plate (it answers for the dominant one).
 
 ## Labels
 
-Expected from the data inventory (`docs/data-inventory.md`, dishes with at least
-150 images): alloco, bobolo, fufu, puff-puff, ugali, and `other`. The actual list
-is decided by `training/afctrain/prepare.py` from the images really downloaded:
-**to be confirmed** by the training run (`labels.txt`).
-
-Catalogue dishes with fewer images are learnt as `other`, so the model refuses
-them instead of guessing a wrong dish.
+`alloco`, `bobolo`, `fufu`, `puff_puff`, `ugali` and `other` (the dishes with at
+least 150 images after duplicate removal). 32 catalogue dishes with fewer
+images are learnt as `other` (list in `dataset_summary.json`), so the model
+refuses them; the user picks them from the list.
 
 ## Data
 
@@ -36,7 +32,17 @@ them instead of guessing a wrong dish.
 | Wikimedia Commons categories of other foods (`data/other_foods.yaml`) | same | class `other` |
 | CamerFood10 (Baban A Erep & Chaari, 2024) | "non-commercial research purpose"; images scraped from search engines and social media | **training only**, risk accepted by the project owner; never redistributed |
 
-Image counts per label and split: **to be measured** (`dataset_summary.json`).
+2 845 images after removing 17 duplicates and 78 images filed under two dishes:
+1 839 from Commons, 1 006 crops from CamerFood10.
+
+| Label | Train | Validation | Test |
+|---|---:|---:|---:|
+| alloco | 194 | 34 | 45 |
+| bobolo | 143 | 23 | 21 |
+| fufu | 140 | 27 | 37 |
+| puff_puff | 118 | 28 | 26 |
+| ugali | 133 | 21 | 21 |
+| other | 1 303 | 250 | 281 |
 
 ## Training
 
@@ -47,19 +53,37 @@ kept only if better on validation. Settings: `training/config.yaml`.
 
 ## Evaluation
 
-Test set (15 % of the images, never used for training or for choosing the
-threshold). All values **to be measured**:
+Test set: 431 images (150 of the five dishes, 281 `other`), never used for
+training or for choosing the threshold. Run 1, student MobileNetV3-Large
+(validation accuracy before refusals 0.778; the teacher was not used).
 
 | Measure | Value |
 |---|---|
-| Refusal threshold (chosen on validation) | to be measured |
-| Final accuracy (with refusals) | to be measured |
-| Top-1 / top-3 accuracy without refusal | to be measured |
-| Known dishes: correct / refused / wrong dish | to be measured |
-| Other foods: correctly refused / wrongly accepted | to be measured |
-| Per-dish accuracy and precision | to be measured |
-| Per source (Commons vs CamerFood10) | to be measured |
-| TFLite vs original: top-1 agreement, max probability difference | to be measured |
+| Refusal threshold (chosen on validation) | 0.85 |
+| Final accuracy, with refusals (dominated by the 281 `other` images) | 0.852 |
+| Top-1 / top-3 accuracy without refusal | 0.759 / 0.970 |
+| Images of the five dishes: correct / refused / wrong dish | 0.693 / 0.293 / 0.013 |
+| Other foods and other catalogue dishes: correctly refused / wrongly accepted | 0.936 / 0.064 |
+| Per source, final accuracy: CamerFood10 / Commons | 0.905 (158 images) / 0.821 (273 images) |
+| TFLite float16 vs original: top-1 agreement, max probability difference | 0.993, 0.021 |
+
+Per dish (test set):
+
+| Dish | Test images | Accuracy (recall) | Precision |
+|---|---:|---:|---:|
+| puff_puff | 26 | 0.85 | 0.85 |
+| alloco | 45 | 0.82 | 0.90 |
+| bobolo | 21 | 0.76 | 0.80 |
+| fufu | 37 | 0.59 | 0.96 |
+| ugali | 21 | 0.33 | 0.50 |
+| other | 281 | 0.94 | 0.86 |
+
+What this means: when the model names one of the five dishes it is rarely
+wrong (2 of 150 dish images given the wrong dish), but it refuses often (29 %
+of dish images), above all ugali and fufu. Most of their errors are refusals
+(`other`); a likely cause is that look-alike staples (banku, kenkey, amala,
+pounded yam) are learnt as `other`. 3 of 431 test images change their top
+answer between the Keras and the TFLite model.
 
 Known limits of this evaluation:
 
@@ -68,11 +92,13 @@ Known limits of this evaluation:
   conditions yet; accuracy on such photos is likely lower and must be measured
   separately once some exist.
 - Labels were not checked by hand; some Commons images may show the wrong dish.
-- Per-dish results on small test sets (a few dozen images) are uncertain.
+- Per-dish results rest on 21 to 45 test images per dish: a difference of a
+  few images changes them by several points.
 
 ## Licence
 
-Trained with CamerFood10 → **CC BY-NC 4.0** (non-commercial). The code is MIT.
+Trained with CamerFood10 → **CC BY-NC 4.0** (non-commercial), as recorded in
+`model_info.json`. The code is MIT.
 
 ## Intended use and limits
 
