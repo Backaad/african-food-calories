@@ -25,15 +25,17 @@ LANDING_PAGES = [
     "https://www.fao.org/infoods/infoods/tables-and-databases/africa/en/",
 ]
 
-# INFOODS tagnames of the components we use, matched against header cells.
+# Components we use, matched against the English header row of the
+# "NV_sum" sheets (INFOODS tagname in brackets).
 COMPONENTS = {
-    "energy_kcal": [r"ENERC.*kcal", r"kcal.*ENERC"],
-    "water_g": [r"WATER"],
-    "protein_g": [r"PROTCNT", r"PROCNT", r"PROT"],
-    "fat_g": [r"FATCE", r"FAT\b", r"FAT\("],
-    "carbohydrate_g": [r"CHOAVLDF", r"CHOAVL"],
-    "fibre_g": [r"FIBTG", r"FIBC"],
+    "energy_kcal": r"^Energy \(kcal\)",  # ENERC
+    "water_g": r"^Water \(g\)",  # WATER
+    "protein_g": r"^Protein, total",  # PROTCNT
+    "fat_g": r"^Fat, total",  # FAT
+    "carbohydrate_g": r"^Carbohydrate, available",  # CHOAVLDF
+    "fibre_g": r"^Fibre, total dietary",  # FIBTG
 }
+MAIN_SHEET = "03 NV_sum_39 (per 100g EP)"
 
 
 def find_excel_urls(html: str, base: str) -> list[str]:
@@ -79,54 +81,42 @@ def _norm(text) -> str:
 
 
 def find_header(rows: list[tuple]) -> tuple[int, dict[str, int]]:
-    """Locate the header row (the one with a code column and the energy column)."""
+    """Locate the English header row and the column of each field we need."""
     for i, row in enumerate(rows[:30]):
         cells = [_norm(c) for c in row]
         cols = {}
         for j, cell in enumerate(cells):
             low = cell.lower()
-            if "code" not in cols and low.startswith("code"):
-                cols["code"] = j
-            if "name_en" not in cols and "food name" in low and ("english" in low or "en" in low.split()):
-                cols["name_en"] = j
-            if "name_fr" not in cols and ("nom" in low or "french" in low or "français" in low):
-                cols["name_fr"] = j
-            for key, patterns in COMPONENTS.items():
-                if key not in cols and any(re.search(p, cell) for p in patterns):
-                    cols[key] = j
-        if "code" in cols and "energy_kcal" in cols:
-            if "name_en" not in cols:
-                # Fall back to the first text column after the code.
-                cols["name_en"] = cols["code"] + 1
+            if low == "code":
+                cols.setdefault("code", j)
+            elif low == "food name in english":
+                cols.setdefault("name_en", j)
+            elif low == "food name in french":
+                cols.setdefault("name_fr", j)
+            for key, pattern in COMPONENTS.items():
+                if re.search(pattern, cell):
+                    cols.setdefault(key, j)
+        if {"code", "name_en", *COMPONENTS} <= set(cols):
             return i, cols
     raise ValueError("header row not found")
 
 
-def load_table(path: Path = XLSX, sheet: str | None = None) -> tuple[str, list[dict]]:
-    """Return (sheet name, rows as dicts) from the main composition sheet."""
+def load_table(path: Path = XLSX, sheet: str = MAIN_SHEET) -> tuple[str, list[dict]]:
+    """Return (sheet name, foods as dicts) from the main composition sheet."""
     import openpyxl
 
     wb = openpyxl.load_workbook(path, read_only=True, data_only=True)
-    names = [sheet] if sheet else wb.sheetnames
-    for name in names:
-        rows = list(wb[name].iter_rows(values_only=True))
-        try:
-            header_index, cols = find_header(rows)
-        except ValueError:
-            continue
-        records = []
-        for row in rows[header_index + 1:]:
-            code = _norm(row[cols["code"]]) if cols["code"] < len(row) else ""
-            if not re.match(r"^\d+[_.]\d+$", code):
-                continue
-            record = {"code": code}
-            for key, j in cols.items():
-                if key != "code" and j < len(row):
-                    record[key] = row[j]
-            records.append(record)
-        if records:
-            return name, records
-    raise ValueError(f"no composition sheet found in {path}")
+    rows = list(wb[sheet].iter_rows(values_only=True))
+    header_index, cols = find_header(rows)
+    records = []
+    for row in rows[header_index + 1:]:
+        code = _norm(row[cols["code"]]) if cols["code"] < len(row) else ""
+        if not re.match(r"^\d+_\d+$", code):
+            continue  # food group title rows, tagname row, notes
+        records.append({"code": code} | {k: row[j] for k, j in cols.items() if k != "code" and j < len(row)})
+    if not records:
+        raise ValueError(f"no foods found in sheet {sheet!r} of {path}")
+    return sheet, records
 
 
 def to_number(value) -> float | None:
@@ -165,8 +155,8 @@ def search(terms: list[str], path: Path = XLSX, limit: int = 15) -> str:
         hits = [r for r in records if pattern.search(_norm(r.get("name_en"))) or pattern.search(_norm(r.get("name_fr")))]
         lines.append(f"\n## {term} ({len(hits)} hits)")
         for r in hits[:limit]:
-            values = " ".join(f"{k.split('_')[0]}={_norm(r.get(k))}" for k in COMPONENTS)
-            lines.append(f"{r['code']} | {_norm(r.get('name_en'))[:70]} | {values}")
+            values = " ".join(f"{k.split('_')[0][:4]}={_norm(r.get(k))}" for k in COMPONENTS)
+            lines.append(f"{r['code']} | {_norm(r.get('name_en'))[:90]} | {_norm(r.get('name_fr'))[:60]} | {values}")
     return "\n".join(lines)
 
 

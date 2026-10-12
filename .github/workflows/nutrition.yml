@@ -20,4 +20,4 @@ jobs:
           python-version: "3.12"
       - run: pip install -r nutrition/requirements.txt
       - run: python nutrition/wafct.py describe
-      - run: python nutrition/wafct.py search --file nutrition/search_terms.txt --limit 25
+      - run: python nutrition/wafct.py search --file nutrition/search_terms.txt --limit 40
