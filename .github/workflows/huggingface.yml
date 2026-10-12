@@ -1,0 +1,29 @@
+name: huggingface
+
+# Publishes the model and the description of the data on Hugging Face
+# (hub/publish.py). Run by hand: Actions -> huggingface -> Run workflow.
+# Needs the repository secret HF_TOKEN (a Hugging Face token with write access).
+on:
+  workflow_dispatch:
+  pull_request:
+    paths: ["hub/**", "docs/model-card.md", ".github/workflows/huggingface.yml"]
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install huggingface_hub pyyaml
+      - name: Build the two repositories
+        run: python hub/publish.py --out /tmp/hub
+      - name: Upload
+        if: github.event_name == 'workflow_dispatch'
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: python hub/publish.py --out /tmp/hub --upload

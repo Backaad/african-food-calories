@@ -1,11 +1,10 @@
 # Model card: african-food-calories dish classifier
 
-> **Status: training run 2 (2026-10-12), not yet in the app.** Values below
-> come from `training/results/2026-10-12-run2/` (Kaggle GPU, MobileNetV3-Large
-> distilled from an EfficientNetV2-S teacher); the model file is
-> `training/results/2026-10-12-run2/model.tflite`. They are measured on a test
-> set from the same sources as the training images; accuracy on real phone
-> photos is not measured yet.
+> **Status: training run 2 (2026-10-12), the model of the app's first version.**
+> Values below come from `training/results/2026-10-12-run2/` in the GitHub
+> repository (Kaggle GPU, MobileNetV3-Large distilled from an EfficientNetV2-S
+> teacher). They are measured on a test set from the same sources as the
+> training images; accuracy on real phone photos is not measured yet.
 
 ## What it does
 
