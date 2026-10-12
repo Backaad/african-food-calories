@@ -80,6 +80,14 @@ def _rejected_cell(commons: dict | None) -> str:
     return str(sum(commons.get("rejected", {}).values()))
 
 
+def _datasets_cell(datasets: dict, training_only: set[str]) -> str:
+    """Sum of dataset images, with † when any of them is training only."""
+    if not datasets:
+        return ""
+    mark = "†" if training_only & set(datasets) else ""
+    return f"{sum(datasets.values())}{mark}"
+
+
 def _search_cell(commons: dict | None) -> str:
     if not commons or commons.get("error"):
         return ""
@@ -109,6 +117,9 @@ def render_markdown(rows: list[dict], sources_doc: dict, thresholds: dict, run_i
         "",
         "- **Commons**: files in the dish's Wikimedia Commons categories whose own licence is"
         " CC0, public domain, CC BY or CC BY-SA, and that are JPEG/PNG/WebP.",
+        "- **Datasets**: images from datasets listed in `data/sources.yaml` with measured per-dish counts"
+        " (for segmentation datasets: images where the dish covers the largest area). **†** = training only:"
+        " copyright not cleared, never redistributed, models trained on them are CC BY-NC 4.0.",
         "- **Commons search**: extra open-licence files whose *title* contains the dish name, for dishes"
         " without a good category. Not curated: upper bound only.",
         "- **Rejected**: files in the same categories or searches that were dropped (NC/ND/unknown licence,"
@@ -116,19 +127,20 @@ def render_markdown(rows: list[dict], sources_doc: dict, thresholds: dict, run_i
         "- **Openverse**: open-licence search hits outside Wikimedia. Keyword matches, *not reviewed*:"
         f" many are not the dish. Upper bound only. Anonymous searches stop at {OPENVERSE_CEILING}, shown as"
         f" ≥{OPENVERSE_CEILING}.",
-        f"- **Status** uses the reliable count (Commons + approved datasets):"
+        f"- **Status** uses the reliable count (Commons + datasets):"
         f" ≥ {thresholds['model']} → model, ≥ {thresholds['few_shot']} → few-shot test, otherwise manual entry."
         " *If the upper bound holds* adds Commons search and Openverse hits.",
         "- No count here has been reviewed by a person yet. \"Usable\" photos (right dish, real photo,"
         " no duplicates) will be fewer.",
         "",
-        "| Dish | Countries | Commons | Commons search | Rejected | Openverse | Status | If the upper bound holds |",
-        "|---|---|---:|---:|---:|---:|---|---|",
+        "| Dish | Countries | Commons | Datasets | Commons search | Rejected | Openverse | Status | If the upper bound holds |",
+        "|---|---|---:|---:|---:|---:|---:|---|---|",
     ]
+    training_only = {s["id"] for s in sources_doc["sources"] if s["status"] == "approved_training_only"}
     for r in rows:
         lines.append(
             f"| {r['name']} (`{r['id']}`) | {', '.join(r['countries'])} | {_commons_cell(r['commons'])}"
-            f" | {_search_cell(r['commons'])} | {_rejected_cell(r['commons'])} | {_openverse_cell(r['openverse'])}"
+            f" | {_datasets_cell(r['datasets'], training_only)} | {_search_cell(r['commons'])} | {_rejected_cell(r['commons'])} | {_openverse_cell(r['openverse'])}"
             f" | {STATUS_LABELS[r['status']]} | {STATUS_LABELS[r['status_upper_bound']]} |"
         )
 
@@ -164,18 +176,37 @@ def render_markdown(rows: list[dict], sources_doc: dict, thresholds: dict, run_i
               " label, or none, before training.", ""]
     lines += [f"- `{a}` and `{b}`: {n} files" for a, b, n in shared_files(rows)] or ["- none"]
 
-    lines += [
-        "",
-        "## Datasets not used",
-        "",
+    lines += _datasets_table(
+        sources_doc,
+        {"approved_training_only"},
+        "Training-only datasets",
+        "Copyright not cleared; used for training only under `policy.training_only_conditions` in"
+        " `data/sources.yaml` (never redistributed, model under CC BY-NC 4.0). Their measured per-dish counts are"
+        " in the *Datasets* column above; the image counts below are the ones reported by the authors.",
+    )
+    lines += _datasets_table(
+        sources_doc,
+        {"pending", "excluded"},
+        "Datasets not used",
         "From `data/sources.yaml`. Image counts are the ones reported by the authors; none are used.",
+    )
+    return "\n".join(lines) + "\n"
+
+
+def _datasets_table(sources_doc: dict, statuses: set[str], title: str, intro: str) -> list[str]:
+    selected = [s for s in sources_doc["sources"] if s["kind"] == "dataset" and s["status"] in statuses]
+    if not selected:
+        return []
+    lines = [
+        "",
+        f"## {title}",
+        "",
+        intro,
         "",
         "| Source | Declared licence | Status | Reason | Reported images |",
         "|---|---|---|---|---|",
     ]
-    for source in sources_doc["sources"]:
-        if source["kind"] != "dataset" or source["status"] in {"approved", "approved_per_item"}:
-            continue
+    for source in selected:
         reported = source.get("reported_counts")
         if reported:
             reported_text = ", ".join(f"{k} {v}" for k, v in reported.items())
@@ -186,4 +217,4 @@ def render_markdown(rows: list[dict], sources_doc: dict, thresholds: dict, run_i
             f"| [{source['name']}]({source['url']}) | {_cell(source.get('declared_license', '?'))}"
             f" | {source['status']} | {reason} | {reported_text} |"
         )
-    return "\n".join(lines) + "\n"
+    return lines

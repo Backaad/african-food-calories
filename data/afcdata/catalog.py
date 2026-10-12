@@ -10,8 +10,10 @@ DATA_DIR = Path(__file__).resolve().parent.parent
 SOURCES_PATH = DATA_DIR / "sources.yaml"
 DISHES_PATH = DATA_DIR / "dishes.yaml"
 
-STATUSES = {"approved", "approved_per_item", "pending", "excluded"}
-USABLE = {"approved", "approved_per_item"}
+OPEN = {"approved", "approved_per_item"}  # licence verified
+TRAINING_ONLY = "approved_training_only"  # risk accepted by the owner, never redistributed
+USABLE = OPEN | {TRAINING_ONLY}
+STATUSES = USABLE | {"pending", "excluded"}
 SOURCE_REQUIRED = ("id", "name", "url", "kind", "status", "review")
 DISH_REQUIRED = ("id", "names", "countries")
 
@@ -38,13 +40,21 @@ def validate_sources(doc: dict) -> list[str]:
         status = source.get("status")
         if status not in STATUSES:
             errors.append(f"{where}: unknown status {status!r}")
-        if status in USABLE:
+        if status in OPEN:
             if not source.get("license"):
                 errors.append(f"{where}: usable source without 'license'")
             if not source.get("attribution"):
                 errors.append(f"{where}: usable source without 'attribution'")
         elif not source.get("status_reason"):
             errors.append(f"{where}: status {status!r} needs a 'status_reason'")
+        if status == TRAINING_ONLY:
+            risk = source.get("risk_accepted") or {}
+            if not (risk.get("by") and risk.get("date")):
+                errors.append(f"{where}: training-only source needs risk_accepted.by and risk_accepted.date")
+            if not doc.get("policy", {}).get("training_only_conditions"):
+                errors.append(f"{where}: training-only source but policy.training_only_conditions is empty")
+            if not source.get("citation"):
+                errors.append(f"{where}: training-only source needs a 'citation' for the model card")
         if not (source.get("review") or {}).get("verified_by"):
             errors.append(f"{where}: review.verified_by must say how the licence was checked")
     return errors
@@ -78,6 +88,12 @@ def validate_cross(sources_doc: dict, dishes_doc: dict) -> list[str]:
         for dish_id in source.get("dishes") or []:
             if dish_id not in dish_ids:
                 errors.append(f"{source['id']}: dish {dish_id!r} not in dishes.yaml")
+        for dish_id in ((source.get("segmentation") or {}).get("class_map") or {}).values():
+            if dish_id is not None and dish_id not in dish_ids:
+                errors.append(f"{source['id']}: class_map dish {dish_id!r} not in dishes.yaml")
+        for dish_id in source.get("dish_counts") or {}:
+            if dish_id not in dish_ids:
+                errors.append(f"{source['id']}: dish_counts dish {dish_id!r} not in dishes.yaml")
         for dish_id in source.get("reported_counts") or {}:
             if dish_id not in dish_ids:
                 errors.append(f"{source['id']}: reported_counts dish {dish_id!r} not in dishes.yaml")
@@ -98,6 +114,10 @@ def source_by_id(sources_doc: dict, source_id: str) -> dict:
         if source["id"] == source_id:
             return source
     raise KeyError(source_id)
+
+
+def is_training_only(sources_doc: dict, source_id: str) -> bool:
+    return source_by_id(sources_doc, source_id)["status"] == TRAINING_ONLY
 
 
 def require_usable(sources_doc: dict, source_id: str) -> None:

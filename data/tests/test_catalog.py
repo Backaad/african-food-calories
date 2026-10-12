@@ -8,7 +8,7 @@ def test_repository_catalogue_is_valid():
     assert sources["sources"] and dishes["dishes"]
 
 
-def test_no_dataset_with_scraped_images_is_usable():
+def test_no_open_source_has_scraped_images():
     sources = load_yaml(SOURCES_PATH)
     never = sources["policy"]["never_from"]
     for source in sources["sources"]:
@@ -48,3 +48,19 @@ def test_cross_reference_to_unknown_dish():
     dishes = load_yaml(DISHES_PATH)
     sources["sources"][2]["dishes"] = ["not_a_dish"]
     assert validate_cross(sources, dishes) == [f"{sources['sources'][2]['id']}: dish 'not_a_dish' not in dishes.yaml"]
+
+
+def _training_only_index(doc):
+    return next(i for i, src in enumerate(doc["sources"]) if src["status"] == "approved_training_only")
+
+
+def test_training_only_source_needs_recorded_risk_acceptance():
+    doc = copy.deepcopy(load_yaml(SOURCES_PATH))
+    doc["sources"][_training_only_index(doc)].pop("risk_accepted")
+    assert any("risk_accepted" in e for e in validate_sources(doc))
+
+
+def test_training_only_source_needs_policy_conditions():
+    doc = copy.deepcopy(load_yaml(SOURCES_PATH))
+    doc["policy"]["training_only_conditions"] = []
+    assert any("training_only_conditions" in e for e in validate_sources(doc))

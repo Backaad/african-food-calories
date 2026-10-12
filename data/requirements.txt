@@ -1,2 +1,5 @@
 requests>=2.31
 PyYAML>=6.0
+# Dataset downloads (fetch_datasets.py)
+gdown>=5.2
+Pillow>=10
