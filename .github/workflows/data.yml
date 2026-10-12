@@ -62,5 +62,5 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install -r data/requirements.txt
-      - name: Describe CamerFood10
-        run: python data/fetch_datasets.py camerfood10 --describe
+      - name: Describe CamerFood10 and count images per class
+        run: python data/fetch_datasets.py camerfood10 --describe --stats

@@ -153,6 +153,25 @@ sources:
     download:
       type: gdrive_folder
       url: https://drive.google.com/drive/folders/1MugfmVehtIjjyqtphs-4u0GksuHy3Vjz
+      # The folder also holds MyFood.zip and UECFOODPIXCOMPLETE.zip: other datasets
+      # with their own terms, not covered by the owner's decision. Never fetch them.
+      files: [CamerFood10.zip]
+    segmentation:
+      color_map: CamerFood10/Color_map.txt
+      masks: {train: CamerFood10/train/masks, test: CamerFood10/test/masks}
+      # Dataset class -> dish id in dishes.yaml; null = not a catalogue dish.
+      # Taro with yellow soup is achu. To be reviewed by the project owner.
+      class_map:
+        taro: achu
+        sauce jaune: achu
+        koki: koki
+        haricot: null
+        waterfufu: fufu
+        riz blanc: null
+        bobolo: bobolo
+        puff-puff: puff_puff
+        sauce tomate: null
+        frites de plantains: alloco
     declared_license: '"CamerFood10 dataset can be used only for non-commercial research purpose." (README, Agreement section)'
     authors: [Thierry Roland Baban A Erep, Lotfi Chaari]
     citation: >-
@@ -165,12 +184,11 @@ sources:
       journal: Sensors 24(1) 209 (2024)
       doi: 10.3390/s24010209
       pmc: https://pmc.ncbi.nlm.nih.gov/articles/PMC10781344
-    reported_counts_total: 1422  # paper: 1032 train + 209 validation (does not add up to 1422; check after download)
+    reported_counts_total: 1241  # Description.txt: 1032 train + 209 test (the paper says 1422)
     provenance: >-
-      The paper says a Python script scraped images of the 42 most consumed
-      Cameroonian foods from search engines (Google Images, Bing); CamerFood10 keeps
-      the 10 most frequent classes, annotated with polygon masks (several foods per
-      image).
+      Description.txt in the dataset: "collecting images from search engines (such
+      as Google Image and Bing) and social media. Some images were also provided by
+      users." Annotated with polygon masks; several foods per image.
     status: approved_training_only
     status_reason: >-
       Scraped images: the authors' non-commercial permission cannot cover photos
@@ -182,8 +200,8 @@ sources:
     review:
       date: 2026-10-12
       verified_by: >-
-        README of the GitHub repository, read directly; provenance and counts from
-        web search snippets of the Sensors paper (PMC10781344).
+        README of the GitHub repository and the dataset's own Description.txt,
+        Classes.txt and Color_map.txt, read in CI (data workflow, datasets job).
 
   - id: kenyanfood13
     name: KenyanFood13

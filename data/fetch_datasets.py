@@ -31,16 +31,77 @@ def parse_args(argv=None):
     parser.add_argument("--out", type=Path, default=DATA_DIR / "raw" / "datasets")
     parser.add_argument("--list-only", action="store_true", help="list remote files without downloading")
     parser.add_argument("--describe", action="store_true", help="print the folder structure after download")
+    parser.add_argument("--stats", action="store_true", help="print class and dish counts from segmentation masks")
     return parser.parse_args(argv)
 
 
-def fetch_gdrive_folder(url: str, target: Path, list_only: bool) -> list[str]:
+def fetch_gdrive_folder(url: str, target: Path, wanted: list[str], list_only: bool) -> list[str]:
+    """Download only the `wanted` files (by name) of a Google Drive folder."""
     import gdown  # imported here: only needed for Google Drive sources
 
-    files = gdown.download_folder(url=url, output=str(target), quiet=False, skip_download=list_only)
-    if files is None:
+    listing = gdown.download_folder(url=url, output=str(target), quiet=True, skip_download=True)
+    if listing is None:
         raise RuntimeError(f"gdown could not read {url}")
-    return [getattr(f, "path", str(f)) for f in files]
+    if list_only:
+        return [f.path for f in listing]
+    selected = select_files(listing, wanted)
+    for f in selected:
+        out = target / f.path
+        if not out.exists():
+            out.parent.mkdir(parents=True, exist_ok=True)
+            gdown.download(id=f.id, output=str(out), quiet=False)
+    return [f.path for f in selected]
+
+
+def select_files(listing, wanted: list[str]):
+    """Keep the listed files whose name is in `wanted`; fail if one is missing."""
+    selected = [f for f in listing if Path(f.path).name in wanted]
+    missing = set(wanted) - {Path(f.path).name for f in selected}
+    if missing:
+        raise RuntimeError(f"not found in the folder: {', '.join(sorted(missing))}")
+    return selected
+
+
+def segmentation_stats(root: Path, config: dict) -> str:
+    """Markdown table of class and dish counts from the dataset's masks."""
+    from afcdata import segmentation
+
+    gray_to_class = segmentation.parse_color_map((root / config["color_map"]).read_text(encoding="utf-8"))
+    class_map = config["class_map"]
+    unmapped = sorted(set(gray_to_class.values()) - set(class_map) - {segmentation.BACKGROUND})
+    if unmapped:
+        raise ValueError(f"classes missing from class_map: {unmapped}")
+
+    results = {
+        split: segmentation.stats(sorted((root / folder).glob("*.png")), gray_to_class, class_map)
+        for split, folder in config["masks"].items()
+    }
+    splits = list(results)
+    lines = [
+        "## Images per class (class present in the mask)",
+        "",
+        "| Class | Dish | " + " | ".join(splits) + " |",
+        "|---|---|" + "---:|" * len(splits),
+    ]
+    for name in sorted(class_map):
+        cells = " | ".join(str(results[s]["present"].get(name, 0)) for s in splits)
+        lines.append(f"| {name} | {class_map[name] or '-'} | {cells} |")
+    lines += [
+        "",
+        "## Images per dish (dish covering the largest area)",
+        "",
+        "| Dish | " + " | ".join(splits) + " | total |",
+        "|---|" + "---:|" * (len(splits) + 1),
+    ]
+    for dish in sorted({d for d in class_map.values() if d}):
+        counts = [results[s]["dominant_dish"].get(dish, 0) for s in splits]
+        lines.append(f"| {dish} | " + " | ".join(map(str, counts)) + f" | {sum(counts)} |")
+    lines.append("")
+    lines.append("Images per split: " + ", ".join(f"{s} {results[s]['images']}" for s in splits))
+    unknown = {s: results[s]["unknown"] for s in splits if results[s]["unknown"]}
+    if unknown:
+        lines.append(f"Mask values not in the colour map: {unknown}")
+    return "\n".join(lines)
 
 
 def extract_archives(root: Path) -> list[Path]:
@@ -115,7 +176,7 @@ def main(argv=None):
     target = args.out / args.source_id
     target.mkdir(parents=True, exist_ok=True)
     if download.get("type") == "gdrive_folder":
-        files = fetch_gdrive_folder(download["url"], target, args.list_only)
+        files = fetch_gdrive_folder(download["url"], target, download["files"], args.list_only)
     else:
         sys.exit(f"{args.source_id}: unsupported download type {download.get('type')!r}")
 
@@ -125,6 +186,10 @@ def main(argv=None):
     extract_archives(target)
     if args.describe:
         print(describe(target))
+    if args.stats:
+        if not source.get("segmentation"):
+            sys.exit(f"{args.source_id}: no 'segmentation' section in sources.yaml")
+        print(segmentation_stats(target, source["segmentation"]))
 
 
 if __name__ == "__main__":
